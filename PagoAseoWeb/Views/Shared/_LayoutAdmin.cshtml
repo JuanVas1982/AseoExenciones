@@ -1,0 +1,202 @@
+﻿@{
+    var rand = new Random();
+    var archivo = rand.Next(1000);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="icon" type="image/png" href="~/Img/favicon.ico" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/estilos.css" rel="stylesheet" />
+    <link href="~/Content/chosen/chosen.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.base.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.alert.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.darkblue.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.metrodark.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.energyblue.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
+
+    <link href="~/Scripts/DataTables-1.12.1/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+
+    <style>
+        .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+            cursor: not-allowed;
+            background-color: white;
+        }
+    </style>
+</head>
+
+
+
+<body class="body">
+    @*------------------SI JAVASCRIPT DESHABILITADO------------------*@
+    <noscript>
+        <div class="container">
+            <div class="white row">
+                <br>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">Javascript esta deshailitado</div>
+                        <div class="panel-body">
+                            <p>
+                                Para que este web site funcione correctamente,
+                                es necesario habilitar javascript en tu navegador.
+
+                            </p>
+                            <p>
+                                <a href="http://www.enable-javascript.com/" target="_blank">
+                                    En este enlace encontrarás instrucciones de
+                                    cómo habilitar javascript en tu navegador
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+    </noscript>
+    <div class="wrapper">
+        <div style="width:100%; height: 100%">
+            @*------------------CINTA MORADA------------------*@
+            <header style="position:static;top:0;width:100%;z-index:999;">
+                <div class="bgDegradeHeader row">
+                    <div class="col-md-3  text-left" style="padding-top:10px">
+                        <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
+
+                    </div>
+
+                    <div class="col-md-6 text-center" style="padding-top:10px">
+                        <h3>SISTEMA DE ADMINISTRACIÓN SOCIAL</h3>
+                    </div>
+                    <div class="col-md-3  text-right" style="padding-top:10px">
+                        USUARIO ACTIVO: @ViewBag.Usuario &nbsp;
+                        <a href="@Url.Action("CierreSesion", "Administracion")" style="color:#fff" class="btn-danger">
+                            <span class="glyphicon glyphicon-log-out"></span> <span>CERRAR SESIÓN</span>&nbsp;&nbsp;
+                        </a>
+                    </div>
+                </div>
+
+            </header>
+        </div>
+    </div>
+    <!-- Sidebar -->
+    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+
+        <a href="@Url.Action("Menu","Administracion")" class="w3-bar-item w3-button">Inicio</a>
+        <a href="@Url.Action("NuevaSolicitud", "Administracion")" class="w3-bar-item w3-button">Nueva Solicitud</a>
+        <a href="@Url.Action("mantSolicitud", "Administracion")" class="w3-bar-item w3-button">Consultar Solicitudes</a>
+        <a href="https://zeus.sii.cl/avalu_cgi/br/brcb02.sh" target="_blank" class="w3-bar-item w3-button">Buscar Rol SII</a>
+        <button onclick="w3_close()" class="w3-bar-item w3-large">Cerrar menu &times;</button>
+    </div>
+        @*------------------Modal------------------*@
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div id="modColHeader" class="modal-header-info">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 id="modTitulo" class="modal-title"></h4>
+                    </div>
+                    <div id="modColBody" class="modal-body">
+                        <p id="modBody"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="siJavascript" class="container white noJS">
+
+            @*------------------HEADER------------------*@
+            <div class=" row" style="padding-top:50px">
+                <img class="hidden-xs img-responsive" src="~/Img/ASEO/ENCABEZADO_ASEO.png?v=@archivo" />
+                <img class="visible-xs img-responsive" src="~/Img/ENCABEZADO_XS.png?v=@archivo" />
+                <hr style="border-top: 1px solid #E5006C;">
+            </div>
+            @*------------------CONTENIDO------------------*@
+            @RenderBody()
+
+            @*------------------FOOTER------------------*@
+            <div class=" row" style="background-color: RGB(114,114,116)">
+                <center>
+                    <img alt="" class="hidden-xs img-responsive" src="~/Img/PIE_PAGINA.jpg?v=@archivo" />
+                    <img alt="" class="visible-xs img-responsive" src="~/Img/PIE_LOGO_XS.png?v=@archivo" />
+                    <img alt="" class="visible-xs img-responsive" src="~/Img/PIE_DATA_XS.png?v=@archivo" />
+                </center>
+            </div>
+        </div>
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/jquery-ui.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxcore.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxdata.js"></script>
+        <script src="~/Scripts/format.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxexpander.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxloader.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxvalidator.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxcheckbox.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxbuttons.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxscrollbar.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxmenu.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxgrid.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxcalendar.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxdatetimeinput.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxmaskedinput.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxgrid.edit.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxgrid.sort.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxgrid.filter.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxgrid.selection.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxpanel.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxinput.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxlistbox.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxdropdownlist.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxnumberinput.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxslider.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxalert.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxcombobox.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxdatatable.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxtreegrid.js"></script>
+        <script src="~/Scripts/jqwidgets/globalization/globalize.js"></script>
+        <script src="~/Scripts/demos.js"></script>
+        <script src="~/Scripts/consultasAjax.js?v=@archivo"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/chosen.jquery.js"></script>
+        <script src="~/Scripts/jquery.form.min.js"></script>
+        <script src="~/Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/Scripts/DataTables-1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="/Scripts/pdfmake-0.1.36/pdfmake.min.js"></script>
+    <script src="/Scripts/Buttons-2.2.3/js/dataTables.buttons.min.js"></script>
+    <script src="/Scripts/pdfmake-0.1.36/vfs_fonts.js"></script>
+    <script src="/Scripts/Buttons-2.2.3/js/buttons.html5.js"></script>
+    <script src="/Scripts/JSZip-2.5.0/jszip.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#siJavascript").removeClass("noJS");
+            });
+        </script>
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+    </script>
+        @RenderSection("scripts", required: false)
+
+</body>
+</html>
+
+
+
+

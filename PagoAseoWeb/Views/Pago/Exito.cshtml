@@ -1,0 +1,135 @@
+﻿@model SocialAseoWeb.Models.OrdenIngresoAseo
+@using System.Web.Script.Serialization
+@using SocialAseoWeb.Models
+@using SocialAseoWeb.Comun
+
+
+@{
+    ViewBag.Title = "Portal de Derechos de Aseo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    JavaScriptSerializer jss = new JavaScriptSerializer();
+}
+
+
+    <form id="formPago">
+        <div class="row">
+            <div class="col-md-12">
+                <p>No se realizan devoluciones, ni reembolsos. En caso de tener alguna duda favor de contactar a @Html.Raw(Utils.adminContacto) al teléfono @Utils.telefono  o al  Correo Electronico @Utils.adminEMail.</p>
+                <p>Los comprobantes de pago no se envian a una casilla electrónica. Solo se pueden obtener en este sitio.</p>
+                <div id="DatContribuyente" class="panel panel-default">
+                    <div class="panel-heading">Datos del Contribuyente</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-2">RUT:</div>
+                            <div class="col-md-4"><div id="rutP" class="text-success">@Html.Raw(Model.rut.ToString() + "-" + Model.dv)</div></div>
+                            <div class="col-md-2">NOMBRE:</div>
+                            <div class="col-md-4"><div id="nombreP" class="text-success">@Html.Raw(Model.nombre)</div></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">DOMICILIO:</div>
+                            <div class="col-md-4"><div id="domicilioP" class="text-success">@Html.Raw(Model.direccion)</div></div>
+                            <div class="col-md-2">CUIDAD:</div>
+                            <div class="col-md-4"><div id="comunaP" class="text-success">@Html.Raw(Model.cuidad)</div></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">TÉLEFONO:</div>
+                            <div class="col-md-4"><div id="telPar" class="text-success">@Html.Raw(Model.telefono)</div></div>
+                            <div class="col-md-2">E-MAIL:</div>
+                            <div class="col-md-4"><div id="emailPar" class="text-success">@Html.Raw(Model.eMail)</div></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">N° ORDEN:</div>
+                            <div class="col-md-4"><div id="canPlaPar" class="text-success">@Html.Raw(Model.nOrden)</div></div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4"><div id="nOrdenPlaPar" class="text-success"></div></div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p id="menCont" style="color:red;font-weight: bold;"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <input id="buscaPago" name="buscaPago" class="btn btn-danger btn-block"  value="Ver Comprobante" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="listaPagadas"></div>
+            </div>
+        </div>
+        <br />
+    </form>
+@section Scripts{
+    <script type="text/javascript">
+        var baseUrl = "";
+        $(document).ready(function () {
+            baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+            OI = '@Html.Raw(jss.Serialize(Model))';
+            OIdata = JSON.parse(OI);
+            var rol = OIdata.rolNum;
+            var dv = OIdata.rolDv;
+            var folio = OIdata.nOrden;
+            $("#buscaPago").click(function () {
+                ValidaPagoTBK("@Url.Action("ValidaPagoTBK", "Pago")", folio).done(function (data) {
+                    $("#listaPagadas").html("");
+                    if (data == "PAGADO") {
+                        listarArchivos(rol, dv, folio);
+                    } else if (data == "ADEUDADO") {
+                        $("#listaPagadas").html("<br /><p>Se produjo un error al momento de ejecutar el pago, comuniquese con el administrador del sitio.</p>");
+                    } else if (data == "RECHAZADO") {
+                        $("#listaPagadas").html("El pago ha sido rechazado por la entidad bancaria, intentelo con otro medio de pago");
+                    } else {
+                        alert("se ha producido un error: " + data);
+                    }
+                });
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        function listarArchivos(rolT, dvT, folioT) {
+            var miUrl = '@Url.Action("MuestraReporte", "Pago", new { rol = "rolText", dv = "dvText", folio = "folioText" })'.replace("rolText", rolT).replace("dvText", dvT).replace("folioText", folioT);
+            miUrl = miUrl.replace("&amp;", "&");
+            miUrl = miUrl.replace("&amp;", "&");
+            $("#listaPagadas").html(" <br /><iframe width='100%' height='800px' src='" + miUrl + "'></iframe>");;
+       }
+
+        function ValidaPagoTBK(baseUrl, folio, rol) {
+            url = baseUrl;
+            return $.ajax({
+                url: url,
+                method: 'POST',
+                async: false,
+                dataType: 'json',
+                data: {
+                    folio: folio
+                },
+                success: function (data, textStatus, xhr) {
+
+                },
+                error: function (request, status, error) {
+                    console.log(request.responseText);
+                    alert("Error has occurred..." + request.responseText);
+                }
+            });
+        }
+    </script>
+}
+
+
+
+
+
+
+
+
+
+

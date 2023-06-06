@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PagosPortaleKCCModelStoreContainer" CdmEntityContainer="PagosPortaleKCCEntities">
+    <EntitySetMapping Name="PPKCC_FOLIOS">
+      <EntityTypeMapping TypeName="PagosPortaleKCCModel.PPKCC_FOLIOS">
+        <MappingFragment StoreEntitySet="PPKCC_FOLIOS">
+          <ScalarProperty Name="FOL_CAJA" ColumnName="FOL_CAJA" />
+          <ScalarProperty Name="FOL_SISTEMA" ColumnName="FOL_SISTEMA" />
+          <ScalarProperty Name="FOL_ANIO" ColumnName="FOL_ANIO" />
+          <ScalarProperty Name="FOL_FOLIO" ColumnName="FOL_FOLIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TGR_ENVIA_GIRO">
+      <EntityTypeMapping TypeName="PagosPortaleKCCModel.TGR_ENVIA_GIRO">
+        <MappingFragment StoreEntitySet="TGR_ENVIA_GIRO">
+          <ScalarProperty Name="TGR_CODE" ColumnName="TGR_CODE" />
+          <ScalarProperty Name="TGR_MSG_DESC" ColumnName="TGR_MSG_DESC" />
+          <ScalarProperty Name="TGR_FROM" ColumnName="TGR_FROM" />
+          <ScalarProperty Name="TGR_REF" ColumnName="TGR_REF" />
+          <ScalarProperty Name="TGR_DATETIME" ColumnName="TGR_DATETIME" />
+          <ScalarProperty Name="TGR_ID_EXT" ColumnName="TGR_ID_EXT" />
+          <ScalarProperty Name="TGR_RUT" ColumnName="TGR_RUT" />
+          <ScalarProperty Name="TGR_DV" ColumnName="TGR_DV" />
+          <ScalarProperty Name="TGR_FORMULARIO" ColumnName="TGR_FORMULARIO" />
+          <ScalarProperty Name="TGR_FOLIO" ColumnName="TGR_FOLIO" />
+          <ScalarProperty Name="TGR_VENCIMIENTO" ColumnName="TGR_VENCIMIENTO" />
+          <ScalarProperty Name="TGR_MONEDA" ColumnName="TGR_MONEDA" />
+          <ScalarProperty Name="TGR_MONTO" ColumnName="TGR_MONTO" />
+          <ScalarProperty Name="TGR_MOVIMIENTO" ColumnName="TGR_MOVIMIENTO" />
+          <ScalarProperty Name="TGR_XML" ColumnName="TGR_XML" />
+          <ScalarProperty Name="TGR_RESPUESTA" ColumnName="TGR_RESPUESTA" />
+          <ScalarProperty Name="TGR_ESTADO" ColumnName="TGR_ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TGR_RECIBE_PAGO">
+      <EntityTypeMapping TypeName="PagosPortaleKCCModel.TGR_RECIBE_PAGO">
+        <MappingFragment StoreEntitySet="TGR_RECIBE_PAGO">
+          <ScalarProperty Name="TGR_CODE" ColumnName="TGR_CODE" />
+          <ScalarProperty Name="TGR_MSG_DESC" ColumnName="TGR_MSG_DESC" />
+          <ScalarProperty Name="TGR_VERSION" ColumnName="TGR_VERSION" />
+          <ScalarProperty Name="TGR_FROM_ADDRESS" ColumnName="TGR_FROM_ADDRESS" />
+          <ScalarProperty Name="TGR_TO_ADDRESS" ColumnName="TGR_TO_ADDRESS" />
+          <ScalarProperty Name="TGR_REF_ADDRESS" ColumnName="TGR_REF_ADDRESS" />
+          <ScalarProperty Name="TGR_DATETIME" ColumnName="TGR_DATETIME" />
+          <ScalarProperty Name="TGR_NUMBER" ColumnName="TGR_NUMBER" />
+          <ScalarProperty Name="TGR_ID_EXT" ColumnName="TGR_ID_EXT" />
+          <ScalarProperty Name="TGR_STATUS" ColumnName="TGR_STATUS" />
+          <ScalarProperty Name="TGR_ID_OPERACION" ColumnName="TGR_ID_OPERACION" />
+          <ScalarProperty Name="TGR_ID_TRANSACCION" ColumnName="TGR_ID_TRANSACCION" />
+          <ScalarProperty Name="TGR_RUT" ColumnName="TGR_RUT" />
+          <ScalarProperty Name="TGR_FORMULARIO" ColumnName="TGR_FORMULARIO" />
+          <ScalarProperty Name="TGR_FOLIO" ColumnName="TGR_FOLIO" />
+          <ScalarProperty Name="TGR_VENCIMIENTO" ColumnName="TGR_VENCIMIENTO" />
+          <ScalarProperty Name="TGR_MONTO" ColumnName="TGR_MONTO" />
+          <ScalarProperty Name="TGR_COD_BANCO_PAGO" ColumnName="TGR_COD_BANCO_PAGO" />
+          <ScalarProperty Name="TGR_NOMBRE_BANCO_PAGO" ColumnName="TGR_NOMBRE_BANCO_PAGO" />
+          <ScalarProperty Name="TGR_FECHA_PAGO" ColumnName="TGR_FECHA_PAGO" />
+          <ScalarProperty Name="TGR_RESULTADO" ColumnName="TGR_RESULTADO" />
+          <ScalarProperty Name="TGR_TIPO_PAGO" ColumnName="TGR_TIPO_PAGO" />
+          <ScalarProperty Name="TGR_XML" ColumnName="TGR_XML" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WEBPAY">
+      <EntityTypeMapping TypeName="PagosPortaleKCCModel.WEBPAY">
+        <MappingFragment StoreEntitySet="WEBPAY">
+          <ScalarProperty Name="TBK_TIPO_TRANSACCION" ColumnName="TBK_TIPO_TRANSACCION" />
+          <ScalarProperty Name="TBK_RESPUESTA" ColumnName="TBK_RESPUESTA" />
+          <ScalarProperty Name="TBK_ORDEN_COMPRA" ColumnName="TBK_ORDEN_COMPRA" />
+          <ScalarProperty Name="TBK_ID_SESION" ColumnName="TBK_ID_SESION" />
+          <ScalarProperty Name="TBK_CODIGO_AUTORIZACION" ColumnName="TBK_CODIGO_AUTORIZACION" />
+          <ScalarProperty Name="TBK_MONTO" ColumnName="TBK_MONTO" />
+          <ScalarProperty Name="TBK_FINAL_NUMERO_TARJETA" ColumnName="TBK_FINAL_NUMERO_TARJETA" />
+          <ScalarProperty Name="TBK_FECHA_EXPIRACION" ColumnName="TBK_FECHA_EXPIRACION" />
+          <ScalarProperty Name="TBK_FECHA_CONTABLE" ColumnName="TBK_FECHA_CONTABLE" />
+          <ScalarProperty Name="TBK_FECHA_TRANSACCION" ColumnName="TBK_FECHA_TRANSACCION" />
+          <ScalarProperty Name="TBK_HORA_TRANSACCION" ColumnName="TBK_HORA_TRANSACCION" />
+          <ScalarProperty Name="TBK_ID_TRANSACCION" ColumnName="TBK_ID_TRANSACCION" />
+          <ScalarProperty Name="TBK_TIPO_PAGO" ColumnName="TBK_TIPO_PAGO" />
+          <ScalarProperty Name="TBK_NUMERO_CUOTAS" ColumnName="TBK_NUMERO_CUOTAS" />
+          <ScalarProperty Name="TBK_MAC" ColumnName="TBK_MAC" />
+          <ScalarProperty Name="TBK_TASA_INTERES_MAX" ColumnName="TBK_TASA_INTERES_MAX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PPKCC_FOLIOS_ASIGNADOS">
+      <EntityTypeMapping TypeName="PagosPortaleKCCModel.PPKCC_FOLIOS_ASIGNADOS">
+        <MappingFragment StoreEntitySet="PPKCC_FOLIOS_ASIGNADOS">
+          <ScalarProperty Name="FA_CREACION" ColumnName="FA_CREACION" />
+          <ScalarProperty Name="FA_ENVIO_MAIL" ColumnName="FA_ENVIO_MAIL" />
+          <ScalarProperty Name="FA_TOKEN" ColumnName="FA_TOKEN" />
+          <ScalarProperty Name="FA_TELEFONO" ColumnName="FA_TELEFONO" />
+          <ScalarProperty Name="FA_EMAIL" ColumnName="FA_EMAIL" />
+          <ScalarProperty Name="FA_FOLIO_TRANS" ColumnName="FA_FOLIO_TRANS" />
+          <ScalarProperty Name="FA_LLAVE4" ColumnName="FA_LLAVE4" />
+          <ScalarProperty Name="FA_LLAVE3" ColumnName="FA_LLAVE3" />
+          <ScalarProperty Name="FA_LLAVE2" ColumnName="FA_LLAVE2" />
+          <ScalarProperty Name="FA_LLAVE1" ColumnName="FA_LLAVE1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PPKCC_TRANSAC_ASEO">
+      <EntityTypeMapping TypeName="PagosPortaleKCCModel.PPKCC_TRANSAC_ASEO">
+        <MappingFragment StoreEntitySet="PPKCC_TRANSAC_ASEO">
+          <ScalarProperty Name="ASE_ENVIA_MAIL" ColumnName="ASE_ENVIA_MAIL" />
+          <ScalarProperty Name="ASE_FEC_CREA" ColumnName="ASE_FEC_CREA" />
+          <ScalarProperty Name="ASE_COD_AUTORIZA" ColumnName="ASE_COD_AUTORIZA" />
+          <ScalarProperty Name="ASE_ID_SESION" ColumnName="ASE_ID_SESION" />
+          <ScalarProperty Name="ASE_DIG_TARJETA" ColumnName="ASE_DIG_TARJETA" />
+          <ScalarProperty Name="ASE_TIPO_TRANS" ColumnName="ASE_TIPO_TRANS" />
+          <ScalarProperty Name="ASE_NUM_CUOTA" ColumnName="ASE_NUM_CUOTA" />
+          <ScalarProperty Name="ASE_TIPO_PAGO" ColumnName="ASE_TIPO_PAGO" />
+          <ScalarProperty Name="ASE_FOLIO_TESMU" ColumnName="ASE_FOLIO_TESMU" />
+          <ScalarProperty Name="ASE_TELEFONO" ColumnName="ASE_TELEFONO" />
+          <ScalarProperty Name="ASE_EMAIL" ColumnName="ASE_EMAIL" />
+          <ScalarProperty Name="ASE_FEC_VEN" ColumnName="ASE_FEC_VEN" />
+          <ScalarProperty Name="ASE_FEC_PAG" ColumnName="ASE_FEC_PAG" />
+          <ScalarProperty Name="ASE_ESTADO_TRANS" ColumnName="ASE_ESTADO_TRANS" />
+          <ScalarProperty Name="ASE_FOLIO_TRANS" ColumnName="ASE_FOLIO_TRANS" />
+          <ScalarProperty Name="ASE_TOTAL" ColumnName="ASE_TOTAL" />
+          <ScalarProperty Name="ASE_MULTA" ColumnName="ASE_MULTA" />
+          <ScalarProperty Name="ASE_IPC" ColumnName="ASE_IPC" />
+          <ScalarProperty Name="ASE_VALOR" ColumnName="ASE_VALOR" />
+          <ScalarProperty Name="ASE_CUOTA" ColumnName="ASE_CUOTA" />
+          <ScalarProperty Name="ASE_ANIO" ColumnName="ASE_ANIO" />
+          <ScalarProperty Name="ASE_ROL_DV" ColumnName="ASE_ROL_DV" />
+          <ScalarProperty Name="ASE_ROL_NUM" ColumnName="ASE_ROL_NUM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

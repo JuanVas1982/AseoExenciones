@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tesoreria2008Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ATETIPOPAGO">
+          <Key>
+            <PropertyRef Name="tipo" />
+            <PropertyRef Name="folio" />
+            <PropertyRef Name="codInstit" />
+            <PropertyRef Name="numcuenta" />
+            <PropertyRef Name="numDocu" />
+          </Key>
+          <Property Name="tipo" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="folio" Type="numeric" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="codInstit" Type="numeric" Precision="7" Scale="0" Nullable="false" />
+          <Property Name="numcuenta" Type="numeric" Precision="30" Scale="0" Nullable="false" />
+          <Property Name="numDocu" Type="numeric" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="monto" Type="numeric" Precision="12" Scale="0" />
+        </EntityType>
+        <Function Name="PA_OBTIENE_DATOS_WS_SUBDERE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TIPO_DOC" Type="numeric" Mode="In" />
+          <Parameter Name="FOLIO" Type="numeric" Mode="In" />
+        </Function>
+        <EntityContainer Name="tesoreria2008ModelStoreContainer">
+          <EntitySet Name="ATETIPOPAGO" EntityType="Self.ATETIPOPAGO" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tesoreria2008Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ATETIPOPAGO">
+          <Key>
+            <PropertyRef Name="tipo" />
+            <PropertyRef Name="folio" />
+            <PropertyRef Name="codInstit" />
+            <PropertyRef Name="numcuenta" />
+            <PropertyRef Name="numDocu" />
+          </Key>
+          <Property Name="tipo" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="folio" Type="Decimal" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="codInstit" Type="Decimal" Precision="7" Scale="0" Nullable="false" />
+          <Property Name="numcuenta" Type="Decimal" Precision="30" Scale="0" Nullable="false" />
+          <Property Name="numDocu" Type="Decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="monto" Type="Decimal" Precision="12" Scale="0" />
+        </EntityType>
+        <EntityContainer Name="tesoreria2008Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ATETIPOPAGO" EntityType="Self.ATETIPOPAGO" />
+          <FunctionImport Name="PA_OBTIENE_DATOS_WS_SUBDERE" ReturnType="Collection(tesoreria2008Model.PA_OBTIENE_DATOS_WS_SUBDERE_Result)">
+            <Parameter Name="TIPO_DOC" Mode="In" Type="Decimal" />
+            <Parameter Name="FOLIO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="PA_OBTIENE_DATOS_WS_SUBDERE_Result">
+          <Property Type="String" Name="IDENTIFICADOR" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="FECHA_VENCIMIENTO" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="ID_PAGO" Nullable="true" Precision="3" Scale="0" />
+          <Property Type="Decimal" Name="CUOTA" Nullable="true" Precision="2" Scale="0" />
+          <Property Type="Int32" Name="ESTADO" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tesoreria2008ModelStoreContainer" CdmEntityContainer="tesoreria2008Entities">
+          <EntitySetMapping Name="ATETIPOPAGO">
+            <EntityTypeMapping TypeName="tesoreria2008Model.ATETIPOPAGO">
+              <MappingFragment StoreEntitySet="ATETIPOPAGO">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="folio" ColumnName="folio" />
+                <ScalarProperty Name="codInstit" ColumnName="codInstit" />
+                <ScalarProperty Name="numcuenta" ColumnName="numcuenta" />
+                <ScalarProperty Name="numDocu" ColumnName="numDocu" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_OBTIENE_DATOS_WS_SUBDERE" FunctionName="tesoreria2008Model.Store.PA_OBTIENE_DATOS_WS_SUBDERE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="tesoreria2008Model.PA_OBTIENE_DATOS_WS_SUBDERE_Result">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="FECHA_VENCIMIENTO" ColumnName="FECHA_VENCIMIENTO" />
+                <ScalarProperty Name="ID_PAGO" ColumnName="ID_PAGO" />
+                <ScalarProperty Name="CUOTA" ColumnName="CUOTA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

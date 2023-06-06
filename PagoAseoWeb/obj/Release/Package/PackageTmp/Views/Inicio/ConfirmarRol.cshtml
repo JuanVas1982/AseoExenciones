@@ -1,0 +1,242 @@
+﻿@{
+    ViewBag.Title = "ConfirmarRol";
+    var usuario = Session["usuario"];
+}
+@*************************** modal para errores ********************************@
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="modColHeader" class="modal-header-info">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="modTitulo" class="modal-title"></h4>
+            </div>
+            <div id="modColBody" class="modal-body">
+                <p id="modBody"></p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+@*************************** formulario busqueda ********************************@
+<div class="container">
+    <div class="row">
+
+        <div id="empresaRegistrada" class="content" style="display: block;">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <p class="tituloH2">SOLICITUD DE EXENCION @usuario</p>
+                </div>
+            </div>
+            <p id="mensaje"></p>
+            @using (Html.BeginForm("ConfirmarRol", "inicio", FormMethod.Post, new { name = "exencionForm", id = "exencionForm", enctype = "multipart/form-data" }))
+                {
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-10">
+
+                        <div id="DatContribuyente" class="panel panel-default">
+                            <div class="panel-heading">Datos para exencion</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-3">Se certifica que don(ña)</div>
+                                    <div class="col-md-9"><input type="text" class="form-control" id="nombre" name="nombre" value="" required onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-3">RUT N°</div>
+                                    <div class="col-md-3"><input class="form-control" type="text" id="rut" name="rut" value=""></div>
+                                    <div class="col-md-2">ROL N°</div>
+                                    <div class="col-md-2"><input class="form-control" type="text" id="rolA" name="rolA" value=""></div>
+                                    <div class="col-md-2"><input class="form-control" type="text" id="rolB" name="rolB" value=""></div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">Domicilio</div>
+                                    <div class="col-md-3"><input class="form-control" type="text" id="domicilio" name="domicilio" value="" onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
+                                    <div class="col-md-1">N°</div>
+                                    <div class="col-md-2"><input class="form-control" type="text" id="numero" name="numero" value=""></div>
+                                    <div class="col-md-1">Block/Casa</div>
+                                    <div class="col-md-1"><input class="form-control" type="text" id="block" name="block" value=""></div>
+                                    <div class="col-md-1">Depto</div>
+                                    <div class="col-md-1"><input class="form-control" type="text" id="depto" name="depto" value=""></div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">Domicilio RSH</div>
+                                    <div class="col-md-3"><input class="form-control" type="text" id="domicilioRsh" name="domicilioRsh" value="" onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
+                                    <div class="col-md-1">N°</div>
+                                    <div class="col-md-2"><input class="form-control" type="text" id="numeroRsh" name="numeroRsh" value=""></div>
+                                    <div class="col-md-1">Block/Casa</div>
+                                    <div class="col-md-1"><input class="form-control" type="text" id="blockRsh" name="blockRsh" value=""></div>
+                                    <div class="col-md-1">Depto</div>
+                                    <div class="col-md-1"><input class="form-control" type="text" id="deptoRsh" name="deptoRsh" value=""></div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">Conjunto Habitacional</div>
+                                    <div class="col-md-7"><input class="form-control" type="text" id="conjunto" name="conjunto" value=""></div>
+                                    <div class="col-md-1">U.V.</div>
+                                    @*<div class="col-md-2"><input class="form-control" type="text" id="uv" name="uv" value=""></div>*@
+                                    <div class="col-md-2">
+                                        <select id="uv" name="uv" class="form-control">
+                                            @for (var x = 1; x <= 20; x++)
+                                            {
+                                                <option value="@x">@x</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">Fono</div>
+                                    <div class="col-md-4"><input class="form-control" type="text" id="fono" name="fono" value=""></div>
+                                    <div class="col-md-2">Email</div>
+                                    <div class="col-md-4"><input class="form-control" type="text" id="email" name="email" value=""></div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">RSH Folio N°</div>
+                                    <div class="col-md-4"><input class="form-control" type="text" id="folio" name="folio" value=""></div>
+                                    <div class="col-md-2">Fecha</div>
+                                    <div class="col-md-2"><input class="form-control" type="date" id="fecha" value="" name="fecha" min="2022-01-01" max="2022-12-31"></div>
+                                    <script>
+
+                                        date = new Date();
+                                        let dia, month, year;
+                                        dia = date.getDate();
+                                        month = date.getMonth() + 1;
+                                        year = date.getFullYear();
+                                        var fecActual = year.toString() + "-" + largo(month) + "-" + largo(dia);
+                                        document.getElementById("fecha").value = fecActual;
+                                        function largo(input) {
+                                            var nuevo = "";
+                                            if (input.toString().length == 1) {
+                                                nuevo = "0" + input;
+                                                return nuevo;
+                                            } else {
+                                                nuevo =  input;
+                                                return nuevo;
+                                            }
+                                        }
+                                    </script>
+
+
+
+                                    <div class="col-md-1">Tramo</div>
+                                    <div class="col-md-1"><input class="form-control" type="text" id="tramo" name="tramo" value=""></div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 style="text-align:justify">Cumple los requisitos y será exento del pago de los derechos por el concepto de extraccion de basura domiciliaria por el periodo <label id="current_date"></label> según lo establecido en el Articulo N° 11 del decreto Alcaldicio N°1.529 del 22/12/2005 que dictó la Ordenanza Municipal y el Decreto Alcaldicio N° 1.119 del 30/07/2007 que lo complementa. 2016 D.A. 2288 16/08/2016.</h5>
+                                        <br />
+                                        <p style="font-size:16px ; text-align:center">Se extiende este certificado con la exclusiva finalidad de acreditar la exencion antes indicada sólo para el periodo <label id="current_date2"></label></p>
+                                        <script>
+                                            date = new Date();
+                                            year = date.getFullYear();
+                                            document.getElementById("current_date").innerHTML = year;
+                                            document.getElementById("current_date2").innerHTML = year;
+                                        </script>
+                                        <p style="font-size:16px ; text-align:center">Las cuotas para exencion son: <label id="current_cuotas">.</label></p>
+                                        <script>
+                                            var data = "1,2,3 y 4";
+                                            document.getElementById("current_cuotas").innerHTML = data;
+
+                                        </script>
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+
+
+                                    @if (usuario != null)
+                                    {
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10"><input class="btn btn-danger btn-block" id="BtnGrabar" type="submit" value="Guardar Solicitud"></div>
+                                        <div class="col-md-1"></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-1"></div>
+
+                                        <div class="col-md-10"><input class="btn btn-primary btn-block" id="BtnEnviar" type="submit" value="Enviar Solicitud"></div>
+                                        <div class="col-md-1"></div>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+    var baseUrl = "";
+
+    function validacion(campo) {
+
+        miCampo = document.getElementById(campo).value;
+        if (miCampo == null || miCampo.length == 0 || /^\s+$/.test(miCampo)) {
+            //$('#' + campo).parent().attr("class", "form-control has-error has-feedback");
+            $("#modTitulo").html("Proceso Incompleto");
+            $("#modBody").html("Debe ingresar datos de la solicitud.");
+            $("#modColHeader").removeClass();
+            $("#modColHeader").addClass("modal-header-danger");
+            $("#myModal").modal();
+            return false;
+        } else {
+
+            return true;
+        }
+
+    }
+    $(document).ready(function () {
+        baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+
+        $("#nombre").keyup(function () {
+            validacion('nombre');
+        });
+
+
+        $("#BtnEnviar").click(function () {
+
+            var v0 = validacion('nombre');
+            if(v0){
+                $("#modTitulo").html("Proceso Completado");
+                $("#modBody").html("Su Solicitud se a subido exitosamente.");
+                $("#modColHeader").removeClass();
+                $("#modColHeader").addClass("modal-header-success");
+                $("#myModal").modal();
+            }
+        });
+
+        @*$("#buscaRol").click(function () {
+            var rol = $("#rol_rol").val();
+            var dv = $("#rol_dv").val();
+            VerificaRol("@Url.Action("VerificaRol", "Inicio")", rol, dv).done(function (data) {
+                $("#listaRol").html("");
+                var tipo = typeof data;
+                if (tipo === 'string') {
+                    $("#modTitulo").html("Validación");
+                    $("#modBody").html(data);
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                } else if (tipo === 'object') {
+                    ListarDeuda(rol, dv);
+                }
+            });
+        });*@
+
+    });
+    </script>
+}

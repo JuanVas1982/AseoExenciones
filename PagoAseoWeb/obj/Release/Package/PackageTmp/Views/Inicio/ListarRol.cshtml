@@ -1,0 +1,584 @@
+﻿@model List<SocialAseoWeb.Models.AS_CONVENIO>
+@using SocialAseoWeb.Comun
+@using System.Globalization
+
+@{
+    var anio = "2022";
+}
+@if (Model.Count > 0)
+{
+
+    using (Html.BeginForm("ConfirmarRol", "Inicio", FormMethod.Post, new { id = "formListaRol", enctype = "multipart/form-data" }))
+    {
+        //if (Model[0].CON_CODEX != 8) { 
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 style="color: #E5006C; text-align:center;font-weight:600;">Datos del Contribuyente</h4></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span style="font: bold 14px Arial;" class="input-group-addon">RUT:</span>
+                            <input class="form-control" name='rut' id='rut' type='text' maxlength="10" placeholder="00000000-K" /> @*@ViewBag.direccion*@
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span style="font: bold 14px Arial;" class="input-group-addon">NOMBRE:</span>
+                            <input class="form-control" name='nombre' id='nombre' type='text' placeholder="" onkeyup="javascript:this.value=this.value.toUpperCase();" /> @*@ViewBag.nombre*@
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span style="font: bold 14px Arial;" class="input-group-addon">DIRECCION:</span>
+                            <input class="form-control" name='direccion' id='direccion' type='text' placeholder="" onkeyup="javascript:this.value=this.value.toUpperCase();" />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <span style="font: bold 14px Arial;" class="input-group-addon">N°:</span>
+                            <input class="form-control" name='numero' id='numero' type='text' placeholder="" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span style="font: bold 14px Arial;" class="input-group-addon">DEPTO:</span>
+                            <input class="form-control" name='depto' id='depto' type='text' placeholder="" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span style="font: bold 14px Arial;" class="input-group-addon">BLOCK:</span>
+                            <input class="form-control" name='block' id='block' type='text' placeholder="" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+
+                            <span style="font: bold 14px Arial;" class="input-group-addon">E-MAIL:</span>
+                            <input class="form-control" name='email' id='email' type='text' placeholder="XX@XX.CL" onkeyup="javascript:this.value=this.value.toUpperCase();" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span style="font: bold 14px Arial;" class="input-group-addon">TELÉFONO:</span>
+                            <input class="form-control" name='telefono' id='telefono' type='text' placeholder="000000000" />
+                        </div>
+                    </div>
+                </div>
+                <input class="form-control" name='rolA' id='rolA' type='hidden' value="@Model[0].CON_ROL_NUM" />
+                <input class="form-control" name='rolB' id='rolB' type='hidden' value="@Model[0].CON_ROL_DV" />
+            </div>
+        </div>
+//}
+     <div class="row">
+            <div class="col-md-12">
+                <input style='display: none;' type='submit' value='Genarar Solicitud' name='btnPagar' id='btnPagar' class='btn btn-danger btn-block' />
+                <br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-md table-hover table-bordered" style="margin:0">
+                        @*table-md table-hover table-bordered*@
+                        <thead>
+                            <tr class="danger">
+                                <th>
+                                    @if (Model[0].CON_CODEX != 8 && Model[0].CON_MARCA != "A") { 
+                                    <input name="chk_todos" id="chk_todos" onclick="javascript:chkTodos()" type="checkbox">
+                                  
+                                    }
+                                </th>
+                                <th>
+                                    AÑO
+                                </th>
+                                <th>
+                                    CUOTA
+                                </th>
+                                <th>
+                                    PORCENTAJE EXENTO
+                                </th>
+                                <th>
+                                    TIPO EXENCION
+                                </th>
+                                <th>
+                                    ESTADO
+                                </th>
+                                <th>
+                                    CERTIFICADO
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int row = 0; row < Model.Count; row++)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @*Definicion del id del chk *@
+                                        @{
+                                int largo = Model.Count - 1;
+                                string chk_anterior = "";
+                                string chk_actual = "";
+                                string chk_posterior = "";
+
+
+                                if (row == 0)
+                                {
+                                    chk_anterior = "";
+                                    chk_actual = "chk_" + Model[row].CON_ANO_CON + "_" + Model[row].CON_CUOTA.ToString();
+
+                                    if (largo != 0)
+                                    {
+                                        chk_posterior = "chk_" + Model[row + 1].CON_ANO_CON + "_" + Model[row + 1].CON_CUOTA.ToString();
+                                    }
+                                }
+                                else if (row == largo)
+                                {
+                                    chk_anterior = "chk_" + Model[row - 1].CON_ANO_CON + "_" + Model[row - 1].CON_CUOTA.ToString();
+                                    chk_actual = "chk_" + Model[row].CON_ANO_CON + "_" + Model[row].CON_CUOTA.ToString();
+                                    chk_posterior = "";
+                                }
+                                else
+                                {
+                                    chk_anterior = "chk_" + Model[row - 1].CON_ANO_CON + "_" + Model[row - 1].CON_CUOTA.ToString();
+                                    chk_actual = "chk_" + Model[row].CON_ANO_CON + "_" + Model[row].CON_CUOTA.ToString();
+                                    chk_posterior = "chk_" + Model[row + 1].CON_ANO_CON + "_" + Model[row + 1].CON_CUOTA.ToString();
+                                }
+                                        }
+
+                                        <script >
+                                            const fecha = new Date();
+                                            anio = fecha.getFullYear();                          
+                                        </script>
+                                        @if ((Model[row].CON_ANO_CON.ToString() == anio) && (Model[row].CON_CODEX.ToString() != "8" && Model[row].CON_MARCA != "A"))
+                                        {
+                                            <input type="checkbox" onclick="javascript:checkboxClick('@Html.Raw(chk_actual)','@Html.Raw(chk_anterior)','@Html.Raw(chk_posterior)','@Html.Raw(largo)','@Html.Raw(row)')" id="@Html.Raw(chk_actual)" name="@Html.Raw(chk_actual)">
+
+                                        }
+
+                                    </td>
+                                    <td>
+                                        @Html.Raw(Model[row].CON_ANO_CON)
+                                    </td>
+                                    <td>
+                                        @Html.Raw(Model[row].CON_CUOTA)
+                                    </td>
+                                    <td>
+                                        @Html.Raw((int)Model[row].CON_PORCEN)
+                                    </td>
+                                    <td>
+                                        @Html.Raw(Model[row].CLASIFICACION)
+                                    </td>
+                                    <td>
+
+                                        @if (@Html.Raw(Model[row].CON_MARCA).ToString() == ("A"))
+                                        {
+                                            <p>APROBADA</p>
+                                        }
+                                        else if (@Html.Raw(Model[row].CON_MARCA).ToString() == ("R"))
+                                        {
+                                            <p>RECHAZADO</p>
+                                        }
+                                        else if (@Html.Raw(Model[row].CON_MARCA).ToString() == ("I"))
+                                        {
+                                            <p>INFORMADO</p>
+                                        }
+                                        else if (@Html.Raw(Model[row].CON_MARCA).ToString() == ("P"))
+                                        {
+                                            <p>PENDIENTE</p>
+                                        }
+                                        else
+                                        {
+                                            <p></p>
+                                        }
+
+                                    </td>
+                                    <td>
+
+                                        @if (@Html.Raw(Model[row].CON_CODEX).ToString() == "8")
+                                        {
+                                            @*<a class="btn" @*href="@Url.Action("VerCertificado", "Inicio")" onclick="buscarDocumento(@Html.Raw(Model[row].CON_ANO_CON))"><i class="fa fa-file"></i></a>*@
+
+                                            @*<input type="button" class="btn btn-success" id="btnCertificado" name="btnCertificado" value="Visualizar" onclick="buscarDocumento(@Html.Raw(Model[row].CON_ANO_CON))">*@
+                                        <div style="cursor: pointer; float:left" onclick="location.href='@Url.Action("CargaCertPDF", "Inicio", new { rolM = @Model[0].CON_ROL_NUM, rolP = @Model[0].CON_ROL_DV, periodo = @Model[row].CON_ANO_CON })'"><i class="fa fa-file"></i></div>
+                                            @*<input type="button" class="btn btn-success" id="btnBhonorario2" name="btnBhonorario2" value="Visualizar" onclick="buscarDocumento('1')">*@
+                                        @*<div style="cursor: pointer; float:left" onclick="'@Url.Action("CargaCertPDF", "Inicio", new { rolM = @Model[0].CON_ROL_NUM, rolP = @Model[0].CON_ROL_DV, periodo = @Model[row].CON_ANO_CON })',this.target, 'width=800,height=600')"><i class="fa fa-file"></i></div>*@
+                                         
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    //if (Model[0].CON_CODEX != 8) { 
+        <div id="archivo">
+            <table class="table table-bordered table-hover">
+                <thead><tr class="danger"><th>Tipo Archivo</th><th>Archivo</th><th>Observación</th></tr></thead>
+                <tbody>
+
+                    <tr>
+                        <td>Cedula identidad</td>
+                        <td><div class="file-select" id="upload"><input type="file" id="uploadRut" name="uploadRut" aria-label="Archivo"></div></td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+//}
+    }
+}
+else
+{
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">Listado de Deuda</div>
+                <div class="panel-body">
+                    <div>No se han encontrado solicitudes relacionadas con este rol.</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+}
+
+
+<script type="text/javascript">
+    var baseUrl = "";
+    baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+    function checkboxClick(idCheActual, idCheAnterior, idChePosterior, largo, row) {
+        var cuenta = 0;
+        var count = 0;
+        var periodoAc = idCheActual.substring(4, 8);
+        var periodoAn = idCheAnterior.substring(4, 8);
+        var periodoPs = idChePosterior.substring(4, 8);
+
+        $('input:checkbox').each(function (Indice, chk) {
+            cuenta = cuenta + 1;
+
+            var anio = chk.id.split("_")[1];
+            if ((periodoAc != anio)) {
+                $('input:checkbox[id^="' + chk.id + '"]').css('display', 'none');
+                $('input:checkbox[id^="' + chk.id + '"]').prop("disabled", true);
+            }
+            if ($('input:checkbox[id^="' + idCheActual + '"]').prop('checked')) {
+                count = count + 1;
+                $('#btnPagar').css('display', 'block');
+            }
+            if (count == 0) {
+                $('input:checkbox[id^="' + chk.id + '"]').css('display', 'block');
+                $('input:checkbox[id^="' + chk.id + '"]').prop("disabled", false);
+                $('input:checkbox[id^="' + chk.id + '"]').prop("checked", false);
+                $('#btnPagar').css('display', 'none');
+            }
+
+        });
+    }
+
+    function Limpiar() {
+        $("#nombre").val('');
+        $("#email").val('');
+        $("#telefono").val('');
+        $("#direccion").val('');
+        $("#numero").val('');
+    }
+
+
+    $("#rut").keypress(function (event) {
+        var baseUrl = "";
+        baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+        var code = event.keyCode;
+        if (code == 13) {
+            var valor = $("#rut").val();
+            var v1 = Fun.validaRut(valor);
+            if (v1) {
+                baseUrl = baseUrl + '@Url.Action("BuscaPropietarioByRut", "Administracion")';
+                Fun.BuscaPropietarioByRut(baseUrl, valor).done(function (dataUsu) {
+                    var tipo = typeof dataUsu;
+                    if (tipo == "number") {
+                        Limpiar();
+                    }
+                    else if (tipo == 'object') {
+                        var nombreFull = dataUsu.p_nombre + ' ' + dataUsu.s_nombre + ' ' + dataUsu.paterno + ' ' + dataUsu.materno;
+                        $("#nombre").val(nombreFull);
+                        $("#email").val(dataUsu.e_mail);
+                        $("#telefono").val(dataUsu.fono_celu);
+                        event.preventDefault()
+                    }
+                })
+            }
+
+        }
+    });
+    $("#rut").keyup(function (event) {
+        var code = event.keyCode;
+        var valor = $("#rut").val();
+        valor = valor.replace('.', '');
+        valor = valor.replace('-', '');
+        cuerpo = valor.slice(0, -1);
+        dv = valor.slice(-1).toUpperCase();
+        $("#rut").val(cuerpo + '-' + dv)
+    });
+    $("#btnPagar").click(function () {
+
+        var rol = $("#rol_rol").val();
+        var dv = $("#rol_dv").val();
+        var rut = $("#rut").val();
+        var v7 = Fun.validaRut(rut);
+        if (v7 == false) {
+            alert("El rut ingresado no es Valido.");
+            return false;
+        }
+
+        $("#rolA").val(rol);
+        $("#rolB").val(dv);
+
+        v2 = validacion('rut');
+        v3 = validacion('nombre');
+        v4 = validacion('direccion');
+        v6 = validacion('numero');
+        v0 = validacion('telefono');
+        v1 = validacion('email');
+        v5 = validacion('uploadRut');
+
+        if (v0 && v1 && v2 && v3 && v4 && v5) {
+            ValidaSolicitud("@Url.Action("ValidaSolicitud", "inicio")", rol, dv, rut, enctype = "multipart/form-data").done(function (data) {
+                $("#listaPagadas").html("");
+                if (data == "ACEPTADO" || data == "DERIVADO" || data == "INFORMADO" || data == "ASIGNADO") {
+                    $("#modTitulo").html("Validación de Solicitud");
+                    $("#modBody").html("Este rol ya posee una solicitud, en estado de: " + data + ", No se puede generar una nueva solicitud.");
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                }
+                else if (data == "EXISTE RUT") {
+                    $("#modTitulo").html("Validación de Solicitud");
+                    $("#modBody").html("YA EXISTE UNA SOLICITUD ASOCIADA A ESTE RUT, No se puede generar una nueva solicitud.");
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                }
+                else {
+                    $("#formListaRol").submit();
+                }
+            });
+        }
+        return false;
+
+    });
+
+    function ValidaSolicitud(baseUrl, rol, dv, rut) {
+        url = baseUrl;
+        return $.ajax({
+            url: url,
+            method: 'POST',
+            async: false,
+            dataType: 'json',
+            data: {
+                rol: rol,
+                dv: dv,
+                rut: rut
+            },
+            success: function (data, textStatus, xhr) {
+
+            },
+            error: function (request, status, error) {
+                console.log(request.responseText);
+                alert("Error has occurred..." + request.responseText);
+            }
+        });
+    }
+
+    function validacion(campo) {
+        if (campo === 'rut') {
+            rut = document.getElementById(campo).value;
+            if (rut == null || rut.length == 0 || /^\s+$/.test(rut)) {
+                $("#modTitulo").html("Validación");
+                $("#modBody").html("Debe ingresar rut");
+                $("#modColHeader").removeClass();
+                $("#modColHeader").addClass("modal-header-danger");
+                $("#myModal").modal();
+                $("#" + campo).focus();
+                return false;
+            }
+            else {
+                return true;
+            }
+
+        }
+        else if (campo === 'nombre') {
+            nombre = document.getElementById(campo).value;
+            if (nombre == null || nombre.length == 0 || /^\s+$/.test(nombre)) {
+                $("#modTitulo").html("Validación");
+                $("#modBody").html("Debe ingresar nombre");
+                $("#modColHeader").removeClass();
+                $("#modColHeader").addClass("modal-header-danger");
+                $("#myModal").modal();
+                $("#" + campo).focus();
+                return false;
+            }
+            else {
+                return true;
+            }
+
+        }
+        else if (campo === 'direccion') {
+            direccion = document.getElementById(campo).value;
+            if (direccion == null || direccion.length == 0 || /^\s+$/.test(direccion)) {
+                $("#modTitulo").html("Validación");
+                $("#modBody").html("Debe ingresar direccion");
+                $("#modColHeader").removeClass();
+                $("#modColHeader").addClass("modal-header-danger");
+                $("#myModal").modal();
+                $("#" + campo).focus();
+                return false;
+            }
+            else {
+                return true;
+            }
+
+        }
+        else if (campo === 'telefono') {
+            codigo = document.getElementById(campo).value;
+            if (codigo == null || codigo.length == 0 || /^\s+$/.test(codigo)) {
+                $("#modTitulo").html("Validación");
+                $("#modBody").html("Debe ingresar un número telefónico");
+                $("#modColHeader").removeClass();
+                $("#modColHeader").addClass("modal-header-danger");
+                $("#myModal").modal();
+                $("#" + campo).focus();
+                return false;
+            }
+            else {
+                if (isNaN(codigo)) {
+                    $("#modTitulo").html("Validación");
+                    $("#modBody").html("Solo se aceptan números");
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                    $("#" + campo).focus();
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        } else if (campo === 'email') {
+            email = document.getElementById(campo).value;
+            if (email == null || email.length == 0 || /^\s+$/.test(email)) {
+                $("#modTitulo").html("Validación");
+                $("#modBody").html("Debe ingresar E-Mail");
+                $("#modColHeader").removeClass();
+                $("#modColHeader").addClass("modal-header-danger");
+                $("#myModal").modal();
+                $("#" + campo).focus();
+                return false;
+            }
+            else {
+                if (!(/\S+@@\S+\.\S+/.test(email))) {
+                    $("#modTitulo").html("Validación");
+                    $("#modBody").html("Debe ingresar E-Mail valido");
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                    $("#" + campo).focus();
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        }
+        else if (campo === 'uploadRut') {
+            fileUp = document.getElementById(campo).value;
+
+            if (fileUp == null || fileUp.length == 0 || /^\s+$/.test(fileUp)) {
+                $("#modTitulo").html("Validación");
+                $("#modBody").html("Debe adjuntar documentación");
+                $("#modColHeader").removeClass();
+                $("#modColHeader").addClass("modal-header-danger");
+                $("#myModal").modal();
+                $("#" + campo).focus();
+                return false;
+            }
+            else {
+                var estado = validapeso();
+                if (estado) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }
+
+        }
+        else if (campo === 'numero') {
+            codigo = document.getElementById(campo).value;
+            if (codigo == null || codigo.length == 0 || /^\s+$/.test(codigo)) {
+                $("#modTitulo").html("Validación");
+                $("#modBody").html("Debe ingresar un número dirección");
+                $("#modColHeader").removeClass();
+                $("#modColHeader").addClass("modal-header-danger");
+                $("#myModal").modal();
+                $("#" + campo).focus();
+                return false;
+            }
+            else {
+                if (isNaN(codigo)) {
+                    $("#modTitulo").html("Validación");
+                    $("#modBody").html("Solo se aceptan números");
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                    $("#" + campo).focus();
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        }
+
+        function validapeso() {
+            var name = "uploadRut";
+
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+                var fileUp = document.getElementById(name);
+                var size = fileUp.files[0].size
+                var limite = 5242880; // 5 MB
+                var minimo = 2500; // 0.0025 MB archivo dañado
+                if (size > limite || size < minimo) {
+                    //alert("Archivo dañado o excede el maximo permitido de 5 MB");
+                    $("#modTitulo").html("Validación");
+                    $("#modBody").html("Archivo dañado o excede el maximo permitido de 5 MB.");
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+    }
+
+</script>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Aspose.Words</id>
+    <version>22.4.0</version>
+    <title>Aspose.Words for .NET</title>
+    <authors>Aspose</authors>
+    <owners>Aspose</owners>
+    <licenseUrl>https://www.nuget.org/packages/Aspose.Words/22.4.0/license</licenseUrl>
+    <projectUrl>https://products.aspose.com/words/net</projectUrl>
+    <iconUrl>https://api.nuget.org/v3-flatcontainer/aspose.words/22.4.0/icon</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Aspose.Words for .NET is a cross-platform document processing library that allows developers to work with a variety of Microsoft Word, OpenOffice, Web, PDF, and image file formats. .NET developers can easily create, open, read, render, edit, convert, merge, split, compare documents. Almost all mainstream document formats are supported, including DOCX, DOC, RTF, ODT, PDF, Markdown, HTML, XML, XAML, MOBI, PNG, JPG. We also provide powerful features to generate reports from document templates and data sources.</description>
+    <summary>Aspose.Words for .NET is a class library for .NET, .NETStandard and Xamarin that enables developers to perform a wide range of document processing tasks, including creating, reading, rendering, writing, modifying, converting, merging, splitting, comparing Microsoft Word, OpenOffice, Web, and PDF documents.</summary>
+    <releaseNotes>https://docs.aspose.com/words/net/aspose-words-for-net-22-4-release-notes</releaseNotes>
+    <copyright>© Aspose 2001-2022. All Rights Reserved.</copyright>
+    <tags>docx to pdf convert compare create edit word split bmp rtf odt open office html tiff doc dot wordml mobi chm txt md markdown xps svg ps postscript pcl epub png emf jpg gif mail merge table reporting document</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework3.5-Client" />
+      <group targetFramework=".NETFramework4.0" />
+      <group targetFramework=".NETFramework4.0-Client" />
+      <group targetFramework=".NETFramework4.6.1" />
+      <group targetFramework="Unsupported0.0">
+        <dependency id="System.Text.Encoding.CodePages" version="4.5.0" />
+        <dependency id="System.Reflection.Emit" version="4.3.0" />
+        <dependency id="System.Reflection.Emit.ILGeneration" version="4.3.0" />
+        <dependency id="Microsoft.Win32.Registry" version="4.7.0" />
+        <dependency id="SkiaSharp" version="2.80.1" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

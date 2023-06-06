@@ -1,0 +1,95 @@
+﻿@using SocialAseoWeb.Comun
+@{
+    ViewBag.Title = "Derecho de Aseo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*************************** formulario busqueda ********************************@
+<div class="well">
+    <h1 style="color: #E5006C; text-align:center;font-weight:600;">Consultar Rol Propiedad</h1>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="well col-md-10" style="background-color:white">
+            <p>Ingrese el Rol de la Propiedad correspondiente al derecho de aseo que desea consultar.</p>
+            <hr style="border-top: 1px solid #E5006C;" />
+            <form id="formBuscar" class="text-center" action="./">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span style="font: bold 14px Arial;" class="input-group-addon">ROL:</span>
+                            <input id="rol_rol" type="text" class="form-control" name="rol_rol" placeholder="0000" maxlength="4">
+                            <span style="font: bold 14px Arial;" class="input-group-addon"> - </span>
+                            <input id="rol_dv" type="text" class="form-control" name="rol_dv" placeholder="0000" maxlength="4">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="buscaRol" name="buscaRol" type="button" value="Buscar" class="btn btn-danger btn-block" />
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+<div style="text-align:left" id='mensaBuscar'></div>
+<div id="listaRol"></div>
+@section scripts{
+    <script type="text/javascript">
+        var baseUrl = "";
+        $(document).ready(function () {
+            baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+            $("#buscaRol").click(function () {
+                var rol = $("#rol_rol").val();
+                var dv = $("#rol_dv").val();
+                VerificaRol("@Url.Action("VerificaDeuda", "Pago")", rol, dv).done(function (data) {
+                    $("#listaRol").html("");
+                    var tipo = typeof data;
+                    if (tipo === 'string') {
+                        $("#modTitulo").html("Validación");
+                        $("#modBody").html(data);
+                        $("#modColHeader").removeClass();
+                        $("#modColHeader").addClass("modal-header-danger");
+                        $("#myModal").modal();
+                    } else if (tipo === 'object') {
+                        ListarRol(rol, dv);
+                    }
+                });
+            });
+
+        });
+
+        function ListarRol(rol, dv) {
+            var url = '@Url.Action("ListarDeuda", "Pago", new { rol = "rolText", dv = "dvText" })';
+            url = url.replace("rolText", rol);
+            url = url.replace("dvText", dv);
+            url = url.replace("&amp;", "&");
+            $("#listaRol").load(url);
+        }
+
+        function VerificaRol(baseUrl, rol, dv) {
+            url = baseUrl;
+            return $.ajax({
+                url: url,
+                method: 'POST',
+                async: false,
+                dataType: 'json',
+                data: {
+                    rol: rol,
+                    dv: dv
+                },
+                success: function (data, textStatus, xhr) {
+
+                },
+                error: function (request, status, error) {
+                    console.log(request.responseText);
+                    alert("Error has occurred..." + request.responseText);
+                }
+            });
+        }
+
+
+    </script>
+
+}

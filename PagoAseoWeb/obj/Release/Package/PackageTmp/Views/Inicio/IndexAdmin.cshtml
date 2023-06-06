@@ -1,0 +1,231 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Inicio de Sesión</title>
+    <link rel="icon" type="image/png" href="~/Img/favicon.ico" />
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/estilos")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqwidgets")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#siJavascript").removeClass("noJS");
+        });
+    </script>
+</head>
+<body style="background: #e8e8e8;">
+
+    @*************************** modal para errores ********************************@
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="modColHeader" class="modal-header-info">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="modTitulo" class="modal-title"></h4>
+                </div>
+                <div id="modColBody" class="modal-body">
+                    <p id="modBody"></p>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <noscript>
+        <div class="container">
+            <div class="white row">
+                <br>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">Javascript esta deshailitado</div>
+                        <div class="panel-body">
+                            <p>
+                                Para que este web site funcione correctamente,
+                                es necesario habilitar javascript en tu navegador.
+
+                            </p>
+                            <p>
+                                <a href="http://www.enable-javascript.com/" target="_blank">
+                                    En este enlace encontrarás instrucciones de
+                                    cómo habilitar javascript en tu navegador
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+    </noscript>
+    @*************************** formulario ********************************@
+    <div id="siJavascript" class="container noJS">
+        <div id="login-overlay" class="modal-dialog">
+            <div class="modal-content" style="margin-top:25%;">
+                <div class="modal-header text-center" style="background-color:#E5006C;color:#fff">
+                    <h4 class="modal-title" id="myModalLabel">Inicio de Sesión a la Administración del Portal</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <img class="img-responsive" src="~/Img/LOGO_IZQUIERDO.png" alt="">
+                        </div>
+                        <div class="col-xs-7">
+                            <div class="well">
+                                <form id="InicioSesion">
+                                    <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="Usuario" name="Usuario" placeholder="Usuario" required autofocus>
+                                    </div>
+                                    <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input type="password" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="Pass" name="Pass" placeholder="Contraseña" required>
+                                    </div>
+                                    <button id="Buscar" class="btn btn-lg btn-block" type="button" style="background-color:#E5006C;color:#fff"> Ingresar</button>
+                                    
+                                    <br>
+                                    <a class="btn-link" href="@Url.Action("Index", "Inicio")" style="float:right">Inicio</a>
+                                    <p id="mensaje"></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="background: rgba(100,100,100,1);">
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+@* limpiar campos *@
+<script type="text/javascript">
+    function Limpiar() {
+        $("#Usuario").val("");
+        $("#Pass").val("");
+    }
+</script>
+
+@* validacion de campos *@
+<script type="text/javascript">
+    function validacion(campo) {
+
+        miCampo = document.getElementById(campo).value;
+        if (miCampo == null || miCampo.length == 0 || /^\s+$/.test(miCampo)) {
+            $('#' + campo).parent().attr("class", "input-group has-error has-feedback");
+            $('#mensaje').html("Debe ingresar datos al campo");
+            return false;
+        }else{
+            $('#' + campo).parent().attr("class", "input-group has-success has-feedback");
+            $('#mensaje').html("");
+            return true;
+        }
+
+    }
+</script>
+
+@* ejecucion de javascript *@
+<script type="text/javascript">
+        var baseUrl = "";
+
+        /********************************************************************************
+        **                             EJECUCION DEL CODIGO
+        *********************************************************************************/
+        $(document).ready(function () {
+            baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+            /*oculto los paneles al cargar la pagina*/
+
+            Limpiar();
+
+            $("#Pass").keyup(function () {
+                validacion('Pass');
+            });
+
+            $("#Usuario").keyup(function () {
+                validacion('Usuario');
+            });
+
+            $('#Buscar').click(function () {
+                var usua = $("#Usuario").val();
+                var pass = $("#Pass").val();
+                Fun.ValidaUsuario(baseUrl + '@Url.Action("ValidaUsuario", "Administracion")', usua, pass).done(function (dataUsu) {
+                    var tipo = typeof dataUsu;
+                    if (tipo == "number") {
+                        if (dataUsu == 0) {
+                            $("#modTitulo").html("Validación");
+                            $("#modBody").html("Usuario no existe.");
+                            $("#modColHeader").removeClass();
+                            $("#modColHeader").addClass("modal-header-danger");
+                            $("#myModal").modal();
+                        } else if (dataUsu == 1) {
+                            $("#modTitulo").html("Validación");
+                            $("#modBody").html("Contraseña erronea.");
+                            $("#modColHeader").removeClass();
+                            $("#modColHeader").addClass("modal-header-danger");
+                            $("#myModal").modal();
+                        } else if (dataUsu == 2) {
+                            $("#modTitulo").html("Validación");
+                            $("#modBody").html("Debe ingresar usuario.");
+                            $("#modColHeader").removeClass();
+                            $("#modColHeader").addClass("modal-header-danger");
+                            $("#myModal").modal();
+                        } else if (dataUsu == 3) {
+                            $("#modTitulo").html("Validación");
+                            $("#modBody").html("Debe ingresar la contraseña.");
+                            $("#modColHeader").removeClass();
+                            $("#modColHeader").addClass("modal-header-danger");
+                            $("#myModal").modal();
+                        } else if (dataUsu == 4) {
+                            $("#modTitulo").html("Validación");
+                            $("#modBody").html("Usuario no esta logueado.");
+                            $("#modColHeader").removeClass();
+                            $("#modColHeader").addClass("modal-header-danger");
+                            $("#myModal").modal();
+                        } else if (dataUsu == 5) {
+                            $("#modTitulo").html("Validación");
+                            $("#modBody").html("Se ha cerrado sesión.");
+                            $("#modColHeader").removeClass();
+                            $("#modColHeader").addClass("modal-header-danger");
+                            $("#myModal").modal();
+                        }
+                    } else if (tipo == "string") {
+                        if (dataUsu == "exito") {
+                            $("#InicioSesion").submit();
+                        }
+                    }
+                });
+            });
+
+           @* $("#InicioSesion").on('submit', function (event) {*@
+           $(document).on('submit','#InicioSesion',function(){
+                v1 = validacion('Usuario');
+                v2 = validacion('Pass');
+                if (v1 === false || v2 === false) {
+                    return false;
+                } else {
+                    var form = $(this);
+                    var method = 'POST';
+                    var url = '@Url.Action("Menu", "Administracion")';
+                    form.attr('method', method);
+                    form.attr('action', url);
+                }
+            });
+
+        });
+
+</script>

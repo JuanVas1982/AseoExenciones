@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="aseoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AS_CONTRIBUYENTE">
+    <Key>
+      <PropertyRef Name="CON_ANO_CON" />
+      <PropertyRef Name="CON_ROL_NUM" />
+      <PropertyRef Name="CON_ROL_DV" />
+      <PropertyRef Name="CON_RUT" />
+      <PropertyRef Name="CON_DV" />
+    </Key>
+    <Property Name="CON_ANO_CON" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="CON_ROL_NUM" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="CON_ROL_DV" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="CON_FEC_ING" Type="DateTime" Precision="3" />
+    <Property Name="CON_NUM_FOLIO" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="CON_RUT" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="CON_DV" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CON_CALLE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="CON_NUMERO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CON_MANZANA" Type="Decimal" Precision="5" Scale="0" />
+    <Property Name="CON_PREDIO" Type="Decimal" Precision="5" Scale="0" />
+    <Property Name="CON_VILLA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CON_AVALUO" Type="Decimal" Precision="15" Scale="0" />
+    <Property Name="CON_DESTINO" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CON_UBICACION" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CON_TIPO_CONT" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CON_SITUACION" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CON_POR_REB" Type="Decimal" Precision="3" Scale="2" />
+    <Property Name="CON_ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="CON_OBSERV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CON_CODCALLE" Type="Decimal" Precision="4" Scale="0" />
+    <Property Name="CON_UNVECINAL" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="CON_CODCAPRO" Type="Decimal" Precision="4" Scale="0" />
+    <Property Name="CON_UNVECPRO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="CON_CALLEP" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="CON_NUMEROP" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CON_TIPO_ENV" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="CON_VILLA_R" Type="Decimal" Precision="4" Scale="0" />
+    <Property Name="CON_VILLA_P" Type="Decimal" Precision="4" Scale="0" />
+    <Property Name="CON_REGISTRO" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="CON_ELIMINA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AS_PAGOS">
+    <Key>
+      <PropertyRef Name="PAG_ANO_CON" />
+      <PropertyRef Name="PAG_ROL_NUM" />
+      <PropertyRef Name="PAG_ROL_DV" />
+      <PropertyRef Name="PAG_CUOTA" />
+    </Key>
+    <Property Name="PAG_ANO_CON" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="PAG_ROL_NUM" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="PAG_ROL_DV" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="PAG_CUOTA" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="PAG_ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="PAG_TIPO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="PAG_FEC_V" Type="DateTime" Precision="3" />
+    <Property Name="PAG_FEC_P" Type="DateTime" Precision="3" />
+    <Property Name="PAG_FEC_PRO" Type="DateTime" Precision="3" />
+    <Property Name="PAG_VALOR" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="PAG_IPC" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="PAG_MULTA" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="PAG_TOTAL" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="PAG_TOTAL_RESP" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="PAG_FOLIO" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="PAG_MARCA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="PAG_CONVE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="PAG_ABONO" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="PAG_TIPEX" Type="Decimal" Precision="4" Scale="0" />
+  </EntityType>
+  <EntityType Name="AS_RUT">
+    <Key>
+      <PropertyRef Name="RUT_RUT" />
+      <PropertyRef Name="RUT_DV" />
+    </Key>
+    <Property Name="RUT_RUT" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="RUT_DV" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RUT_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="aseoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AS_CONTRIBUYENTE" EntityType="Self.AS_CONTRIBUYENTE" />
+    <EntitySet Name="AS_PAGOS" EntityType="Self.AS_PAGOS" />
+    <EntitySet Name="AS_RUT" EntityType="Self.AS_RUT" />
+    <FunctionImport Name="PA_TRASPASA_CONTRIBUYENTE" ReturnType="Collection(Decimal)">
+      <Parameter Name="ROL_PRO" Mode="In" Type="Decimal" />
+      <Parameter Name="ROL_DV" Mode="In" Type="Decimal" />
+      <Parameter Name="AÑO_CUOTA" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="PA_VER_EXENTO" ReturnType="Collection(String)">
+      <Parameter Name="ROL_PRO" Mode="In" Type="Int32" />
+      <Parameter Name="ROL_DV" Mode="In" Type="Int32" />
+      <Parameter Name="AÑO_CUOTA" Mode="In" Type="Int32" />
+      <Parameter Name="NUM_CUOTA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="AS_CONVENIO" EntityType="aseoModel.AS_CONVENIO" />
+    <EntitySet Name="DetalleOrdenIngresoAseo" EntityType="aseoModel.DetalleOrdenIngresoAseo" />
+    <EntitySet Name="OrdenIngresoAseo" EntityType="aseoModel.OrdenIngresoAseo" />
+    <FunctionImport Name="PA_PAGO_ASEO_WS">
+      <Parameter Name="ROL_PRO" Mode="In" Type="Decimal" />
+      <Parameter Name="ROL_DV" Mode="In" Type="Decimal" />
+      <Parameter Name="RUT" Mode="In" Type="Decimal" />
+      <Parameter Name="ANIO_CUOTA" Mode="In" Type="Decimal" />
+      <Parameter Name="NUM_CUOTA" Mode="In" Type="Decimal" />
+      <Parameter Name="FEC_PAGO" Mode="In" Type="String" />
+      <Parameter Name="FEC_VENC" Mode="In" Type="String" />
+      <Parameter Name="VALOR_CUOTA" Mode="In" Type="Decimal" />
+      <Parameter Name="VALOR_IPC" Mode="In" Type="Decimal" />
+      <Parameter Name="VALOR_INTE" Mode="In" Type="Decimal" />
+      <Parameter Name="COD_TRANS" Mode="In" Type="Decimal" />
+      <Parameter Name="COD_CA_CA" Mode="In" Type="Decimal" />
+      <Parameter Name="COD_TARJETA" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="TABLE_PARTICULAR_ARCHIVOS_DETALLE" EntityType="aseoModel.TABLE_PARTICULAR_ARCHIVOS_DETALLE" />
+    <EntitySet Name="TABLE_PARTICULAR_ARCHIVOS_ENCABEZADO" EntityType="aseoModel.TABLE_PARTICULAR_ARCHIVOS_ENCABEZADO" />
+    <EntitySet Name="AS_EXCLUSION" EntityType="aseoModel.AS_EXCLUSION" />
+    <EntitySet Name="Social_OrdenIngresoAseo" EntityType="aseoModel.Social_OrdenIngresoAseo" />
+    <EntitySet Name="Social_DetalleOrdenIngresoAseo" EntityType="aseoModel.Social_DetalleOrdenIngresoAseo" />
+    <EntitySet Name="AS_SOLICITUD" EntityType="aseoModel.AS_SOLICITUD" />
+    <FunctionImport Name="Buscar_beneficiario" ReturnType="Collection(aseoModel.Buscar_beneficiario_Result)">
+      <Parameter Name="Rut" Mode="In" Type="Decimal" />
+      <Parameter Name="Dv" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Buscar_beneficiario2" ReturnType="Collection(aseoModel.Buscar_beneficiario2_Result)">
+      <Parameter Name="MANZANA" Mode="In" Type="Decimal" />
+      <Parameter Name="PREDIO" Mode="In" Type="Decimal" />
+      <Parameter Name="Periodo" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="Social_DetalleArchivo" EntityType="aseoModel.Social_DetalleArchivo" />
+  </EntityContainer>
+  <EntityType Name="AS_CONVENIO">
+    <Key>
+      <PropertyRef Name="CON_ANO_CON" />
+      <PropertyRef Name="CON_ROL_NUM" />
+      <PropertyRef Name="CON_ROL_DV" />
+      <PropertyRef Name="CON_CUOTA" />
+    </Key>
+    <Property Name="CON_ANO_CON" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+    <Property Name="CON_ROL_NUM" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+    <Property Name="CON_ROL_DV" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+    <Property Name="CON_CUOTA" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+    <Property Name="CON_FEC_PRES" Type="DateTime" Precision="3" />
+    <Property Name="CON_ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="CON_MARCA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="CON_GLOSA" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="CON_PORCEN" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="CON_NUM_DECRE" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="CON_FEC_DECRE" Type="DateTime" Precision="3" />
+    <Property Name="CON_CODEX" Type="Decimal" Precision="2" Scale="0" />
+    <Property Name="CON_FOLIO" Type="Decimal" Precision="12" Scale="0" />
+  </EntityType>
+  <EntityType Name="DetalleOrdenIngresoAseo">
+    <Key>
+      <PropertyRef Name="idSesion" />
+      <PropertyRef Name="rolNum" />
+      <PropertyRef Name="rolDv" />
+      <PropertyRef Name="nOrden" />
+      <PropertyRef Name="anio" />
+      <PropertyRef Name="cuota" />
+    </Key>
+    <Property Name="idSesion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="rolNum" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+    <Property Name="rolDv" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+    <Property Name="nOrden" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="denominacion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="anio" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+    <Property Name="cuota" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+    <Property Name="fecVence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="monto" Type="Decimal" Precision="16" Scale="0" />
+    <Property Name="multa" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="ipc" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="total" Type="Decimal" Precision="16" Scale="0" />
+    <Property Name="folio" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="OrdenIngresoAseo">
+    <Key>
+      <PropertyRef Name="idSesion" />
+      <PropertyRef Name="rolNum" />
+      <PropertyRef Name="rolDv" />
+      <PropertyRef Name="nOrden" />
+    </Key>
+    <Property Name="idSesion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="dv" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rolNum" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+    <Property Name="rolDv" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+    <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="eMail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fecPago" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="cuidad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="nOrden" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="tipoTributo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="unidadGiradora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipoPago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipoCuota" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nCuotas" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="tipoTransaccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="digTarjeta" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="codAutoriza" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="subtotal" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ipc" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="multa" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="aPagar" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="TABLE_PARTICULAR_ARCHIVOS_DETALLE">
+    <Key>
+      <PropertyRef Name="TPAD_ANO" />
+      <PropertyRef Name="TPAD_MANZANA" />
+      <PropertyRef Name="TPAD_PREDIO" />
+      <PropertyRef Name="TPAD_CUOTA" />
+      <PropertyRef Name="TPAD_NOMBRE_ARCHIVO" />
+      <PropertyRef Name="TPAD_FECHA_INGRESO" />
+      <PropertyRef Name="TPAD_HORA_INGRESO" />
+    </Key>
+    <Property Name="TPAD_ANO" Type="Decimal" Nullable="false" Precision="5" Scale="0" />
+    <Property Name="TPAD_MANZANA" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="TPAD_PREDIO" Type="Decimal" Nullable="false" Precision="5" Scale="0" />
+    <Property Name="TPAD_CUOTA" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TPAD_CORREO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TPAD_FONO" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="TPAD_NOMBRE_ARCHIVO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TPAD_FECHA_INGRESO" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="TPAD_HORA_INGRESO" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="TPAD_ESTADO" Type="Int32" />
+    <Property Name="TPAD_ESTADO_DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TPAD_CLASIFICACION" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TABLE_PARTICULAR_ARCHIVOS_ENCABEZADO">
+    <Key>
+      <PropertyRef Name="TPAE_ANO" />
+      <PropertyRef Name="TPAE_MANZANA" />
+      <PropertyRef Name="TPAE_PREDIO" />
+      <PropertyRef Name="TPAE_CUOTA" />
+      <PropertyRef Name="TPAE_FECHA_INGRESO" />
+      <PropertyRef Name="TPAE_HORA_INGRESO" />
+    </Key>
+    <Property Name="TPAE_ANO" Type="Decimal" Nullable="false" Precision="5" Scale="0" />
+    <Property Name="TPAE_MANZANA" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="TPAE_PREDIO" Type="Decimal" Nullable="false" Precision="5" Scale="0" />
+    <Property Name="TPAE_CUOTA" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TPAE_CORREO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TPAE_FONO" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="TPAE_FECHA_INGRESO" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="TPAE_HORA_INGRESO" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="TPAE_ESTADO" Type="Int32" />
+    <Property Name="TPAE_USUARIO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TPAE_ESTADO_PAGO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TPAE_FECHA_PAGO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AS_EXCLUSION">
+    <Key>
+      <PropertyRef Name="EXC_CODIGO" />
+    </Key>
+    <Property Name="EXC_CODIGO" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+    <Property Name="EXC_SITUACION" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="EXC_DESCRIPCION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EXC_PORCENTAJE" Type="Decimal" Precision="3" Scale="0" />
+  </EntityType>
+  <EntityType Name="Social_OrdenIngresoAseo">
+    <Key>
+      <PropertyRef Name="idSesion" />
+      <PropertyRef Name="rolNum" />
+      <PropertyRef Name="rolDv" />
+      <PropertyRef Name="nOrden" />
+    </Key>
+    <Property Name="idSesion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="dv" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="depto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="block" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="depto2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="block2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rolNum" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+    <Property Name="rolDv" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+    <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="eMail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fecRecepcion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="nOrden" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uv" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+    <Property Name="periodo" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="cuotas" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="respo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="folioRSH" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="fecha_RSH" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="Tramo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="numeroD" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="numero2" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="Observacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Origen" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Social_DetalleOrdenIngresoAseo">
+    <Key>
+      <PropertyRef Name="idSesion" />
+      <PropertyRef Name="rolNum" />
+      <PropertyRef Name="rolDv" />
+      <PropertyRef Name="nOrden" />
+      <PropertyRef Name="cuota" />
+    </Key>
+    <Property Name="idSesion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="rolNum" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+    <Property Name="rolDv" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+    <Property Name="nOrden" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="denominacion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="anio" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+    <Property Name="cuota" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+    <Property Name="fecMov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="monto" Type="Decimal" Precision="16" Scale="0" />
+    <Property Name="porcentaje" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="folio" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AS_SOLICITUD">
+    <Key>
+      <PropertyRef Name="SOL_TIPO" />
+    </Key>
+    <Property Name="SOL_TIPO" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="SOL_NUM_SOL" Type="Decimal" Precision="12" Scale="0" />
+  </EntityType>
+  <ComplexType Name="Buscar_beneficiario_Result">
+    <Property Type="Int32" Name="rut_p" Nullable="false" />
+    <Property Type="String" Name="dig_p" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="p_nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="s_nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="paterno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="materno" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="cod_activ" Nullable="true" />
+    <Property Type="Int16" Name="cod_calle" Nullable="true" />
+    <Property Type="Int16" Name="cod_uv" Nullable="true" />
+    <Property Type="String" Name="casa_block" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="depto_sitio" Nullable="true" MaxLength="4" />
+    <Property Type="Int16" Name="cod_vpob" Nullable="true" />
+    <Property Type="String" Name="num_viv" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="fono_casa" Nullable="true" />
+    <Property Type="Int32" Name="fono_celu" Nullable="true" />
+    <Property Type="DateTime" Name="f_nac" Nullable="true" Precision="16" />
+    <Property Type="String" Name="sexo" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="est_civil" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="codigo_postal" Nullable="true" />
+    <Property Type="String" Name="prevision" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="nacionalidad" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="e_mail" Nullable="true" MaxLength="50" />
+    <Property Type="Int16" Name="cod_cons" Nullable="true" />
+    <Property Type="Int32" Name="ingresos" Nullable="true" />
+    <Property Type="Int32" Name="cod_fun_per" Nullable="true" />
+    <Property Type="String" Name="pencion" Nullable="true" MaxLength="30" />
+    <Property Type="Boolean" Name="reg_antiguo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Buscar_beneficiario2_Result">
+    <Property Type="String" Name="APELLIDO_PATERNO" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="APELLIDO_MATERNO" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <EntityType Name="Social_DetalleArchivo">
+    <Key>
+      <PropertyRef Name="SD_anio" />
+      <PropertyRef Name="SD_RolA" />
+      <PropertyRef Name="SD_RolB" />
+      <PropertyRef Name="SD_Cuota" />
+    </Key>
+    <Property Name="SD_anio" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+    <Property Name="SD_RolA" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+    <Property Name="SD_RolB" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+    <Property Name="SD_Cuota" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+    <Property Name="SD_Arch_1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SD_Arch_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SD_Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

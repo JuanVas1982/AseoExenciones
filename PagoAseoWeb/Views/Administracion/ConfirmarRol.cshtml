@@ -1,0 +1,357 @@
+﻿@model  List<SocialAseoWeb.Models.Social_OrdenIngresoAseo>
+@{
+    ViewBag.Title = "ConfirmarRol";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var usuario = Session["usuario"];
+    ViewBag.Usuario = usuario;
+    var selUser = "";
+    SocialAseoWeb.Models.Social_OrdenIngresoAseo data = Model[0];
+
+}
+@*************************** modal para errores ********************************@
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="modColHeader" class="modal-header-info">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="modTitulo" class="modal-title"></h4>
+            </div>
+            <div id="modColBody" class="modal-body">
+                <p id="modBody"></p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+@*************************** formulario busqueda ********************************@
+@if (Model.Count > 0)
+{
+    <div class="container">
+        <div class="row">
+
+            <div id="empresaRegistrada" class="content" style="display: block;">
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <p class="tituloH2">SOLICITUD DE EXENCION</p>
+                    </div>
+                </div>
+                <p id="mensaje"></p>
+                @using (Html.BeginForm("ConfirmarRol", "Administracion", FormMethod.Post, new { name = "exencionForm", id = "exencionForm", enctype = "multipart/form-data" }))
+                {
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-10">
+
+                            <div id="DatContribuyente" class="panel panel-default">
+                                <div class="panel-heading">Datos solicitud @Html.Raw(data.nOrden)<input id="nOrden" name="nOrden" value="@Html.Raw(data.nOrden)" hidden></div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-3">Se certifica que don(ña)</div>
+                                        <div class="col-md-9"><input type="text" class="form-control" id="nombre" name="nombre" value="@Html.Raw(data.nombre)" required onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-3">RUT N°</div>
+                                        <div class="col-md-3"><input class="form-control" type="text" id="rut" name="rut" value="@Html.Raw(data.rut)-@Html.Raw(data.dv)"></div>
+                                        <div class="col-md-2">ROL N°</div>
+                                        <div class="col-md-2"><input class="form-control" type="text" id="manzana" name="manzana" value="@Html.Raw(data.rolNum)"></div>
+                                        <div class="col-md-2"><input class="form-control" type="text" id="predio" name="predio" value="@Html.Raw(data.rolDv)"></div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-2">Domicilio</div>
+                                        <div class="col-md-3"><input class="form-control" type="text" id="domicilio" name="domicilio" value="@Html.Raw(data.direccion)" onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
+                                        <div class="col-md-1">N°</div>
+                                        <div class="col-md-2"><input class="form-control" type="text" id="numero" name="numero" value="@Html.Raw(data.numeroD)"></div>
+                                        <div class="col-md-1">Block/Casa</div>
+                                        <div class="col-md-1"><input class="form-control" type="text" id="block" name="block" value="@Html.Raw(data.block)"></div>
+                                        <div class="col-md-1">Depto</div>
+                                        <div class="col-md-1"><input class="form-control" type="text" id="depto" name="depto" value="@Html.Raw(data.depto)"></div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-2">Domicilio RSH</div>
+                                        <div class="col-md-3"><input class="form-control" type="text" id="domicilioRsh" name="domicilioRsh" value="@Html.Raw(data.direccion2)" onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
+                                        <div class="col-md-1">N°</div>
+                                        <div class="col-md-2"><input class="form-control" type="text" id="numeroRsh" name="numeroRsh" value="@Html.Raw(data.numero2)"></div>
+                                        <div class="col-md-1">Block/Casa</div>
+                                        <div class="col-md-1"><input class="form-control" type="text" id="blockRsh" name="blockRsh" value="@Html.Raw(data.block2)"></div>
+                                        <div class="col-md-1">Depto</div>
+                                        <div class="col-md-1"><input class="form-control" type="text" id="deptoRsh" name="deptoRsh" value="@Html.Raw(data.depto2)"></div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-2">Conjunto Habitacional</div>
+                                        <div class="col-md-7"><input class="form-control" type="text" id="conjunto" name="conjunto" value="@Html.Raw(data.ch)" onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
+                                        <div class="col-md-1">U.V.</div>
+                                        @*<div class="col-md-2"><input class="form-control" type="text" id="uv" name="uv" value="@Html.Raw(data.uv)"></div>*@
+                                        <div class="col-md-2">
+                                            <select id="uv" name="uv" class="form-control">
+                                                @for (var x = 1; x <= 20; x++)
+                                                {
+                                                    <option value="@x">@x</option>
+                                                }
+
+                                            </select>
+                                            <script>
+
+                                                var univec = '@Html.Raw(data.uv)';
+                                                if(univec == ""){
+                                                    document.getElementById("uv").value = "1";
+                                                }else{
+                                                    document.getElementById("uv").value =  univec;
+                                                }
+
+
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-2">Fono</div>
+                                        <div class="col-md-4"><input class="form-control" type="text" id="fono" name="fono" value="@Html.Raw(data.telefono)"></div>
+                                        <div class="col-md-2">Email</div>
+                                        <div class="col-md-4"><input class="form-control" type="text" id="email" name="email" value="@Html.Raw(data.eMail)" onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-2">RSH Folio N°</div>
+                                        <div class="col-md-4"><input class="form-control" type="text" id="folio" name="folio" value="@Html.Raw(data.folioRSH)"></div>
+                                        <div class="col-md-2">Fecha</div>
+                                        <div class="col-md-2"><input class="form-control" type="date" id="fecha" name="fecha" value="@Html.Raw(data.fecha_RSH)" placeholder="00/00/0000"></div>
+                                        <script>
+                                            var Fecrsh = @Html.Raw(data.fecha_RSH) + "";
+
+                                            if ( Fecrsh != 0) {
+
+                                                Fecrsh = Fecrsh.toString().substring(0, 4)+ "-" + Fecrsh.toString().substring(6,4) + "-" + Fecrsh.toString().substring(8,6);
+                                                document.getElementById("fecha").value = Fecrsh;
+                                            }
+                                            else {
+                                                date = new Date();
+                                                let dia, month, year;
+                                                dia = date.getDate();
+                                                month = date.getMonth() + 1;
+                                                year = date.getFullYear();
+                                                var fecActual = year.toString() + "-" + largo(month) + "-" + largo(dia);
+                                                document.getElementById("fecha").value = fecActual;
+                                                function largo(input) {
+                                                    var nuevo = "";
+                                                    if (input.toString().length == 1) {
+                                                        nuevo = "0" + input;
+                                                        return nuevo;
+                                                    } else {
+                                                        nuevo = input;
+                                                        return nuevo;
+                                                    }
+                                                }
+                                            }
+                                        </script>
+
+                                        <div class="col-md-1">Tramo</div>
+                                        <div class="col-md-1"><input class="form-control" type="text" id="tramo" name="tramo" value="@Html.Raw(data.Tramo)"></div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5 style="text-align:justify">Cumple los requisitos y será exento del pago de los derechos por el concepto de extraccion de basura domiciliaria por el periodo <label id="current_date"></label> según lo establecido en el Articulo N° 11 del decreto Alcaldicio N°1.529 del 22/12/2005 que dictó la Ordenanza Municipal y el Decreto Alcaldicio N° 1.119 del 30/07/2007 que lo complementa. 2016 D.A. 2288 16/08/2016.</h5>
+                                            <br />
+                                            <p style="font-size:16px ; text-align:center">Se extiende este certificado con la exclusiva finalidad de acreditar la exencion antes indicada sólo para el periodo <label id="current_date2"></label></p>
+                                            <script>
+                                                date = new Date();
+                                                year = date.getFullYear();
+                                                document.getElementById("current_date").innerHTML = year;
+                                                document.getElementById("current_date2").innerHTML = year;
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div id="archivo">
+                                        <table class="table table-bordered table-hover">
+                                            <thead><tr class="danger"><th>Tipo Archivo</th><th>Archivo</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Cedula identidad</td>
+                                                    <td><div style="cursor: pointer; float:left" onclick="window.open('@Url.Action("CargaArchivoPDF", "Administracion", new { rolM = @Html.Raw(data.rolNum), rolP = @Html.Raw(data.rolDv) })',this.target, 'width=800,height=600')"><label class="btn-link">Ver</label></div></td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="form-group">
+                                            <div class="col-md-6">Responsable</div>
+                                            <div class="col-md-6">
+                                                <select class="form-control" name="respo" id="respo">
+                                                    <option value="S/N" selected>SELECCIONE RESPONSABLE...</option>
+                                                    @foreach (var std in ViewData["Usuarios"] as IList<SocialAseoWeb.Models.INAC_USUARIO>)
+                                                    {
+                                                        <option value=@std.USUA_CODIGO> @std.USUA_NOMBRE</option>
+
+                                                    }
+                                                </select>
+                                                @if (data.respo != "")
+                                                {                               
+                                                     <script>                                        
+                                                          document.getElementById("respo").value = '@Html.Raw(data.respo)';
+                                                    </script>
+                                                }
+                                               
+                                                
+
+                                            </div>
+
+                                            <br />
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6">Estado Solicitud</div>
+                                            <div class="col-md-6">
+                                                <select class="form-control" name="estado" id="estado">
+                                                    <option value="S" selected>SELECCIONE ESTADO</option>
+                                                    <option value="A">APROBADO</option>
+                                                    <option value="P">ASIGNADO</option>
+                                                    <option value="D">DERIVADO</option>
+                                                    <option value="R">RECHAZADO</option>
+                                                    
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+
+                                        <p style="font-size:16px ; text-align:center">Observación (registrar domicilio RSH en caso de haber diferencia con domicilio de boletin de cobranza). <label id="current_date2"></label></p>
+                                        <div class="col-md-12" style="height:50px;"><textarea id="Obs" name="Obs" style="width:100%;"></textarea></div>
+
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10"><input class="btn btn-danger btn-block" id="BtnGrabar" type="submit" value="Guardar Solicitud"></div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+}
+@section scripts{
+    <script type="text/javascript">
+        var baseUrl = "";
+
+        function validacion(campo) {
+
+            miCampo = document.getElementById(campo).value;
+            if (miCampo == null || miCampo.length == 0 || /^\s+$/.test(miCampo)) {
+                //$('#' + campo).parent().attr("class", "form-control has-error has-feedback");
+                $("#modTitulo").html("Proceso Incompleto");
+                $("#modBody").html("Debe ingresar " + campo + " de la solicitud.");
+                $("#modColHeader").removeClass();
+                $("#modColHeader").addClass("modal-header-danger");
+                $("#myModal").modal();
+                document.getElementById(campo).focus();
+                return false;
+            } else {
+
+                return true;
+            }
+
+        }
+        $(document).ready(function () {
+            baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+
+            $("#nombre").keyup(function () {
+                validacion('nombre');
+            });
+            $("#rut").keyup(function () {
+                validacion('rut');
+            });
+            $("#manzana").keyup(function () {
+                validacion('manzana');
+            });
+            $("#predio").keyup(function () {
+                validacion('predio');
+            });
+            $("#domicilio").keyup(function () {
+                validacion('domicilio');
+            });
+            $("#numero").keyup(function () {
+                validacion('numero');
+            });
+            $("#domicilioRsh").keyup(function () {
+                validacion('domicilioRsh');
+            });
+            $("#numeroRsh").keyup(function () {
+                validacion('numeroRsh');
+            });
+            $("#conjunto").keyup(function () {
+                validacion('conjunto');
+            });
+            $("#uv").keyup(function () {
+                validacion('uv');
+            });
+            $("#fono").keyup(function () {
+                validacion('fono');
+            });
+            $("#email").keyup(function () {
+                validacion('email');
+            });
+            $("#folio").keyup(function () {
+                validacion('folio');
+            });
+            $("#fecha").keyup(function () {
+                validacion('fecha');
+            });
+            $("#tramo").keyup(function () {
+                validacion('tramo');
+            });
+
+            $("#BtnGrabar").click(function () {
+               
+
+                var estado = document.getElementById("estado").value;
+
+                if(estado != "R"){         
+                    var v0 = validacion('nombre');
+                    var v1 = validacion('rut');
+                    var v2 = validacion('domicilioRsh');
+                    var v3 = validacion('numeroRsh');
+                    var v4 = validacion('conjunto');
+                    var v5 = validacion('folio');
+                    var v6 = validacion('fecha');
+                    var v7 = validacion('tramo');
+                
+                    if (v0 && v1 && v2 && v3 && v4 && v5) {
+                        $("#modTitulo").html("Proceso Completado");
+                        $("#modBody").html("Su Solicitud se ha subido exitosamente.");
+                        $("#modColHeader").removeClass();
+                        $("#modColHeader").addClass("modal-header-success");
+                        $("#myModal").modal();                       
+                    }else{
+                        return false;
+                    }
+
+                 
+                }
+               // else{
+                //    return false;
+               // }
+
+               
+            });
+
+        });
+    </script>
+}

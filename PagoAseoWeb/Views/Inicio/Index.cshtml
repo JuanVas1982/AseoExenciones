@@ -1,0 +1,228 @@
+﻿@{
+    ViewBag.Title = "Portal Registro Social Hogares";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var rutaCert = @Html.Raw(ViewData["rutaCert"]);
+}
+
+
+@using SocialAseoWeb.Comun
+
+
+
+@*************************** formulario busqueda ********************************@
+<div class="well">
+    <h1 style="color: #E5006C; text-align:center;font-weight:600;">Consultar Rol Propiedad</h1>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="well col-md-10" style="background-color:white">
+            <p>Ingrese el Rol de la Propiedad correspondiente al derecho de aseo que desea consultar.</p>
+            <hr style="border-top: 1px solid #E5006C;" />
+            <form id="formBuscar" class="text-center" action="./">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span style="font: bold 14px Arial;" class="input-group-addon">ROL:</span>
+                            <input id="rol_rol" type="text" class="form-control" name="rol_rol" placeholder="0000" maxlength="4">
+                            <span style="font: bold 14px Arial;" class="input-group-addon"> - </span>
+                            <input id="rol_dv" type="text" class="form-control" name="rol_dv" placeholder="000" maxlength="3">
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <input id="buscaRol" name="buscaRol" type="button" value="Buscar" class="btn btn-danger btn-block" />
+                    </div>
+                    <br />
+                    <div class="col-md-12">
+                        <span>Si no conoce su rol puede consultar aca -><a href="https://zeus.sii.cl/avalu_cgi/br/brcb02.sh" target="_blank" class="btn btn-link">Ver Rol</a></span>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+</div>
+<div style="text-align:left" id='mensaBuscar'></div>
+<div class="row">
+    <div class="col-lg-12"><div id="listaRol"></div></div>
+    <div class="col-lg-12">
+        <div class="col-md-12 col-xs-12" style="position: relative; text-align: center; ">
+            <div style="background-color: grey; font-size: medium; color: white; z-index: 1; position: relative; margin: 5% 0 0 0;  text-align: justify; width: 100%; bottom: 10px; opacity:0.9">
+                <span>
+                    <ul style="list-style:none">
+                        <li>
+                            <p style="text-align: center; font: condensed 110% sans-serif;">Desde este portal usted podrá solicitar la exencion de los derechos de aseo del año actual, sin la necesidad de acercarse al municipio.</p>
+                        </li>
+                        <li>
+                            <p style="text-align: center; font: condensed 110% sans-serif;">Los datos del solicitante deben corresponder a un integrante del grupo familiar residente de la vivienda.</p>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts{
+    <script type="text/javascript">
+    var baseUrl = "";
+        //var Carpeta = "http://172.16.0.6:80/Certificados/";
+    var Carpeta = '@ViewBag.rutaCert';
+    $(document).ready(function () {
+        baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+        $("#archivo").hide();
+        $("#buscaRol").click(function () {
+            var rol = $("#rol_rol").val();
+            var dv = $("#rol_dv").val();
+
+            VerificaRol("@Url.Action("VerificaRol", "Inicio")", rol, dv).done(function (data) {
+                $("#listaRol").html("");
+                var tipo = typeof data;
+                if (tipo === 'string') {
+                    $("#modTitulo").html("Validación");
+                    $("#modBody").html(data);
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                } else if (tipo === 'object') {
+                    ListarDeuda(rol, dv);
+                    $("#archivo").show();
+                }
+            });
+
+
+        });
+        $("#rol_rol").keyup(function (event) {
+            var code = event.keyCode;
+            if (code == 13) {
+                var largo = $("#rol_rol").val().length;
+                if (largo == 4) {
+                    $("#rol_dv").focus();
+                }
+            }
+        });
+        $("#rol_dv").keyup(function (event) {
+            var code = event.keyCode;
+            if (code == 13) {
+                var largo = $("#rol_dv").val().length;
+                if (largo != 0) {
+                    $("#buscaRol").focus();
+                }
+            }
+        });
+    });
+
+    function ListarDeuda(rol, dv) {
+        var url = '@Url.Action("ListarRol", "Inicio", new { rol = "rolText", dv = "dvText" })';
+        url = url.replace("rolText", rol);
+        url = url.replace("dvText", dv);
+        url = url.replace("&amp;", "&");
+        $("#listaRol").load(url);
+
+    }
+        function chkTodos() {
+            if ($("#chk_todos").is(':checked')) {
+                var cuenta = 0;
+                $("input[type=checkbox]").css('display', 'block');
+                $("input[type=checkbox]").prop('checked', true);
+               // $("input[type=checkbox]").prop("disabled", true);
+                var largo = $('input:checkbox').length;
+                var suma = 0;
+                $('#btnPagar').css('display', 'block');
+            } else {
+                var cuenta = 0;
+                $("input[type=checkbox]").css('display', 'block');
+                $("input[type=checkbox]").prop('checked', false);
+                $("input[type=checkbox]").prop("disabled", false);
+                $('input:checkbox').each(function () {
+                    var este = $(this);
+                    cuenta = cuenta + 1;
+                    if (cuenta == 2) {
+                        este.css('display', 'block');
+                    }
+                });
+                $('input:checkbox[id^="chk_todos"]').css('display', 'block');
+                $('#btnPagar').css('display', 'none');
+            }
+        }
+    function VerificaRol(baseUrl, rol, dv) {
+        url = baseUrl;
+        return $.ajax({
+            url: url,
+            method: 'POST',
+            async: false,
+            dataType: 'json',
+            data: {
+                rol: rol,
+                dv: dv
+            },
+            success: function (data, textStatus, xhr) {
+
+            },
+            error: function (request, status, error) {
+                console.log(request.responseText);
+                alert("Error has occurred..." + request.responseText);
+            }
+        });
+    }
+
+    function buscarDocumento(periodo) {
+        var rolA = $("#rol_rol").val();
+        var rolB = $("#rol_dv").val();
+        var url = baseUrl + '@Url.Action("VerCertificado", "Inicio")';
+        return $.ajax({
+            url: url,
+            async: false,
+            method: "POST",
+            dataType: "json",
+            data: {
+                RolTexA: rolA,
+                RolTexB: rolB,
+                proceso: periodo
+            },
+            success: function (data) {
+                if (data.length > 0) {
+                    CarGarModal(data);
+                }
+                console.log(data);
+
+            }
+
+        });
+  
+
+    };
+    function CarGarModal(data) {
+        var source =
+         {
+             datatype: "json",
+             datafields:
+             [
+                 { name: 'tipo', type: 'string' },
+                 { name: 'archivo', type: 'string' },
+             ],
+             localdata: data
+         };
+        dataAdapter = new $.jqx.dataAdapter(source, {
+            loadComplete: function () {
+                var records = dataAdapter.records;
+                var length = records.length - 1;
+                var archivo = "";
+                var Tdoc = "";
+                archivo = records[0].archivo;
+                Tdoc = records[0].tipo;
+                //archivo.replace('/', "\ ");
+                $('#verDoc').attr('src', Carpeta + archivo);
+                $('#IdverDoc').text(Tdoc);
+                $('#ModalDocumento').modal('show');
+            }
+        });
+        dataAdapter.dataBind();
+    };
+    </script>
+
+}

@@ -1,0 +1,52 @@
+﻿@model System.Collections.Generic.Dictionary<string,string>
+
+@{
+    ViewBag.Title = "ResultadoQR";
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Detalle Placa</title>
+    <link rel="icon" type="image/png" href="~/Imagen/favicon.png" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet"/>
+    <link href="~/Content/estilos.css" rel="stylesheet"/>
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+    <link href="~/Content/chosen/chosen.css" rel="stylesheet"/>
+    <link href="~/Content/styles/jqx.base.css" rel="stylesheet"/>
+    <link href="~/Content/styles/jqx.alert.css" rel="stylesheet"/>
+    <link href="~/Content/styles/jqx.darkblue.css" rel="stylesheet"/>
+    <link href="~/Content/styles/jqx.metrodark.css" rel="stylesheet"/>
+    <link href="~/Content/styles/jqx.energyblue.css" rel="stylesheet"/>
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div class="content">
+        <div class="degradeHeader row text-center">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+               
+                    <p class="tituloH2">PAGO DE DERECHO DE ASEO VALIDO PARA ROL @Html.Raw(Model["rol"])</p>
+
+            </div>
+        </div>
+        <br>
+         
+        <div class="row">
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1">
+            </div>
+            <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10">
+                <p> ROL: @Html.Raw(Model["rol"])</p>
+                <p> FOLIO: @Html.Raw(Model["folio"])</p>
+                <p> TOTAL: @Html.Raw(Model["total"])</p>
+            </div>
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

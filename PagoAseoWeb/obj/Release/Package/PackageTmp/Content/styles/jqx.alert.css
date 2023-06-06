@@ -1,0 +1,59 @@
+﻿.jqx-alert  
+   {  
+     font:bold 12px Arial;
+     position: absolute;  
+     overflow: hidden;  
+     z-index: 99999;  
+     margin: 0;  
+     padding: 0;  
+     width: 3.75em; 
+   }  
+ .jqx-alert-header  
+   {  
+     font-size: 14px;
+	 font-weight: bold;
+	 text-align: center;
+	 line-height: 1.75em;
+	 color: #666;
+	 background: #CCC url(Imagen/title.gif) top repeat-x;
+	 border: solid 1px #FFF;
+	 border-bottom: solid 1px #999;
+	 cursor: default;
+	 margin: 0em;
+     outline: none;  
+     border: 1px solid #999;  
+     overflow: hidden;  
+     padding: 4px;  
+     height: auto;  
+     white-space: nowrap;  
+     overflow: hidden;  
+     border-top-left-radius : 5px;
+     border-top-right-radius: 5px;
+     background-color:#E8E8E8; background-image:-webkit-gradient(linear,0 0,0 100%,from(#fafafa),to(#dadada)); background-image:-moz-linear-gradient(top,#fafafa,#dadada); background-image:-o-linear-gradient(top,#fafafa,#dadada);     
+ }  
+ .jqx-alert-content  
+   {  
+     outline: none;  
+     overflow: auto;  
+     text-align: center;  
+     padding: 5px;  
+     border: 1px solid #999;  
+     border-top: none;  
+     font-family: Arial, sans-serif;
+	 font-size: 12px;
+	 min-width: 300px; /* Dialog will be no smaller than this */
+	 max-width: 600px; /* Dialog will wrap after this width */
+     color: #000;
+     border-bottom-left-radius: 5px;
+     border-bottom-right-radius: 5px;
+     background: #FFF;
+     text-transform: capitalize;
+	 padding: 1em 1.75em;
+	 margin: 0em;
+     
+   }
+
+.jqx-alert-message {
+    word-wrap: break-word;
+
+}

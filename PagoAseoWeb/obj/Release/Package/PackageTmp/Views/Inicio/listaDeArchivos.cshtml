@@ -1,0 +1,112 @@
+﻿@model IEnumerable<SocialAseoWeb.Models.TABLE_PARTICULAR_ARCHIVOS_DETALLE>
+@using SocialAseoWeb.Comun
+@using SocialAseoWeb.Models
+
+
+<p class="text-danger">Estado del proceso:</p>
+
+<div class="table-responsive">
+
+
+        <form action="" enctype="multipart/form-data" id="uploadFile" method="post">
+            <input type="hidden" name="placaTexHid" id="placaTexHid" value="@placaT">
+            <input type="hidden" name="placaNumHid" id="placaNumHid" value="@placaN">
+            <input type="hidden" name="correoHid" id="correoHid" value="@correo">
+            <input type="hidden" name="fonoHid" id="fonoHid" value="@fono">
+            <input type="hidden" name="procesoH" id="procesoH" value="@proceso">
+            <input type="hidden" name="clasificacion" id="clasificacion" value="">
+            <table class="table table-bordered table-hover">
+                <thead><tr class="danger"><th>Tipo Archivo</th>@*<th>Estado</th>*@<th>Archivo</th><th>Subir</th><th>Observación</th></tr></thead>
+                <tbody>
+       
+                        <tr>
+                            <td>Padrón</td>
+                            @*<td>@padronE</td>*@
+
+                            <td><div class="file-select" id="upload"><input type="file" id="uploadPadron" name="uploadPadron" aria-label="Archivo"></div></td>
+                            <td>
+                                <input src="img/carga.jpg" type="image" id="btnPadron" name="btnPadron" value="" onclick="">
+                            </td>
+                            <td>@msgPadron</td>
+                        </tr>
+                  
+                  
+                        <tr>
+                            <td>P. Circulación</td>
+                            @*<td>@perCirE</td>*@
+
+                            <td><div class="file-select" id="upload"><input type="file" id="uploadPC" name="uploadPC" aria-label="Archivo"></div></td>
+                            <td><input src="img/carga.jpg" type="image" id="btnPC" name="btnPC" value="▲" onclick=""></td>
+                            <td>@msgPerCir</td>
+                        </tr>
+                  
+                        <tr>
+                            <td>SOAP</td>
+                            @*<td>@soapE</td>*@
+
+                            <td><div class="file-select" id="upload"><input type="file" id="uploadSoap" name="uploadSoap" aria-label="Archivo"></div></td>
+                            <td><input src="img/carga.jpg" type="image" id="btnSoap" name="btnSoap" value="▲" onclick=""></td>
+                            <td>@msgSoap</td>
+                        </tr>
+                 
+                        <tr id="revTec">
+                            <td>R. Técnica</td>
+                            @*<td>@revTecE</td>*@
+
+                            <td><div class="file-select" id="upload"><input type="file" id="uploadRTec" name="uploadRTec" aria-label="Archivo"></div></td>
+                            <td><input src="img/carga.jpg" type="image" id="btnRTec" name="btnRTec" value="▲" onclick=""></td>
+                            <td>@msgRevTec</td>
+                        </tr>
+                 
+                        <tr>
+                            <td>R. Gases</td>
+                            @*<td>@revGasE</td>*@
+
+                            <td><div class="file-select" id="upload"><input type="file" id="uploadRGas" name="uploadRGas" aria-label="Archivo"></div></td>
+                            <td><input src="img/carga.jpg" type="image" id="btnRGas" name="btnRGas" value="▲" onclick=""></td>
+                            <td>@msgRevGas</td>
+                        </tr>
+                
+                        <tr>
+                            <td>C. Homologación</td>
+                            @*<td>@cerHomE</td>*@
+
+                            <td><div class="file-select" id="upload"><input type="file" id="uploadCerHom" name="uploadCerHom" aria-label="Archivo"></div></td>
+                            <td><input src="img/carga.jpg" type="image" id="btnCerHom" name="btnCerHom" value="▲" onclick=""></td>
+                            <td>@msgCerHom</td>
+                        </tr>
+                
+                        <tr>
+                            <td>Factura</td>
+                            @*<td>@facturE</td>*@
+
+                            <td><div class="file-select" id="upload"><input type="file" id="uploadFact" name="uploadFact" aria-label="Archivo"></div></td>
+                            <td><input src="img/carga.jpg" type="image" id="btnFact" name="btnFact" value="▲" onclick=""></td>
+                            <td>@msgfactura</td>
+                        </tr>
+                  
+                        <tr>
+                            <td>Solicitud Reg. Civil</td>
+                            @*<td>@regCivilE</td>*@
+
+                            <td><div class="file-select" id="upload"><input type="file" id="uploadRegCivil" name="uploadRegCivil" aria-label="Archivo"></div></td>
+                            <td><input src="img/carga.jpg" type="image" id="btnRegCivil" name="btnRegCivil" value="▲" onclick=""></td>
+                            <td>@msgRegCiv</td>
+                        </tr>
+                 
+                        <tr>
+                            <td>Cert. Inscrip. Seremi de Transportes</td>
+                            @*<td>@certSeremiE</td>*@
+
+                            <td><div class="file-select" id="upload"><input type="file" id="uploadCertSeremi" name="uploadCertSeremi" aria-label="Archivo"></div></td>
+                            <td><input src="img/carga.jpg" type="image" id="btnCertSeremi" name="btnCertSeremi" value="▲" onclick=""></td>
+                            <td>@msgCertSeremi</td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+        </form>
+    
+
+</div>
+

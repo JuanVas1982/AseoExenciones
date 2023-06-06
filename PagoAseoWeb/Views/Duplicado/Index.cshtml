@@ -1,0 +1,144 @@
+﻿
+@model SocialAseoWeb.Models.OrdenIngresoAseo
+@{
+    List<SocialAseoWeb.Models.OrdenIngresoAseo> reintegros = new List<SocialAseoWeb.Models.OrdenIngresoAseo>();
+    List<SocialAseoWeb.Models.PPKCC_TRANSAC_ASEO> sn = new List<SocialAseoWeb.Models.PPKCC_TRANSAC_ASEO>();
+   
+    ViewBag.Title = "Busqueda Comprobante de Pago";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    sn = (List<SocialAseoWeb.Models.PPKCC_TRANSAC_ASEO>)@ViewBag.resultado;
+}
+
+<div class="content">
+
+    @using (Html.BeginForm())
+    {
+        <div class="well">
+            <h1 style="color: #E5006C; text-align:center;font-weight:600;">Buscar Duplicado</h1>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="well col-md-10" style="background-color:white">
+                    <p>Ingrese el rol de la propiedad</p>
+                    <hr style="border-top: 1px solid #E5006C;" />
+                    <form id="formBuscar" class="form-inline text-center" action="./">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <span style="font: bold 14px Arial;" class="input-group-addon">ROL</span>
+                                    <input id="rolNum" type="text" class="form-control" name="rolNum" value="@ViewBag.RolNum" placeholder="0000" maxlength="4">
+                                    <span style="font: bold 14px Arial;" class="input-group-addon">-</span>
+                                    <input id="rolDv" type="text" class="form-control" name="rolDv" value="@ViewBag.RolDv" placeholder="0000" maxlength="4">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <input id="btnBuscar" name="BtnBuscar" type="submit" value="Buscar" class="btn btn-danger btn-block" />
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    }
+    
+    @{
+        if (sn.Count == 0)
+        {
+            if (Model.rut != null)
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default text-center">
+                            <div class="panel-heading"><h2 style="color: #E5006C;">Validación</h2></div>
+                            <div class="panel-body">
+                                <p>No existen registros de pagos realizados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-12">                
+                    <div id="DatContribuyente" class="panel panel-default">
+                        <div class="panel-heading"><h4 style="color: #E5006C; text-align:center;font-weight:600;">Datos del Contribuyente</h4></div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2">RUT:</div>
+                                <div class="col-md-4"><div id="rutP" class="text-success">@Html.Raw(Model.rut.ToString() + "-" + Model.dv)</div></div>
+                                <div class="col-md-2">NOMBRE:</div>
+                                <div class="col-md-4"><div id="nombreP" class="text-success">@Html.Raw(Model.nombre)</div></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">DOMICILIO:</div>
+                                <div class="col-md-4"><div id="domicilioP" class="text-success">@Html.Raw(Model.direccion)</div></div>
+                                <div class="col-md-2">CUIDAD:</div>
+                                <div class="col-md-4"><div id="comunaP" class="text-success">@Html.Raw(Model.cuidad)</div></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">TÉLEFONO:</div>
+                                <div class="col-md-4"><div id="telPar" class="text-success">@Html.Raw(Model.telefono)</div></div>
+                                <div class="col-md-2">E-MAIL:</div>
+                                <div class="col-md-4"><div id="emailPar" class="text-success">@Html.Raw(Model.eMail)</div></div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <hr style="border-top: 1px solid #E5006C;" />
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover table-bordered">
+                            <thead>
+                                <tr class="danger">
+                                    <th>
+                                        FEC. PAGO
+                                    </th>
+                                    <th>
+                                        PERIODO
+                                    </th>
+                                    <th>
+                                        FOLIO
+                                    </th>
+                                    <th>
+                                        MONTO
+                                    </th>
+                                    <th>
+                                        IPC
+                                    </th>
+                                    <th>
+                                        MULTA
+                                    </th>
+                                    <th>
+                                        TOTAL
+                                    </th>
+                                    <th>
+                                        DESCARGAR
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var cuenta in sn)
+                                {
+                                    <tr>
+                                        <td>@cuenta.ASE_FEC_PAG  </td>
+                                        <td>@cuenta.ASE_ANIO  /  @cuenta.ASE_CUOTA </td>
+                                        <td>@cuenta.ASE_FOLIO_TRANS</td>
+                                        <td>@cuenta.ASE_VALOR.ToString("#,###") </td>
+                                        <td>@cuenta.ASE_IPC.ToString("#,###") </td>
+                                        <td>@cuenta.ASE_MULTA.ToString("#,###")  </td>
+                                        <td>@cuenta.ASE_TOTAL.ToString("#,###") </td>
+                                        <td>@Html.ActionLink(" ", "MuestraReporte", new { rol = cuenta.ASE_ROL_NUM, dv = cuenta.ASE_ROL_DV, folio = cuenta.ASE_FOLIO_TRANS }, new { @class = "glyphicon glyphicon-download-alt", @target = "_blank" })</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+    }  
+
+</div>

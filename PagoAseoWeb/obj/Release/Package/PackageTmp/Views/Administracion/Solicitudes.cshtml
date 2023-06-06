@@ -1,0 +1,312 @@
+﻿@model List<SocialAseoWeb.Models.Social_OrdenIngresoAseo>
+@{
+    ViewBag.Title = "Solicitudes";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Usuario = ViewBag.user;
+}
+<style>
+    body {
+        background-color: #eee;
+    }
+
+    table th, table td {
+        text-align: center;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #ddd9d9;
+    }
+
+    .pagination li:hover {
+        cursor: pointer;
+    }
+
+    table tbody tr {
+        display: none;
+    }
+</style>
+<h2>Solicitudes</h2>
+<div class="content">
+    <div class="row">
+        <div class="panel panel-danger">
+            <div class="panel-heading">Busqueda</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Periodo</p>
+                        <p><select class="form-control" id="comboBoxAño">
+                        <option value="2022" selected="selected">2022</option></select></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Estado</p>
+                        <p>
+                            <select class="form-control" id="estaImagen">
+                                <option value="T">Todos</option>
+                                <option value="A">Aceptados</option>
+                                <option value="R">Rechazado</option>
+                                <option value="D">Derivados</option>
+                            </select>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Fecha Inicial</p>
+                        <p><input id="fecIniArc" class=" form-control datepicker" placeholder="00/00/0000" name="fecIniArc" type="text" onkeyup="javascript:this.value=this.value.toUpperCase();"></p>
+
+
+                    </div>
+                    <div class="col-md-2">
+                        <p>Fecha Final</p>
+                        <p><input id="fecFinArc" class="form-control datepicker" placeholder="00/00/0000" name="fecFinArc" type="text" onkeyup="javascript:this.value=this.value.toUpperCase();"></p>
+                    </div>
+                    <div class="col-md-1">
+                        <p>Buscar Rol</p>
+                        <p>
+                            <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" id="mRol" name="mRol" placeholder="0000">
+                        </p>
+                    </div>
+                    <div class="col-md-1">
+                        <p> </p>
+                        <p>
+                            <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" id="pRol" name="pRol" placeholder="0000">
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Rut</p>
+                        <p><input id="rutSol" class="form-control datepicker" placeholder="00000000-K" name="rutSol" type="text" onkeyup="javascript:this.value=this.value.toUpperCase();"></p>
+                    </div>
+                    <div class="col-md-12">
+                        <input class="btn btn-danger btn-block" type="button" id="buscarPlacas" name="buscarPlacas" value="buscar">
+                        <button type="button" id="Buscar" class="btn btn-danger btn-block">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+
+    </div>
+   
+     
+</div>
+
+<br>
+
+
+<script type="text/javascript">
+    var baseUrl = "";
+    var errorCumuna = true;
+    var errorOtraComuna = true;
+    var Folio = "";
+    var placaN = "";
+
+    $(document).ready(function () {
+        //$('#dtBasicExample').DataTable();
+        //$('.dataTables_length').addClass('bs-select');
+        getPagination('#table-id');
+       // $("#lista").hide()
+        baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+        /*oculto los paneles al cargar la pagina*/
+        //$("#vista1").hide();
+        $("#btn_exportar").on("click", function () {
+            url = baseUrl + '@Url.Action("ExpSolicitudes2", "Administracion")';
+            $("#btn_exportar").attr("href", url);
+
+        });
+    });
+
+    @*$('#buscarPlacas').click(function () {
+        var rolTexA = $('#mRol').val();
+        var rolTexB = $('#pRol').val();
+        var periodo = $('#comboBoxAño').val();
+        var estado = $('#estaImagen').val();
+        var fecini = $('#fecIniArc').val();
+        var fecfin = $('#fecFinArc').val();
+        var rolTex = $('#busPlacaPar').val();
+        url = baseUrl + '@Url.Action("Solicitudes", "Administracion")';
+        return $.ajax({
+            url: url,
+            method: 'POST',
+            async: false,
+            dataType: 'json',
+            data: {
+                manzana: rolTexA,
+                predio: rolTexB
+            },
+            success: function (data) {
+                var tipo = typeof data;
+                if (tipo == "number") {
+                    $("#modTitulo").html("Validación");
+                    $("#modBody").html("No hay registro de busqueda");
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                }
+            },
+            error: function (request, status, error) {
+                console.log(request.responseText);
+                //alert("Error has occurred..." + request.responseText);
+            }
+        });
+    })*@
+
+    /*					PAGINATION
+    - on change max rows select options fade out all rows gt option value mx = 5
+    - append pagination list as per numbers of rows / max rows option (20row/5= 4pages )
+    - each pagination li on click -> fade out all tr gt max rows * li num and (5*pagenum 2 = 10 rows)
+    - fade out all tr lt max rows * li num - max rows ((5*pagenum 2 = 10) - 5)
+    - fade in all tr between (maxRows*PageNum) and (maxRows*pageNum)- MaxRows
+    */
+   
+    function getPagination(table) {
+        var lastPage = 1;
+
+        $('#maxRows')
+          .on('change', function (evt) {
+              //$('.paginationprev').html('');						// reset pagination
+
+              lastPage = 1;
+              $('.pagination')
+                .find('li')
+                .slice(1, -1)
+                .remove();
+              var trnum = 0; // reset tr counter
+              var maxRows = parseInt($(this).val()); // get Max Rows from select option
+
+              if (maxRows == 5000) {
+                  $('.pagination').hide();
+              } else {
+                  $('.pagination').show();
+              }
+
+              var totalRows = $(table + ' tbody tr').length; // numbers of rows
+              $(table + ' tr:gt(0)').each(function () {
+                  // each TR in  table and not the header
+                  trnum++; // Start Counter
+                  if (trnum > maxRows) {
+                      // if tr number gt maxRows
+
+                      $(this).hide(); // fade it out
+                  }
+                  if (trnum <= maxRows) {
+                      $(this).show();
+                  } // else fade in Important in case if it ..
+              }); //  was fade out to fade it in
+              if (totalRows > maxRows) {
+                  // if tr total rows gt max rows option
+                  var pagenum = Math.ceil(totalRows / maxRows); // ceil total(rows/maxrows) to get ..
+                  //	numbers of pages
+                  for (var i = 1; i <= pagenum;) {
+                      // for each page append pagination li
+                      $('.pagination #prev')
+                        .before(
+                          '<li data-page="' +
+                            i +
+                            '">\
+								  <span>' +
+                            i++ +
+                            '<span class="sr-only">(current)</span></span>\
+								</li>'
+                        )
+                        .show();
+                  } // end for i
+              } // end if row count > max rows
+              $('.pagination [data-page="1"]').addClass('active'); // add active class to the first li
+              $('.pagination li').on('click', function (evt) {
+                  // on click each page
+                  evt.stopImmediatePropagation();
+                  evt.preventDefault();
+                  var pageNum = $(this).attr('data-page'); // get it's number
+
+                  var maxRows = parseInt($('#maxRows').val()); // get Max Rows from select option
+
+                  if (pageNum == 'prev') {
+                      if (lastPage == 1) {
+                          return;
+                      }
+                      pageNum = --lastPage;
+                  }
+                  if (pageNum == 'next') {
+                      if (lastPage == $('.pagination li').length - 2) {
+                          return;
+                      }
+                      pageNum = ++lastPage;
+                  }
+
+                  lastPage = pageNum;
+                  var trIndex = 0; // reset tr counter
+                  $('.pagination li').removeClass('active'); // remove active class from all li
+                  $('.pagination [data-page="' + lastPage + '"]').addClass('active'); // add active class to the clicked
+                  // $(this).addClass('active');					// add active class to the clicked
+                  limitPagging();
+                  $(table + ' tr:gt(0)').each(function () {
+                      // each tr in table not the header
+                      trIndex++; // tr index counter
+                      // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
+                      if (
+                        trIndex > maxRows * pageNum ||
+                        trIndex <= maxRows * pageNum - maxRows
+                      ) {
+                          $(this).hide();
+                      } else {
+                          $(this).show();
+                      } //else fade in
+                  }); // end of for each tr in table
+              }); // end of on click pagination list
+              limitPagging();
+          })
+          .val(10)
+          .change();
+
+        // end of on select change
+
+        // END OF PAGINATION
+    }
+
+    function limitPagging() {
+        // alert($('.pagination li').length)
+
+        if ($('.pagination li').length > 7) {
+            if ($('.pagination li.active').attr('data-page') <= 3) {
+                $('.pagination li:gt(5)').hide();
+                $('.pagination li:lt(5)').show();
+                $('.pagination [data-page="next"]').show();
+            } if ($('.pagination li.active').attr('data-page') > 3) {
+                $('.pagination li:gt(0)').hide();
+                $('.pagination [data-page="next"]').show();
+                for (let i = (parseInt($('.pagination li.active').attr('data-page')) - 2) ; i <= (parseInt($('.pagination li.active').attr('data-page')) + 2) ; i++) {
+                    $('.pagination [data-page="' + i + '"]').show();
+
+                }
+
+            }
+        }
+    }
+
+    $(function () {
+        // Just to append id number for each row
+        $('table tr:eq(0)').prepend('<th> ID </th>');
+
+        var id = 0;
+
+        $('table tr:gt(0)').each(function () {
+            id++;
+            $(this).prepend('<td>' + id + '</td>');
+        });
+    });
+
+    $('#Buscar').click(function () {
+        var Manzana = $('#mRol').val();
+        var Predio = $('#pRol').val();
+        ListarInformados(Manzana, Predio);
+        $('#listaSolicitud').show();
+    });
+
+    function ListarInformados(rol, dv) {
+        var url = '@Url.Action("ListarSolicitudes", "Administracion", new { rol = "rolText", dv = "dvText" })';
+        url = url.replace("rolText", rol);
+        url = url.replace("dvText", dv);
+        url = url.replace("&amp;", "&");
+        $("#listaSolicitud").load(url);
+    }
+    
+</script>

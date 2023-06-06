@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PagosPortaleKCCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PPKCC_FOLIOS">
+    <Key>
+      <PropertyRef Name="FOL_CAJA" />
+      <PropertyRef Name="FOL_SISTEMA" />
+      <PropertyRef Name="FOL_ANIO" />
+    </Key>
+    <Property Name="FOL_CAJA" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FOL_SISTEMA" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FOL_ANIO" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FOL_FOLIO" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TGR_ENVIA_GIRO">
+    <Key>
+      <PropertyRef Name="TGR_ID_EXT" />
+      <PropertyRef Name="TGR_FOLIO" />
+    </Key>
+    <Property Name="TGR_CODE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_MSG_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_FROM" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_REF" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_DATETIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_ID_EXT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TGR_RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_DV" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_FORMULARIO" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_FOLIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TGR_VENCIMIENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_MONEDA" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_MONTO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_MOVIMIENTO" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_XML" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_RESPUESTA" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_ESTADO" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TGR_RECIBE_PAGO">
+    <Key>
+      <PropertyRef Name="TGR_ID_EXT" />
+      <PropertyRef Name="TGR_FOLIO" />
+    </Key>
+    <Property Name="TGR_CODE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_MSG_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_VERSION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_FROM_ADDRESS" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_TO_ADDRESS" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_REF_ADDRESS" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_DATETIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_ID_EXT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TGR_STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_ID_OPERACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_ID_TRANSACCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_FORMULARIO" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_FOLIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TGR_VENCIMIENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_MONTO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_COD_BANCO_PAGO" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_NOMBRE_BANCO_PAGO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_FECHA_PAGO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_RESULTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_TIPO_PAGO" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="TGR_XML" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="WEBPAY">
+    <Key>
+      <PropertyRef Name="TBK_ORDEN_COMPRA" />
+    </Key>
+    <Property Name="TBK_TIPO_TRANSACCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_RESPUESTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_ORDEN_COMPRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TBK_ID_SESION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_CODIGO_AUTORIZACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_MONTO" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TBK_FINAL_NUMERO_TARJETA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_FECHA_EXPIRACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_FECHA_CONTABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_FECHA_TRANSACCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_HORA_TRANSACCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_ID_TRANSACCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_TIPO_PAGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_NUMERO_CUOTAS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_MAC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TBK_TASA_INTERES_MAX" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="PagosPortaleKCCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PPKCC_FOLIOS" EntityType="Self.PPKCC_FOLIOS" />
+    <EntitySet Name="TGR_ENVIA_GIRO" EntityType="Self.TGR_ENVIA_GIRO" />
+    <EntitySet Name="TGR_RECIBE_PAGO" EntityType="Self.TGR_RECIBE_PAGO" />
+    <EntitySet Name="WEBPAY" EntityType="Self.WEBPAY" />
+    <EntitySet Name="PPKCC_FOLIOS_ASIGNADOS" EntityType="PagosPortaleKCCModel.PPKCC_FOLIOS_ASIGNADOS" />
+    <EntitySet Name="PPKCC_TRANSAC_ASEO" EntityType="PagosPortaleKCCModel.PPKCC_TRANSAC_ASEO" />
+  </EntityContainer>
+  <EntityType Name="PPKCC_FOLIOS_ASIGNADOS">
+    <Key>
+      <PropertyRef Name="FA_FOLIO_TRANS" />
+    </Key>
+    <Property Name="FA_LLAVE1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="FA_LLAVE2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FA_LLAVE3" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="FA_LLAVE4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FA_FOLIO_TRANS" Type="Decimal" Nullable="false" Precision="12" Scale="0" />
+    <Property Name="FA_EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FA_TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="FA_TOKEN" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="FA_ENVIO_MAIL" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="FA_CREACION" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PPKCC_TRANSAC_ASEO">
+    <Key>
+      <PropertyRef Name="ASE_ROL_NUM" />
+      <PropertyRef Name="ASE_ROL_DV" />
+      <PropertyRef Name="ASE_ANIO" />
+      <PropertyRef Name="ASE_CUOTA" />
+      <PropertyRef Name="ASE_FOLIO_TRANS" />
+    </Key>
+    <Property Name="ASE_ROL_NUM" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+    <Property Name="ASE_ROL_DV" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+    <Property Name="ASE_ANIO" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+    <Property Name="ASE_CUOTA" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+    <Property Name="ASE_VALOR" Type="Decimal" Nullable="false" Precision="12" Scale="0" />
+    <Property Name="ASE_IPC" Type="Decimal" Nullable="false" Precision="9" Scale="0" />
+    <Property Name="ASE_MULTA" Type="Decimal" Nullable="false" Precision="9" Scale="0" />
+    <Property Name="ASE_TOTAL" Type="Decimal" Nullable="false" Precision="12" Scale="0" />
+    <Property Name="ASE_FOLIO_TRANS" Type="Decimal" Nullable="false" Precision="12" Scale="0" />
+    <Property Name="ASE_ESTADO_TRANS" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ASE_FEC_PAG" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ASE_FEC_VEN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ASE_EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ASE_TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ASE_FOLIO_TESMU" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="ASE_TIPO_PAGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ASE_NUM_CUOTA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ASE_TIPO_TRANS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ASE_DIG_TARJETA" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="ASE_ID_SESION" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ASE_COD_AUTORIZA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ASE_FEC_CREA" Type="DateTime" Precision="3" />
+    <Property Name="ASE_ENVIA_MAIL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

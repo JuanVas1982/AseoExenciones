@@ -1,0 +1,129 @@
+﻿@model List<SocialAseoWeb.Models.Social_OrdenIngresoAseo>
+@{
+    ViewBag.Title = "ListarFormularios";
+}
+
+@*<h2>ListarFormularios</h2>*@
+<script type="text/javascript">
+    $('#example').DataTable({
+        language: {
+            "sSearch": "Buscar:",
+        },
+        responsive: "true",
+        dom: 'Bfrtlp',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                text: '<i class="fa fa-file-excel-o"</i>',
+                titleAttr: 'Exportar a Excel',
+                className: 'btn btn-success'
+            },
+            {
+                extend: 'pdfHtml5',
+                text: '<i class="fa fa-file-pdf-o"</i>',
+                titleAttr: 'Exportar a PDF',
+                className: 'btn btn-danger'
+            },
+            //{
+            //    extend: 'print',
+            //    text: '<i class="fa fa-print"</i>',
+            //    titleAttr: 'Imprimir',
+            //    className: 'btn btn-info'
+            //},
+        ]
+    });
+</script>
+@if (Model.Count > 0)
+{
+    <div class="table-responsive">
+
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th style="padding-top: 25px;">
+                        SOLICITUD
+                    </th>
+                    <th>
+                        PERIODO
+                    </th>
+                    <th>
+                        ROL
+                    </th>
+                    <th>
+                        CUOTAS
+                    </th>
+                    <th>
+                        ESTADO
+                    </th>
+                    <th style="text-align:center">
+                        VER DETALLE SOL.
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.Raw(item.nOrden)
+                        </td>
+                        <td>
+                            @Html.Raw(item.periodo)
+                        </td>
+                        <td>
+                            @Html.Raw(item.rolNum) - @Html.Raw(item.rolDv)
+                        </td>
+                        <td>
+                            @Html.Raw(item.cuotas)
+                        </td>
+
+                        <td>
+                            @if (item.estado == "I")
+                            {
+                                <p>INFORMADO</p>
+                            }
+                            else if (item.estado == "P")
+                            {
+                                <p>ASIGNADO</p>
+                            }
+                            else if (item.estado == "A")
+                            {
+                                <p>APROBADO</p>
+                            }
+                            else if (item.estado == "R")
+                            {
+                                <p>RECHAZADO</p>
+                            }
+                            else
+                            {
+                                <p>DERIVADO</p>
+
+                            }
+
+
+                        </td>
+                        <td>
+                            <div class="container" style="width:150px">
+                                <div class="btn-group btn-group-sm" style="text-align:left">
+                                    @*<a class="btn" href="@Url.Action("Exito", "Administracion", new { Folio = item.PER_FOLIO_TRANS, PlacaText = item.PER_PLACA1, PlacaNum = item.PER_PLACA2, Anoper = item.PER_ANIO })"><i class="fa fa-check"></i></a>*@
+                                    @*<a class="btn" href="@Url.Action("Exito", "Administracion")"><i class="fa fa-check"></i></a>*@
+                                    <a class="btn" href="@Url.Action("ConfirmarRol", "Administracion", new { item.rolNum, item.rolDv , item.periodo, item.nOrden })"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                                    @*<a class="btn" href="@Url.Action("Index", "Administracion")"><i class="fa fa-close"></i></a>*@
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 modal-header-info" style="text-align:center">
+            <p>La busqueda no obtuvo resultados</p>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+}

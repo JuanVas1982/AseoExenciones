@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PagosPortaleKCCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PPKCC_FOLIOS">
+    <Key>
+      <PropertyRef Name="FOL_CAJA" />
+      <PropertyRef Name="FOL_SISTEMA" />
+      <PropertyRef Name="FOL_ANIO" />
+    </Key>
+    <Property Name="FOL_CAJA" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="FOL_SISTEMA" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="FOL_ANIO" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="FOL_FOLIO" Type="nvarchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PPKCC_FOLIOS_ASIGNADOS">
+    <Key>
+      <PropertyRef Name="FA_FOLIO_TRANS" />
+    </Key>
+    <Property Name="FA_LLAVE1" Type="nvarchar" MaxLength="15" />
+    <Property Name="FA_LLAVE2" Type="nvarchar" MaxLength="255" />
+    <Property Name="FA_LLAVE3" Type="nvarchar" MaxLength="15" />
+    <Property Name="FA_LLAVE4" Type="nvarchar" MaxLength="50" />
+    <Property Name="FA_FOLIO_TRANS" Type="numeric" Precision="12" Scale="0" Nullable="false" />
+    <Property Name="FA_EMAIL" Type="nvarchar" MaxLength="150" />
+    <Property Name="FA_TELEFONO" Type="nvarchar" MaxLength="15" />
+    <Property Name="FA_TOKEN" Type="varchar" MaxLength="150" />
+    <Property Name="FA_ENVIO_MAIL" Type="nvarchar" MaxLength="1" />
+    <Property Name="FA_CREACION" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PPKCC_TRANSAC_ASEO">
+    <Key>
+      <PropertyRef Name="ASE_ROL_NUM" />
+      <PropertyRef Name="ASE_ROL_DV" />
+      <PropertyRef Name="ASE_ANIO" />
+      <PropertyRef Name="ASE_CUOTA" />
+      <PropertyRef Name="ASE_FOLIO_TRANS" />
+    </Key>
+    <Property Name="ASE_ROL_NUM" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="ASE_ROL_DV" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="ASE_ANIO" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="ASE_CUOTA" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="ASE_VALOR" Type="numeric" Precision="12" Scale="0" Nullable="false" />
+    <Property Name="ASE_IPC" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="ASE_MULTA" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="ASE_TOTAL" Type="numeric" Precision="12" Scale="0" Nullable="false" />
+    <Property Name="ASE_FOLIO_TRANS" Type="numeric" Precision="12" Scale="0" Nullable="false" />
+    <Property Name="ASE_ESTADO_TRANS" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="ASE_FEC_PAG" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ASE_FEC_VEN" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ASE_EMAIL" Type="nvarchar" MaxLength="150" />
+    <Property Name="ASE_TELEFONO" Type="nvarchar" MaxLength="15" />
+    <Property Name="ASE_FOLIO_TESMU" Type="numeric" Precision="12" Scale="0" />
+    <Property Name="ASE_TIPO_PAGO" Type="varchar" MaxLength="50" />
+    <Property Name="ASE_NUM_CUOTA" Type="varchar" MaxLength="10" />
+    <Property Name="ASE_TIPO_TRANS" Type="varchar" MaxLength="50" />
+    <Property Name="ASE_DIG_TARJETA" Type="varchar" MaxLength="4" />
+    <Property Name="ASE_ID_SESION" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="ASE_COD_AUTORIZA" Type="nvarchar" MaxLength="30" />
+    <Property Name="ASE_FEC_CREA" Type="datetime" />
+    <Property Name="ASE_ENVIA_MAIL" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="TGR_ENVIA_GIRO">
+    <Key>
+      <PropertyRef Name="TGR_ID_EXT" />
+      <PropertyRef Name="TGR_FOLIO" />
+    </Key>
+    <Property Name="TGR_CODE" Type="nvarchar" MaxLength="500" />
+    <Property Name="TGR_MSG_DESC" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGR_FROM" Type="nvarchar" MaxLength="25" />
+    <Property Name="TGR_REF" Type="nvarchar" MaxLength="3" />
+    <Property Name="TGR_DATETIME" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGR_ID_EXT" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="TGR_RUT" Type="nvarchar" MaxLength="12" />
+    <Property Name="TGR_DV" Type="nvarchar" MaxLength="1" />
+    <Property Name="TGR_FORMULARIO" Type="nvarchar" MaxLength="3" />
+    <Property Name="TGR_FOLIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TGR_VENCIMIENTO" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGR_MONEDA" Type="nvarchar" MaxLength="5" />
+    <Property Name="TGR_MONTO" Type="nvarchar" MaxLength="20" />
+    <Property Name="TGR_MOVIMIENTO" Type="nvarchar" MaxLength="1" />
+    <Property Name="TGR_XML" Type="nvarchar" MaxLength="4000" />
+    <Property Name="TGR_RESPUESTA" Type="nvarchar" MaxLength="400" />
+    <Property Name="TGR_ESTADO" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="TGR_RECIBE_PAGO">
+    <Key>
+      <PropertyRef Name="TGR_ID_EXT" />
+      <PropertyRef Name="TGR_FOLIO" />
+    </Key>
+    <Property Name="TGR_CODE" Type="nvarchar" MaxLength="500" />
+    <Property Name="TGR_MSG_DESC" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGR_VERSION" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGR_FROM_ADDRESS" Type="nvarchar" MaxLength="25" />
+    <Property Name="TGR_TO_ADDRESS" Type="nvarchar" MaxLength="25" />
+    <Property Name="TGR_REF_ADDRESS" Type="nvarchar" MaxLength="3" />
+    <Property Name="TGR_DATETIME" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGR_NUMBER" Type="nvarchar" MaxLength="20" />
+    <Property Name="TGR_ID_EXT" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="TGR_STATUS" Type="nvarchar" MaxLength="10" />
+    <Property Name="TGR_ID_OPERACION" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGR_ID_TRANSACCION" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGR_RUT" Type="nvarchar" MaxLength="12" />
+    <Property Name="TGR_FORMULARIO" Type="nvarchar" MaxLength="3" />
+    <Property Name="TGR_FOLIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TGR_VENCIMIENTO" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGR_MONTO" Type="nvarchar" MaxLength="20" />
+    <Property Name="TGR_COD_BANCO_PAGO" Type="nvarchar" MaxLength="5" />
+    <Property Name="TGR_NOMBRE_BANCO_PAGO" Type="nvarchar" MaxLength="150" />
+    <Property Name="TGR_FECHA_PAGO" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGR_RESULTADO" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGR_TIPO_PAGO" Type="nvarchar" MaxLength="5" />
+    <Property Name="TGR_XML" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="WEBPAY">
+    <Key>
+      <PropertyRef Name="TBK_ORDEN_COMPRA" />
+    </Key>
+    <Property Name="TBK_TIPO_TRANSACCION" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_RESPUESTA" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_ORDEN_COMPRA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TBK_ID_SESION" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_CODIGO_AUTORIZACION" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_MONTO" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="TBK_FINAL_NUMERO_TARJETA" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_FECHA_EXPIRACION" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_FECHA_CONTABLE" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_FECHA_TRANSACCION" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_HORA_TRANSACCION" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_ID_TRANSACCION" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_TIPO_PAGO" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_NUMERO_CUOTAS" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_MAC" Type="varchar" MaxLength="50" />
+    <Property Name="TBK_TASA_INTERES_MAX" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="PagosPortaleKCCModelStoreContainer">
+    <EntitySet Name="PPKCC_FOLIOS" EntityType="Self.PPKCC_FOLIOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PPKCC_FOLIOS_ASIGNADOS" EntityType="Self.PPKCC_FOLIOS_ASIGNADOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PPKCC_TRANSAC_ASEO" EntityType="Self.PPKCC_TRANSAC_ASEO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TGR_ENVIA_GIRO" EntityType="Self.TGR_ENVIA_GIRO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TGR_RECIBE_PAGO" EntityType="Self.TGR_RECIBE_PAGO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEBPAY" EntityType="Self.WEBPAY" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

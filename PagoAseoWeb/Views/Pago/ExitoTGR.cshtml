@@ -1,0 +1,208 @@
+﻿@model SocialAseoWeb.Models.OrdenIngresoAseo
+@using System.Web.Script.Serialization
+@using SocialAseoWeb.Models
+@using SocialAseoWeb.Comun
+
+
+@{
+    ViewBag.Title = "Exito";
+    Layout = null;
+    JavaScriptSerializer jss = new JavaScriptSerializer();
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" type="image/png" href="~/Imagen/cropped-logo-32x32.jpg" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/estilos.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/chosen/chosen.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.base.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.alert.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.darkblue.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.metrodark.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.energyblue.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxcore.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxdata.js"></script>
+    <script src="~/Scripts/format.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxexpander.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxloader.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxvalidator.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxcheckbox.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxscrollbar.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxmenu.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxcalendar.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxdatetimeinput.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxmaskedinput.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.edit.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.sort.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.filter.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.selection.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxpanel.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxinput.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxlistbox.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxdropdownlist.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxnumberinput.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxslider.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxalert.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxcombobox.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxdatatable.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxtreegrid.js"></script>
+    <script src="~/Scripts/jqwidgets/globalization/globalize.js"></script>
+    <script src="~/Scripts/demos.js"></script>
+    <script src="~/Scripts/consultasAjax.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/chosen.jquery.js"></script>
+    <script src="~/Scripts/jquery.form.min.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+
+    <script type="text/javascript">
+        var baseUrl = "";
+        var urlAlert = "";
+        $(document).ready(function () {
+            baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+            OI = '@Html.Raw(jss.Serialize(Model))';
+            OIdata = JSON.parse(OI);
+
+            var rol = OIdata.rolNum;
+            var dv = OIdata.rolDv;
+            var folio = OIdata.nOrden;
+            $("#buscaPago").click(function () {
+                ValidaPagoParTGR("@Url.Action("ValidaPagoTGR", "Pago")", folio).done(function (data) {
+                    $("#listaPagadas").html("");
+                    if (data == "PAGADO") {
+                        listarArchivos(rol, dv, folio);
+                    } else if (data == "ADEUDADO") {
+                        $("#listaPagadas").html("<br /><p>El pago aun no ha sido informado por la entidad bancaria, presione el boton de ver comprobante en 5 minutos</p>");
+                        $('#jqxLoader').jqxLoader('close');
+                        jqxAlert.alert('En Espera Pago Tesoreria', 'Atención', 'Pago', '', urlAlert);
+                    } else {
+                        alert("se ha producido un error: " + data);
+                    }
+                });
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        function listarArchivos(rolT, dvT, folioT) {
+            var miUrl = '@Url.Action("MuestraReporte", "Pago", new { rol = "rolText", dv = "dvText", folio = "folioText" })'.replace("rolText", rolT).replace("dvText", dvT).replace("folioText", folioT);
+            miUrl = miUrl.replace("&amp;", "&");
+            miUrl = miUrl.replace("&amp;", "&");
+            $("#listaPagadas").html(" <br /><iframe width='100%' height='800px' src='" + miUrl + "'></iframe>");;
+       }
+
+        function ValidaPagoParTGR(baseUrl, folio, rol) {
+            url = baseUrl;
+            return $.ajax({
+                url: url,
+                method: 'POST',
+                async: false,
+                dataType: 'json',
+                data: {
+                    folio: folio
+                },
+                success: function (data, textStatus, xhr) {
+
+                },
+                error: function (request, status, error) {
+                    console.log(request.responseText);
+                    alert("Error has occurred..." + request.responseText);
+                }
+            });
+        }
+    </script>
+
+</head>
+<body class="body white">
+    <br>
+    <form id="formPago">
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-10">
+                <p>No se realizan devoluciones, ni reembolsos. En caso de tener alguna duda favor de contactar a @Html.Raw(Utils.adminContacto) al teléfono @Utils.telefono  o al  Correo Electronico @Utils.adminEMail.</p>
+                <p>Los comprobantes de pago no se envian a una casilla electrónica. Solo se pueden obtener en este sitio.</p>
+                <div id="DatContribuyente" class="panel panel-default">
+                    <div class="panel-heading">Datos del Contribuyente</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-2">RUT:</div>
+                            <div class="col-md-4"><div id="rutP" class="text-success">@Html.Raw(Model.rut.ToString() + "-" + Model.dv)</div></div>
+                            <div class="col-md-2">NOMBRE:</div>
+                            <div class="col-md-4"><div id="nombreP" class="text-success">@Html.Raw(Model.nombre)</div></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">DOMICILIO:</div>
+                            <div class="col-md-4"><div id="domicilioP" class="text-success">@Html.Raw(Model.direccion)</div></div>
+                            <div class="col-md-2">CUIDAD:</div>
+                            <div class="col-md-4"><div id="comunaP" class="text-success">@Html.Raw(Model.cuidad)</div></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">TÉLEFONO:</div>
+                            <div class="col-md-4"><div id="telPar" class="text-success">@Html.Raw(Model.telefono)</div></div>
+                            <div class="col-md-2">E-MAIL:</div>
+                            <div class="col-md-4"><div id="emailPar" class="text-success">@Html.Raw(Model.eMail)</div></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">N° ORDEN:</div>
+                            <div class="col-md-4"><div id="canPlaPar" class="text-success">@Html.Raw(Model.nOrden)</div></div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4"><div id="nOrdenPlaPar" class="text-success"></div></div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p id="menCont" style="color:red;font-weight: bold;"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <input id="buscaPago" name="buscaPago" class="btn btn-primary" value="Ver Comprobante" />
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div id="listaPagadas"></div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+
+    </form>
+    <div style="text-align: center" id='Mensaje'></div>
+    <div id='datosRol'></div>
+    <div id='jqxLoader'></div>
+    <div id='jqxWidget'></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

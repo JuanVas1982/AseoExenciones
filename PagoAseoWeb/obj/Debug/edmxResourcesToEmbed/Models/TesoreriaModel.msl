@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tesoreria2008ModelStoreContainer" CdmEntityContainer="tesoreria2008Entities">
+    <EntitySetMapping Name="ATETIPOPAGO">
+      <EntityTypeMapping TypeName="tesoreria2008Model.ATETIPOPAGO">
+        <MappingFragment StoreEntitySet="ATETIPOPAGO">
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="folio" ColumnName="folio" />
+          <ScalarProperty Name="codInstit" ColumnName="codInstit" />
+          <ScalarProperty Name="numcuenta" ColumnName="numcuenta" />
+          <ScalarProperty Name="numDocu" ColumnName="numDocu" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PA_OBTIENE_DATOS_WS_SUBDERE" FunctionName="tesoreria2008Model.Store.PA_OBTIENE_DATOS_WS_SUBDERE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="tesoreria2008Model.PA_OBTIENE_DATOS_WS_SUBDERE_Result">
+          <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+          <ScalarProperty Name="FECHA_VENCIMIENTO" ColumnName="FECHA_VENCIMIENTO" />
+          <ScalarProperty Name="ID_PAGO" ColumnName="ID_PAGO" />
+          <ScalarProperty Name="CUOTA" ColumnName="CUOTA" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

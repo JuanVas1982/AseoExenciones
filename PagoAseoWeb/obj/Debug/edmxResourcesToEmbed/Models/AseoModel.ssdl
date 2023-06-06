@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="aseoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AS_CONTRIBUYENTE">
+    <Key>
+      <PropertyRef Name="CON_ANO_CON" />
+      <PropertyRef Name="CON_ROL_NUM" />
+      <PropertyRef Name="CON_ROL_DV" />
+      <PropertyRef Name="CON_RUT" />
+      <PropertyRef Name="CON_DV" />
+    </Key>
+    <Property Name="CON_ANO_CON" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="CON_ROL_NUM" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="CON_ROL_DV" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="CON_FEC_ING" Type="datetime" />
+    <Property Name="CON_NUM_FOLIO" Type="decimal" Precision="12" Scale="0" />
+    <Property Name="CON_RUT" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="CON_DV" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="CON_CALLE" Type="varchar" MaxLength="60" />
+    <Property Name="CON_NUMERO" Type="varchar" MaxLength="30" />
+    <Property Name="CON_MANZANA" Type="decimal" Precision="5" Scale="0" />
+    <Property Name="CON_PREDIO" Type="decimal" Precision="5" Scale="0" />
+    <Property Name="CON_VILLA" Type="varchar" MaxLength="20" />
+    <Property Name="CON_AVALUO" Type="decimal" Precision="15" Scale="0" />
+    <Property Name="CON_DESTINO" Type="varchar" MaxLength="2" />
+    <Property Name="CON_UBICACION" Type="varchar" MaxLength="2" />
+    <Property Name="CON_TIPO_CONT" Type="varchar" MaxLength="2" />
+    <Property Name="CON_SITUACION" Type="varchar" MaxLength="2" />
+    <Property Name="CON_POR_REB" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="CON_ESTADO" Type="varchar" MaxLength="1" />
+    <Property Name="CON_OBSERV" Type="varchar" MaxLength="50" />
+    <Property Name="CON_CODCALLE" Type="decimal" Precision="4" Scale="0" />
+    <Property Name="CON_UNVECINAL" Type="varchar" MaxLength="3" />
+    <Property Name="CON_CODCAPRO" Type="decimal" Precision="4" Scale="0" />
+    <Property Name="CON_UNVECPRO" Type="varchar" MaxLength="3" />
+    <Property Name="CON_CALLEP" Type="varchar" MaxLength="60" />
+    <Property Name="CON_NUMEROP" Type="varchar" MaxLength="30" />
+    <Property Name="CON_TIPO_ENV" Type="varchar" MaxLength="1" />
+    <Property Name="CON_VILLA_R" Type="decimal" Precision="4" Scale="0" />
+    <Property Name="CON_VILLA_P" Type="decimal" Precision="4" Scale="0" />
+    <Property Name="CON_REGISTRO" Type="decimal" Precision="6" Scale="0" />
+    <Property Name="CON_ELIMINA" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="AS_CONVENIO">
+    <Key>
+      <PropertyRef Name="CON_ANO_CON" />
+      <PropertyRef Name="CON_ROL_NUM" />
+      <PropertyRef Name="CON_ROL_DV" />
+      <PropertyRef Name="CON_CUOTA" />
+    </Key>
+    <Property Name="CON_ANO_CON" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="CON_ROL_NUM" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="CON_ROL_DV" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="CON_CUOTA" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="CON_FEC_PRES" Type="datetime" />
+    <Property Name="CON_ESTADO" Type="varchar" MaxLength="1" />
+    <Property Name="CON_MARCA" Type="varchar" MaxLength="1" />
+    <Property Name="CON_GLOSA" Type="varchar" MaxLength="40" />
+    <Property Name="CON_PORCEN" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="CON_NUM_DECRE" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="CON_FEC_DECRE" Type="datetime" />
+    <Property Name="CON_CODEX" Type="numeric" Precision="2" Scale="0" />
+    <Property Name="CON_FOLIO" Type="numeric" Precision="12" Scale="0" />
+  </EntityType>
+  <EntityType Name="AS_EXCLUSION">
+    <Key>
+      <PropertyRef Name="EXC_CODIGO" />
+    </Key>
+    <Property Name="EXC_CODIGO" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="EXC_SITUACION" Type="varchar" MaxLength="1" />
+    <Property Name="EXC_DESCRIPCION" Type="varchar" MaxLength="30" />
+    <Property Name="EXC_PORCENTAJE" Type="numeric" Precision="3" Scale="0" />
+  </EntityType>
+  <EntityType Name="AS_PAGOS">
+    <Key>
+      <PropertyRef Name="PAG_ANO_CON" />
+      <PropertyRef Name="PAG_ROL_NUM" />
+      <PropertyRef Name="PAG_ROL_DV" />
+      <PropertyRef Name="PAG_CUOTA" />
+    </Key>
+    <Property Name="PAG_ANO_CON" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="PAG_ROL_NUM" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="PAG_ROL_DV" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="PAG_CUOTA" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="PAG_ESTADO" Type="varchar" MaxLength="1" />
+    <Property Name="PAG_TIPO" Type="varchar" MaxLength="1" />
+    <Property Name="PAG_FEC_V" Type="datetime" />
+    <Property Name="PAG_FEC_P" Type="datetime" />
+    <Property Name="PAG_FEC_PRO" Type="datetime" />
+    <Property Name="PAG_VALOR" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="PAG_IPC" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="PAG_MULTA" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="PAG_TOTAL" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="PAG_TOTAL_RESP" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="PAG_FOLIO" Type="decimal" Precision="12" Scale="0" />
+    <Property Name="PAG_MARCA" Type="varchar" MaxLength="1" />
+    <Property Name="PAG_CONVE" Type="varchar" MaxLength="1" />
+    <Property Name="PAG_ABONO" Type="varchar" MaxLength="4" />
+    <Property Name="PAG_TIPEX" Type="decimal" Precision="4" Scale="0" />
+  </EntityType>
+  <EntityType Name="AS_RUT">
+    <Key>
+      <PropertyRef Name="RUT_RUT" />
+      <PropertyRef Name="RUT_DV" />
+    </Key>
+    <Property Name="RUT_RUT" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="RUT_DV" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="RUT_NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AS_SOLICITUD">
+    <Key>
+      <PropertyRef Name="SOL_TIPO" />
+    </Key>
+    <Property Name="SOL_TIPO" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="SOL_NUM_SOL" Type="decimal" Precision="12" Scale="0" />
+  </EntityType>
+  <EntityType Name="DetalleOrdenIngresoAseo">
+    <Key>
+      <PropertyRef Name="idSesion" />
+      <PropertyRef Name="rolNum" />
+      <PropertyRef Name="rolDv" />
+      <PropertyRef Name="nOrden" />
+      <PropertyRef Name="anio" />
+      <PropertyRef Name="cuota" />
+    </Key>
+    <Property Name="idSesion" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="rolNum" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="rolDv" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="nOrden" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="denominacion" Type="varchar" MaxLength="255" />
+    <Property Name="anio" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="cuota" Type="decimal" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="fecVence" Type="varchar" MaxLength="50" />
+    <Property Name="monto" Type="decimal" Precision="16" Scale="0" />
+    <Property Name="multa" Type="decimal" Precision="12" Scale="0" />
+    <Property Name="ipc" Type="decimal" Precision="12" Scale="0" />
+    <Property Name="total" Type="decimal" Precision="16" Scale="0" />
+    <Property Name="folio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="OrdenIngresoAseo">
+    <Key>
+      <PropertyRef Name="idSesion" />
+      <PropertyRef Name="rolNum" />
+      <PropertyRef Name="rolDv" />
+      <PropertyRef Name="nOrden" />
+    </Key>
+    <Property Name="idSesion" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="rut" Type="varchar" MaxLength="12" />
+    <Property Name="dv" Type="varchar" MaxLength="1" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" />
+    <Property Name="direccion" Type="varchar" MaxLength="50" />
+    <Property Name="rolNum" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="rolDv" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="telefono" Type="varchar" MaxLength="30" />
+    <Property Name="eMail" Type="varchar" MaxLength="100" />
+    <Property Name="fecPago" Type="varchar" MaxLength="10" />
+    <Property Name="cuidad" Type="varchar" MaxLength="25" />
+    <Property Name="nOrden" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="tipoTributo" Type="varchar" MaxLength="50" />
+    <Property Name="unidadGiradora" Type="varchar" MaxLength="50" />
+    <Property Name="tipoPago" Type="varchar" MaxLength="50" />
+    <Property Name="tipoCuota" Type="varchar" MaxLength="50" />
+    <Property Name="nCuotas" Type="varchar" MaxLength="6" />
+    <Property Name="tipoTransaccion" Type="varchar" MaxLength="50" />
+    <Property Name="digTarjeta" Type="varchar" MaxLength="4" />
+    <Property Name="codAutoriza" Type="nchar" MaxLength="10" />
+    <Property Name="subtotal" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ipc" Type="decimal" Precision="12" Scale="0" />
+    <Property Name="multa" Type="decimal" Precision="12" Scale="0" />
+    <Property Name="aPagar" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Social_DetalleOrdenIngresoAseo">
+    <Key>
+      <PropertyRef Name="idSesion" />
+      <PropertyRef Name="rolNum" />
+      <PropertyRef Name="rolDv" />
+      <PropertyRef Name="nOrden" />
+      <PropertyRef Name="cuota" />
+    </Key>
+    <Property Name="idSesion" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="rolNum" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="rolDv" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="nOrden" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="denominacion" Type="varchar" MaxLength="255" />
+    <Property Name="anio" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="cuota" Type="decimal" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="fecMov" Type="varchar" MaxLength="50" />
+    <Property Name="monto" Type="decimal" Precision="16" Scale="0" />
+    <Property Name="porcentaje" Type="decimal" Precision="12" Scale="0" />
+    <Property Name="folio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="Social_OrdenIngresoAseo">
+    <Key>
+      <PropertyRef Name="idSesion" />
+      <PropertyRef Name="rolNum" />
+      <PropertyRef Name="rolDv" />
+      <PropertyRef Name="nOrden" />
+    </Key>
+    <Property Name="idSesion" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="rut" Type="varchar" MaxLength="12" />
+    <Property Name="dv" Type="varchar" MaxLength="1" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" />
+    <Property Name="direccion" Type="varchar" MaxLength="50" />
+    <Property Name="depto" Type="varchar" MaxLength="50" />
+    <Property Name="block" Type="varchar" MaxLength="50" />
+    <Property Name="direccion2" Type="varchar" MaxLength="50" />
+    <Property Name="depto2" Type="varchar" MaxLength="50" />
+    <Property Name="block2" Type="varchar" MaxLength="50" />
+    <Property Name="rolNum" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="rolDv" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="telefono" Type="varchar" MaxLength="30" />
+    <Property Name="eMail" Type="varchar" MaxLength="100" />
+    <Property Name="fecRecepcion" Type="varchar" MaxLength="10" />
+    <Property Name="nOrden" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="50" />
+    <Property Name="ch" Type="varchar" MaxLength="50" />
+    <Property Name="uv" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="periodo" Type="varchar" MaxLength="4" />
+    <Property Name="cuotas" Type="varchar" MaxLength="4" />
+    <Property Name="respo" Type="nchar" MaxLength="10" />
+    <Property Name="folioRSH" Type="decimal" Precision="12" Scale="0" />
+    <Property Name="fecha_RSH" Type="decimal" Precision="12" Scale="0" />
+    <Property Name="Tramo" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="TABLE_PARTICULAR_ARCHIVOS_DETALLE">
+    <Key>
+      <PropertyRef Name="TPAD_ANO" />
+      <PropertyRef Name="TPAD_MANZANA" />
+      <PropertyRef Name="TPAD_PREDIO" />
+      <PropertyRef Name="TPAD_CUOTA" />
+      <PropertyRef Name="TPAD_NOMBRE_ARCHIVO" />
+      <PropertyRef Name="TPAD_FECHA_INGRESO" />
+      <PropertyRef Name="TPAD_HORA_INGRESO" />
+    </Key>
+    <Property Name="TPAD_ANO" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="TPAD_MANZANA" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="TPAD_PREDIO" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="TPAD_CUOTA" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="TPAD_CORREO" Type="varchar" MaxLength="250" />
+    <Property Name="TPAD_FONO" Type="numeric" Precision="12" Scale="0" />
+    <Property Name="TPAD_NOMBRE_ARCHIVO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="TPAD_FECHA_INGRESO" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="TPAD_HORA_INGRESO" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="TPAD_ESTADO" Type="int" />
+    <Property Name="TPAD_ESTADO_DESCRIPCION" Type="varchar" MaxLength="255" />
+    <Property Name="TPAD_CLASIFICACION" Type="int" />
+  </EntityType>
+  <EntityType Name="TABLE_PARTICULAR_ARCHIVOS_ENCABEZADO">
+    <Key>
+      <PropertyRef Name="TPAE_ANO" />
+      <PropertyRef Name="TPAE_MANZANA" />
+      <PropertyRef Name="TPAE_PREDIO" />
+      <PropertyRef Name="TPAE_CUOTA" />
+      <PropertyRef Name="TPAE_FECHA_INGRESO" />
+      <PropertyRef Name="TPAE_HORA_INGRESO" />
+    </Key>
+    <Property Name="TPAE_ANO" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="TPAE_MANZANA" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="TPAE_PREDIO" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="TPAE_CUOTA" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="TPAE_CORREO" Type="varchar" MaxLength="250" />
+    <Property Name="TPAE_FONO" Type="numeric" Precision="12" Scale="0" />
+    <Property Name="TPAE_FECHA_INGRESO" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="TPAE_HORA_INGRESO" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="TPAE_ESTADO" Type="int" />
+    <Property Name="TPAE_USUARIO" Type="varchar" MaxLength="20" />
+    <Property Name="TPAE_ESTADO_PAGO" Type="varchar" MaxLength="1" />
+    <Property Name="TPAE_FECHA_PAGO" Type="varchar" MaxLength="8" />
+  </EntityType>
+  <Function Name="PA_PAGO_ASEO_WS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ROL_PRO" Type="numeric" Mode="In" />
+    <Parameter Name="ROL_DV" Type="numeric" Mode="In" />
+    <Parameter Name="RUT" Type="numeric" Mode="In" />
+    <Parameter Name="ANIO_CUOTA" Type="numeric" Mode="In" />
+    <Parameter Name="NUM_CUOTA" Type="numeric" Mode="In" />
+    <Parameter Name="FEC_PAGO" Type="nvarchar" Mode="In" />
+    <Parameter Name="FEC_VENC" Type="nvarchar" Mode="In" />
+    <Parameter Name="VALOR_CUOTA" Type="numeric" Mode="In" />
+    <Parameter Name="VALOR_IPC" Type="numeric" Mode="In" />
+    <Parameter Name="VALOR_INTE" Type="numeric" Mode="In" />
+    <Parameter Name="COD_TRANS" Type="numeric" Mode="In" />
+    <Parameter Name="COD_CA_CA" Type="numeric" Mode="In" />
+    <Parameter Name="COD_TARJETA" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="PA_TRASPASA_CONTRIBUYENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ROL_PRO" Type="numeric" Mode="In" />
+    <Parameter Name="ROL_DV" Type="numeric" Mode="In" />
+    <Parameter Name="AÑO_CUOTA" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="PA_VER_EXENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ROL_PRO" Type="int" Mode="In" />
+    <Parameter Name="ROL_DV" Type="int" Mode="In" />
+    <Parameter Name="AÑO_CUOTA" Type="int" Mode="In" />
+    <Parameter Name="NUM_CUOTA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SacarIPC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+    <Parameter Name="MesActual" Type="int" Mode="In" />
+    <Parameter Name="AnoActual" Type="numeric" Mode="In" />
+    <Parameter Name="MesV" Type="numeric" Mode="In" />
+    <Parameter Name="AnoV" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="SacarMulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+    <Parameter Name="MesActual" Type="int" Mode="In" />
+    <Parameter Name="AnoActual" Type="numeric" Mode="In" />
+    <Parameter Name="MesV" Type="numeric" Mode="In" />
+    <Parameter Name="AnoV" Type="numeric" Mode="In" />
+  </Function>
+  <EntityContainer Name="aseoModelStoreContainer">
+    <EntitySet Name="AS_CONTRIBUYENTE" EntityType="Self.AS_CONTRIBUYENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AS_CONVENIO" EntityType="Self.AS_CONVENIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AS_EXCLUSION" EntityType="Self.AS_EXCLUSION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AS_PAGOS" EntityType="Self.AS_PAGOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AS_RUT" EntityType="Self.AS_RUT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AS_SOLICITUD" EntityType="Self.AS_SOLICITUD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetalleOrdenIngresoAseo" EntityType="Self.DetalleOrdenIngresoAseo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrdenIngresoAseo" EntityType="Self.OrdenIngresoAseo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Social_DetalleOrdenIngresoAseo" EntityType="Self.Social_DetalleOrdenIngresoAseo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Social_OrdenIngresoAseo" EntityType="Self.Social_OrdenIngresoAseo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TABLE_PARTICULAR_ARCHIVOS_DETALLE" EntityType="Self.TABLE_PARTICULAR_ARCHIVOS_DETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TABLE_PARTICULAR_ARCHIVOS_ENCABEZADO" EntityType="Self.TABLE_PARTICULAR_ARCHIVOS_ENCABEZADO" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

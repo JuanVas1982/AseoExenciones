@@ -1,0 +1,157 @@
+﻿@model SocialAseoWeb.Models.OrdenIngresoAseo
+@using System.Globalization
+@{
+    ViewBag.Title = "Confirmar Deuda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class='panel panel-default'>
+    <div class="panel-heading"><h4 style="color: #E5006C; text-align:center;font-weight:600;">OPCIONES DE PAGO</h4></div>
+    <div class='panel-body'>
+        <div class="row">
+            <div class="col-md-2">
+                <form method ="post" action="@Url.Action("TransbankNew", "Pago")" id="envioPagoTBK">
+                    <button name="btnConfirmar" class="btn" type="submit"><img alt="" src="~/Img/BTN_TBK.jpg" class="img-responsive" /></button>
+                    <input name='rolNum' id='rolNumTGR' type='hidden' value="@Html.Raw(Model.rolNum.ToString())" />
+                    <input name='rolDv' id='rolDvTGR' type='hidden' value="@Html.Raw(Model.rolDv.ToString())" />
+                    <input name='telefono' id='telefonoTGR' type='hidden' value="@Html.Raw(Model.telefono.ToString())" />
+                    <input name='email' id='eMailTGR' type='hidden' value="@Html.Raw(Model.eMail.ToString())" />
+                    @for (int row = 0; row < Model.DOI.Count; row++)
+                    {
+                        <input name='deuda' type='hidden' value="@Html.Raw(Model.DOI[row].anio + "_" + Model.DOI[row].cuota)" />
+                    }
+                </form>
+            </div>
+            <div class="col-md-2">
+                @*
+                    <form style="color: rgba(48, 50, 128, 1); float: right;" method="post" action="" id="envioPagoTGR">
+                        <strong><font size=1>En caso de problemas con el pago</font><input name="btnConfirmar" type="submit" class="btn btn-link" value="Click aqui" /></strong>
+                        <input name="rol" type="hidden" value="" />
+                        <input name="email" type="hidden" value="" />
+                        <input name="telefono" type="hidden" value="" />
+                        <input name="ordIngreso" type="hidden" value="" />
+                    </form>
+                *@
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+    </div>
+</div>
+<div class='panel panel-default'>
+    <div class="panel-heading"><h4 style="color: #E5006C; text-align:center;font-weight:600;">DATOS DEL PAGO</h4></div>
+    <div class='panel-body'>
+        <div class="row">
+            <div class="col-md-4">
+                <span style="color: #E5006C;">RUT</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw(Model.rut + "-" + Model.dv)</p>
+            </div>
+            <div class="col-md-4">
+                <span style="color: #E5006C;">NOMBRE(RAZON SOCIAL)</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw(Model.nombre)</p>
+            </div>
+            <div class="col-md-4">
+                <span style="color: #E5006C;">FECHA GIRO</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw((DateTime.Now).ToString("dd-MM-yyyy"))</p>
+            </div>
+            <div class="col-md-4">
+                <span style="color: #E5006C;">DOMICILIO</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw(Model.direccion)</p>
+            </div>
+            <div class="col-md-4">
+                <span style="color: #E5006C;">CUIDAD</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw(Model.cuidad)</p>
+            </div>
+            <div class="col-md-4">
+                <span style="color: #E5006C;">ROL</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw(Model.rolNum + "-" + Model.rolDv)</p>
+            </div>
+            <div class="col-md-4">
+                <span style="color: #E5006C;">TELÉFONO</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw(Model.telefono)</p>
+            </div>
+            <div class="col-md-4">
+                <span style="color: #E5006C;">E-MAIL</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw(Model.eMail)</p>
+            </div>
+            <div class="col-md-4">
+                <span style="color: #E5006C;">TIPO DE TRIBUTO</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw(Model.tipoTributo)</p>
+            </div>
+            
+            <div class="col-md-12 table-responsive">
+                <hr style="border-top: 1px solid #E5006C;" />
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="danger">
+                            <th>DENOMINACIÓN</th>
+                            <th>FECHA DE VENCIMIENTO</th>
+                            <th>VALOR A PAGAR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.DOI)
+                        {
+                            <tr>
+                                <td>
+                                    <p> @Html.DisplayFor(modelItem => item.denominacion)</p>
+                                </td>
+                                <td>
+                                    <p>  @Html.DisplayFor(modelItem => item.fecVence) </p>
+                                </td>
+                                <td>
+                                    <p>  @Html.Raw("$" + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("es-CO"), "{0:N0}", Convert.ToDecimal(item.monto)))</p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-12 well">
+                <div class="row">
+                    <div class="col-md-3">
+                        <span style="color: #E5006C;">SUBTOTAL</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw("$" + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("es-CO"), "{0:N0}", Convert.ToDecimal(@Model.subtotal)))</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span style="color: #E5006C;">IPC</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw("$" + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("es-CO"), "{0:N0}", Convert.ToDecimal(@Model.ipc)))</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span style="color: #E5006C;">MULTAS</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw("$" + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("es-CO"), "{0:N0}", Convert.ToDecimal(@Model.multa)))</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span style="color: #E5006C;">TOTAL</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<p>@Html.Raw("$" + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("es-CO"), "{0:N0}", Convert.ToDecimal(@Model.aPagar)))</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    @*<script type="text/javascript">
+            window.onload = function () {
+                localStorage = window.localStorage;
+               // alert(localStorage.getItem('test'));
+                if (localStorage.getItem('test') == '1') {
+                    localStorage.setItem('test', 0);
+                    window.location.href = '@Url.Action("Fracaso", "Pago")';
+                }
+            }
+            $(document).ready(function () {
+                $('form').submit(function () {
+                    localStorage.setItem('test', 1);
+                });
+            });
+
+        </script>
+    *@
+}
+   

@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Usuario = ViewBag.user;
+}
+
+<div class="content">
+    <div class="row">
+        <div>
+            <div class="col-md-1"></div>
+            <div class="well col-md-10" style="background-color:white">
+                <h2>Solicitudes nuevas</h2>
+                <p>Ingrese el Rol de la Propiedad correspondiente al derecho de aseo que desea consultar.</p>
+                <hr style="border-top: 1px solid #E5006C;" />
+                <form id="formBuscar" class="text-center" action="./">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <span style="font: bold 14px Arial;" class="input-group-addon">ROL:</span>
+                                <input id="rol_rol" type="text" class="form-control" name="rol_rol" placeholder="0000" maxlength="4">
+                                <span style="font: bold 14px Arial;" class="input-group-addon"> - </span>
+                                <input id="rol_dv" type="text" class="form-control" name="rol_dv" placeholder="0000" maxlength="4">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" id="Buscar" class="btn btn-danger btn-block">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div>
+            <div class="col-md-10"></div>
+            <div class="col-md-2">
+                <a href="#" target="_blank" id="btn_exportar" name="btn_exportar" class="btn btn-success"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span> Xls</a>
+            </div>
+        </div>
+        <div>
+            <div class="col-md-1"></div>
+            <div class="well col-md-10">
+                <div id="vista1" class="scroll"></div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+<br>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    var baseUrl = "";
+    var errorCumuna = true;
+    var errorOtraComuna = true;
+    var Folio = "";
+    var placaN = "";
+
+
+
+    $(document).ready(function () {
+        baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+        /*oculto los paneles al cargar la pagina*/
+        $("#vista1").hide();
+        $("#btn_exportar").hide();
+        $("#btn_exportar").on("click", function () {
+            url = baseUrl + '@Url.Action("ExpSolicitudes", "Administracion")';
+            $("#btn_exportar").attr("href", url);
+
+        });
+        ListarInformados("", "");
+        $('#vista1').show();
+    });
+
+    $('#Buscar').click(function () {
+        var Manzana = $('#rol_rol').val();
+        var Predio = $('#rol_dv').val();
+        
+        ListarInformados(Manzana, Predio);
+        $('#vista1').show();
+    });
+
+    function ListarInformados(rol, dv) {
+        var url = '@Url.Action("ListarFormularios", "Administracion", new { rol = "rolText", dv = "dvText" })';
+        url = url.replace("rolText", rol);
+        url = url.replace("dvText", dv);
+        url = url.replace("&amp;", "&");
+       // alert(url);
+        $("#vista1").load(url);
+    }
+
+    $(function () {
+        $.ajax({
+            url:  '/SocialAseoWeb/Administracion/ListarFormularios',
+            cache: false,
+            dataType: "html",
+            success: function (data) {
+                var tipo = typeof data;
+                if (tipo != "string") {
+                    $("#tipo").show();
+                    $('#vista1').html(data);
+                    $('#vista1').show();
+                }
+                $('#vista1').html(data);
+                $('#vista1').show();
+            }
+        });
+    });
+
+</script>

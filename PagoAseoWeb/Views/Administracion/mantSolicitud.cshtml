@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "MantSolicitud";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var usuario = Session["usuario"];
+    ViewBag.Usuario = usuario;
+}
+
+<div class="content">
+    <div class="row">
+        <div class="panel panel-danger">
+            <div class="panel-heading">Mantenedor de Solicitudes</div>
+            <div class="panel-body">
+                @*<div class="row">
+             
+                    <div class="col-md-2">
+                        <p>Periodo</p>
+                        <p>
+                            <select class="form-control" id="comboBoxAño" name="comboBoxAño">
+                                <option value="2022" selected="selected">2022</option>
+                            </select>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Estado</p>
+                        <p>
+                            <select class="form-control" id="estaImagen" name="estaImagen">
+                                <option value="T">Todos</option>
+                                <option value="A">Aceptados</option>
+                                <option value="R">Rechazado</option>
+                                <option value="D">Derivados</option>
+                            </select>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Fecha Inicial</p>
+                        <p><input id="fecIniArc" class=" form-control datepicker" placeholder="00/00/0000" name="fecIniArc" type="text" onkeyup="javascript:this.value=this.value.toUpperCase();"></p>
+
+
+                    </div>
+                    <div class="col-md-2">
+                        <p>Fecha Final</p>
+                        <p><input id="fecFinArc" class="form-control datepicker" placeholder="00/00/0000" name="fecFinArc" type="text" onkeyup="javascript:this.value=this.value.toUpperCase();"></p>
+                    </div>
+                    <div class="col-md-1">
+                        <p>Buscar Rol</p>
+                        <p>
+                            <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" id="mRol" name="mRol" placeholder="0000">
+                        </p>
+                    </div>
+                    <div class="col-md-1">
+                        <p> </p>
+                        <p>
+                            <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" id="pRol" name="pRol" placeholder="0000">
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Rut</p>
+                        <p><input id="rutSol" class="form-control datepicker" placeholder="00000000-K" name="rutSol" type="text" onkeyup="javascript:this.value=this.value.toUpperCase();"></p>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" id="Buscar" class="btn btn-danger btn-block">Buscar</button>
+                        <br />
+                    </div>
+                    <div>
+                        <div class="col-md-10"></div>
+                        <div class="col-md-2">
+                            <a href="#" target="_blank" id="btn_exportar" name="btn_exportar" class="btn btn-success"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span> Xls</a>
+                        </div>
+                    </div>
+
+                </div>*@
+                <div>
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2">
+                        <a href="#" target="_blank" id="btn_exportar" name="btn_exportar" class="btn btn-success"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span> Xls</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div id="listaSolicitud"></div>
+        </div>
+    </div>
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script language="JavaScript" type="text/javascript">
+    var baseUrl = '@Request.Url.Scheme' + '://' + '@Request.Url.Authority';
+
+    var periodo = $('#comboBoxAño').val();
+    var estado = $('#estaImagen').val();
+    var fecini = $('#fecIniArc').val();
+    var fecfin = $('#fecFinArc').val();
+    var rolTex = $('#busPlacaPar').val();
+    var rut = $('#rutSol').val();
+    var Manzana = $('#mRol').val();
+    var Predio = $('#pRol').val();
+
+    $(document).ready(function () {
+
+
+
+        ListarInformados();
+        $('#Buscar').click(function () {
+            Manzana = $('#mRol').val();
+            Predio = $('#pRol').val();
+            periodo = $('#comboBoxAño').val();
+            if (Manzana != "") {
+                ListarInformadosfiltro(Manzana, Predio, periodo);
+            }
+            else
+            {
+                alert("falta datos para consulta");
+                ListarInformados();
+            }
+
+
+            $('#listaSolicitud').show();
+        });
+         $("#btn_exportar").on("click", function () {
+            // alert("exportar excel");
+            url = baseUrl + '@Url.Action("ExpSolicitudes", "Administracion")';
+            $("#btn_exportar").attr("href", url);
+
+        });
+    });
+
+
+
+    function ListarInformados() {
+        var url = '@Url.Action("ListarSolicitudes", "Administracion")';
+        $("#listaSolicitud").load(url);
+    }
+
+    function ListarInformadosfiltro(rol, dv, anio) {
+        var url = '@Url.Action("ListarSolicitudesFiltro", "Administracion", new { rol = "rolText", dv = "dvText", anio = "anioText" })';
+        url = url.replace("rolText", Manzana);
+        url = url.replace("dvText", Predio);
+        url = url.replace("&amp;", "&");
+        url = url.replace("anioText", periodo);
+        url = url.replace("&amp;", "&");
+        $("#listaSolicitud").load(url);
+    }
+</script>

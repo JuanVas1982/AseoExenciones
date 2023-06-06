@@ -1,0 +1,238 @@
+.body {
+    background: #e8e8e8;
+    background-repeat: no-repeat;
+    
+}
+
+p {
+    font:bold 12px Arial;
+}
+
+p.tituloH2 {
+    font:bold 24px Arial;
+}
+
+.white {
+    background: #FFFFFF;
+}
+
+.noJS {
+    display:none
+}
+
+.modal-header-danger {
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #f2dede;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+ }
+
+.modal-header-info {
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #d9edf7;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+ }
+
+.bgDegradeHeader  
+{
+    background: rgba(229,0,108,1);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(229,0,108,1)), to(rgba(229,0,108,0.6)));
+    background: -webkit-linear-gradient(top, rgba(229,0,108,1), rgba(229,0,108,0.6));
+    background: -moz-linear-gradient(top, rgba(229,0,108,1), rgba(229,0,108,0.6));
+    background: -ms-linear-gradient(top, rgba(229,0,108,1), rgba(229,0,108,0.6));
+    background: -o-linear-gradient(top, rgba(229,0,108,1), rgba(229,0,108,0.6));
+    background: linear-gradient( to bottom, rgba(229,0,108,1),rgba(229,0,108,0.6));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=rgba(229,0,108,1), endColorstr=rgba(229,0,108,0.6));
+
+    
+    text-transform:uppercase;
+    font:bold 12px Arial;
+    color:White;
+    text-align:right;
+    padding:10px;
+}
+
+.degradeHeader
+{
+    background: rgba(50,50,150,1);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(50,50,150,1)), to(rgba(50,50,150,0.6)));
+    background: -webkit-linear-gradient(top, rgba(50,50,150,1), rgba(50,50,150,0.6));
+    background: -moz-linear-gradient(top, rgba(50,50,150,1), rgba(50,50,150,0.6));
+    background: -ms-linear-gradient(top, rgba(50,50,150,1), rgba(50,50,150,0.6));
+    background: -o-linear-gradient(top, rgba(50,50,150,1), rgba(50,50,150,0.6));
+    background: linear-gradient( to bottom, rgba(50,50,150,1),rgba(50,50,150,0.6));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=rgba(50,50,150,1), endColorstr=rgba(50,50,150,0.6));
+
+    
+    text-transform:uppercase;
+    font:bold 12px Arial;
+    color:White;
+    padding:10px;
+}
+
+.degradeFooter  
+{
+    background: rgba(100,100,100,0.6);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(100,100,100,1)), to(rgba(100,100,100,0.6)));
+    background: -webkit-linear-gradient(top, rgba(100,100,100,1),rgba(100,100,100,0.6));
+    background: -moz-linear-gradient(top, rgba(100,100,100,1),rgba(100,100,100,0.6));
+    background: -ms-linear-gradient(top, rgba(100,100,100,1),rgba(100,100,100,0.6));
+    background: -o-linear-gradient(top, rgba(100,100,100,1),rgba(100,100,100,0.6));
+    background: linear-gradient( to bottom, rgba(100,100,100,1),rgba(100,100,100,0.6));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=rgba(100,100,100,1), endColorstr=rgba(100,100,100,0.6));
+    
+    
+    text-transform:uppercase;
+    font:bold 10px Arial;
+    color:White;
+    padding:30px;
+}
+
+a.blanco:link {
+    text-decoration:none;
+    color:White;
+}
+
+a.blanco:visited {
+    text-decoration:none;
+    color:White;
+}
+
+a.blanco:active {
+    text-decoration:underline;
+    color:White;
+}
+
+a.blanco:hover {
+    text-decoration:underline;
+    color:white;
+}
+
+
+.degradeTable  {
+    background: rgba(200,200,200,0.4);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(200,200,200,1)), to(rgba(200,200,200,0.4)));
+    background: -webkit-linear-gradient(top, rgba(200,200,200,1),rgba(200,200,200,0.4));
+    background: -moz-linear-gradient(top, rgba(200,200,200,1),rgba(200,200,200,0.4));
+    background: -ms-linear-gradient(top, rgba(200,200,200,1),rgba(200,200,200,0.4));
+    background: -o-linear-gradient(top, rgba(200,200,200,1),rgba(200,200,200,0.4));
+    background: linear-gradient( to bottom, rgba(200,200,200,1),rgba(200,200,200,0.4));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=rgba(200,200,200,1), endColorstr=rgba(200,200,200,0.4));
+    
+    text-transform:uppercase;
+    font:bold 12px Arial;
+    padding:10px; 
+    margin:0px;
+    
+}
+
+/*************formulario de inicio de sesion*************/
+
+#InicioSesion input[type="text"]
+{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#InicioSesion input[type="password"]
+{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#InicioSesion input[type=button] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+  background-color:#E5006C;
+  color:#fff
+}
+
+fieldset.scheduler-border {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend.scheduler-border {
+    width:inherit; /* Or auto */
+    padding:0 10px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+}
+
+.vertical-bar {
+    border-left: 1px solid #ccc;
+    width:1px;
+    height:150px;
+    margin:0px;
+    padding:0px;
+}
+
+.horizontal-bar {
+    border-bottom: 1px solid #ccc;
+    width:1px;
+    width:100%;
+
+}
+
+#nota-informativa {
+    padding:5px; /*Espaciado interno*/
+    width:50px; /*Ancho del contenedor*/
+    text-align:center; /*Alineación del texto*/
+    background: rgba(50,50,150,1);
+    position:fixed; /*Permite que se mantenga estático*/
+    display:none; /*Oculta el contenedor*/
+    color:White;
+}
+
+.isStuck {
+    width: 100%;
+    position: fixed;
+    
+}
+
+a.current {
+    background-color: rgba(48, 50, 128, 1);
+}
+
+nav#topnav 
+{
+    top:0px;
+    padding: 0px 0px;
+    background-color: rgba(229, 0, 108, 1);
+}
+nav#topnav ul 
+{
+    top:0px;
+    list-style: none;
+}
+nav#topnav ul li
+{
+    top:5px;
+    display: inline-block;
+}
+nav#topnav ul li a
+{
+    text-transform:uppercase;
+    font:bold 10px Arial;
+    color:#FFF;
+    padding: 7px 2px 2px 2px;
+    display: block;
+    text-decoration: none;
+}            
+

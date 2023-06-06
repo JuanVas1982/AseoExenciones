@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Validacion de Documento</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/png" href="/favivon.jpg" />
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/admin-lte/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/admin-lte/css/AdminLTE.css" rel="stylesheet" />
+    <link href="/admin-lte/css/skins/skin-macul.css" rel="stylesheet" />
+    <link href="/Content/bootstrap-select.css" rel="stylesheet" />
+    <link href="/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="/Content/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="/Content/bootstrap-mvc-validation.css" rel="stylesheet" />
+    <link href='/Content/fullcalendar.min.css' rel='stylesheet' />
+    <link href='/Content/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <link href='/Content/jquery-ui.min.css' rel='stylesheet' />
+</head>
+<body>
+
+    <div class="row">
+        @if (ViewBag.EncabezadoID == "OK") { 
+        <div class="container">
+            <div class="white row">
+                <br>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Validador de Certificado @ViewBag.EncabezadoID</div>
+                        <div class="panel-body">
+                            <label> Numero Solicitud:</label>
+                            <p>                                
+                                @ViewBag.Solicitud 
+                                 
+                            </p>
+                            <label> Nombre Beneficiario:</label>
+                              <p>                            
+                                  @ViewBag.Beneficiario
+                                
+                            </p>
+                            <label> Rol Propiedad:</label>
+                            <p>
+                                @ViewBag.Rol
+
+                            </p>
+                            <label> Decreto:</label>
+                            <p>
+                                @ViewBag.Decreto
+
+                            </p>
+                            <label> Fecha decreto:</label>
+                            <p>
+                                @ViewBag.FechaDecreto
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+            
+        }
+        else
+        {
+             <div class="container">
+            <div class="white row">
+                <br>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">Validador esta deshabilitado</div>
+                        <div class="panel-body">
+                            <p>
+                                
+                                El numero de solicitud ingresado no es correcto,
+                                vuelva a intentarlo o consulte en nuestro sitio web. 
+
+                            </p>
+                            <p>
+                                <a href="@Url.Action("Index", "Inicio")" target="_blank">
+                                    En este enlace podra ser redireccionado a nuestro portal
+                                    asi podra averiguar por el estado de su rol.
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+        }
+
+
+    </div>
+
+        <script src="/Scripts/jquery-3.1.1.js"></script>
+        <script src="/Scripts/bootstrap.js"></script>
+        <script src="/Scripts/respond.js"></script>
+        <script src="/Scripts/bootstrap-select.js"></script>
+        <script src="/Scripts/jquery.mask.js"></script>
+
+        <script src="/admin-lte/js/adminlte.min.js"></script>
+
+        <script src="/Scripts/jquery.unobtrusive-ajax.js"></script>
+        <script src="/Scripts/jquery.validate.js"></script>
+        <script src="/scripts/jquery.validate.unobtrusive.js"></script>
+        <script src="/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js"></script>
+
+        <script src='/Scripts/moment.min.js'></script>
+        <script src='/Scripts/jquery-ui.min.js'></script>
+        <script src='/Scripts/fullcalendar.min.js'></script>
+        <script src='/Scripts/locale-all.js'></script>
+        <script src="/Scripts/bootstrap-datepicker.min.js"></script>
+        <script src="/Scripts/d3.v3.min.js"></script>
+        <script src="/Scripts/spin.min.js"></script>
+        <script src="/Scripts/jquery.form.min.js"></script>
+        @Scripts.Render("~/bundles/jqwidgets")
+
+
+
+</body>
+</html>

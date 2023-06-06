@@ -1,0 +1,196 @@
+﻿@{
+    var rand = new Random();
+    var archivo = rand.Next(1000);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="icon" type="image/png" href="~/Img/favicon.ico" />
+    <link href="~/Content/jquery-ui.css?v=@archivo" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css?v=@archivo" rel="stylesheet" />
+    <link href="~/Content/estilos.css?v=@archivo" rel="stylesheet" />
+    <link href="~/Content/chosen/chosen.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.base.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.alert.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.darkblue.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.metrodark.css" rel="stylesheet" />
+    <link href="~/Content/styles/jqx.energyblue.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style>
+        .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+            cursor: not-allowed;
+            background-color: white;
+        }
+
+    </style>
+</head>
+
+<body class="body">
+    <div class="col-md-12" style="text-align:right">
+
+        <a href="@Url.Action("IndexAdmin", "Inicio")" style="float:right"><img class="img-responsive" src="~/Img/login.png" height="25%" width="25%" /></a>
+
+
+    </div>
+    @*------------------SI JAVASCRIPT DESHABILITADO------------------*@
+    <noscript>
+        <div class="container">
+            <div class="white row">
+                <br>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">Javascript esta deshailitado</div>
+                        <div class="panel-body">
+                            <p>
+                                Para que este web site funcione correctamente,
+                                es necesario habilitar javascript en tu navegador.
+
+                            </p>
+                            <p>
+                                <a href="http://www.enable-javascript.com/" target="_blank">
+                                    En este enlace encontrarás instrucciones de
+                                    cómo habilitar javascript en tu navegador
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+    </noscript>
+    
+        @*------------------Modal------------------*@
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div id="modColHeader" class="modal-header-info">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 id="modTitulo" class="modal-title"></h4>
+                    </div>
+                    <div id="modColBody" class="modal-body">
+                        <p id="modBody"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @*************************** modal para Revision Documentos ********************************@
+    <div class="modal fade" id="ModalDocumento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="text-align:center">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width:800px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="IdverDoc">Documento</h5>
+                </div>
+                <div class="modal-body">
+                    <iframe id="verDoc" src="URL" style="width: 754px;height: 254px;"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        @*------------------MENU------------------*@
+        @*<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: rgba(229, 0, 108, 1); border-color:rgba(229, 0, 108, 1);">
+                <div class="container-fluid" >
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" style="color:white" href="https://www.munimacul.cl">I. M. MACUL</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li><a style="color:white" href="https://pagos.munimacul.cl/SocialAseoWeb">ASEO</a></li>
+                            <li><a style="color:white" href="https://pagos.munimacul.cl/PagoCerDOM">CER. DOM</a></li>
+                            <li><a style="color:white" href="https://pagos.munimacul.cl/PagoPatComercialWeb">PATENTE COMERCIAL</a></li>
+                            <li><a style="color:white" href="https://pagos.munimacul.cl/PagoPerCirWeb">PER. CIRCULACION</a></li>
+                            <li><a style="color:white" href="https://pagos.munimacul.cl/PagoJplWeb">MUL. EMPADRONADAS</a></li>
+                            <li><a style="color:white" href="https://pagos.munimacul.cl/PagoMultasRpmn">MUL. RMNP</a></li>
+                            <li><a style="color:white" href="https://pagos.munimacul.cl/PagoMultasTagWeb">MUL. TAG</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>*@
+
+        <div id="siJavascript" class="container white noJS">
+
+            @*------------------HEADER------------------*@
+            <div class=" row" style="padding-top:50px">
+                <img class="hidden-xs img-responsive" src="~/Img/ASEO/ENCABEZADO_ASEO.png?v=@archivo" />
+                <img class="visible-xs img-responsive" src="~/Img/ENCABEZADO_XS.png?v=@archivo" />
+                <hr style="border-top: 1px solid #E5006C;">
+            </div>
+            @*------------------CONTENIDO------------------*@
+            @RenderBody()
+
+            @*------------------FOOTER------------------*@
+            <div class=" row" style="background-color: RGB(114,114,116)">
+                <center>
+                    <img alt="" class="hidden-xs img-responsive" src="~/Img/PIE_PAGINA.jpg?v=@archivo" />
+                    <img alt="" class="visible-xs img-responsive" src="~/Img/PIE_LOGO_XS.png?v=@archivo" />
+                    <img alt="" class="visible-xs img-responsive" src="~/Img/PIE_DATA_XS.png?v=@archivo" />
+                </center>
+            </div>
+        </div>
+    @*<script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>*@
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/jquery-ui.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxcore.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxdata.js"></script>
+        <script src="~/Scripts/format.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxexpander.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxloader.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxvalidator.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxcheckbox.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxbuttons.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxscrollbar.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxmenu.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxgrid.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxcalendar.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxdatetimeinput.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxmaskedinput.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxgrid.edit.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxgrid.sort.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxgrid.filter.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxgrid.selection.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxpanel.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxinput.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxlistbox.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxdropdownlist.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxnumberinput.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxslider.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxalert.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxcombobox.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxdatatable.js"></script>
+        <script src="~/Scripts/jqwidgets/jqxtreegrid.js"></script>
+        <script src="~/Scripts/jqwidgets/globalization/globalize.js"></script>
+        <script src="~/Scripts/demos.js"></script>
+        <script src="~/Scripts/consultasAjax.js?v=@archivo"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/chosen.jquery.js"></script>
+        <script src="~/Scripts/jquery.form.min.js"></script>
+        <script src="~/Scripts/jquery.cookie.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#siJavascript").removeClass("noJS");
+            });
+        </script>
+        @RenderSection("scripts", required: false)
+
+</body>
+</html>
+
+
+
+

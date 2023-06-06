@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<xs:schema id="dsQr" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="dsQr" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="codigoQrT">
+          <xs:complexType>
+            <xs:attribute name="NUMDECRE" type="xs:string" />
+            <xs:attribute name="codigoQrArrayBytes" type="xs:base64Binary" />
+            <xs:attribute name="Firma1ArrayBytes" type="xs:base64Binary" />
+            <xs:attribute name="Firma2ArrayBytes" type="xs:base64Binary" />
+            <xs:attribute name="Firma3ArrayBytes" type="xs:base64Binary" />
+            <xs:attribute name="Firma4ArrayBytes" type="xs:base64Binary" />
+            <xs:attribute name="Firma5ArrayBytes" type="xs:base64Binary" />
+            <xs:attribute name="Firma6ArrayBytes" type="xs:base64Binary" />
+            <xs:attribute name="Firma7ArrayBytes" type="xs:base64Binary" />
+            <xs:attribute name="Firma8ArrayBytes" type="xs:base64Binary" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="accesosModelStoreContainer" CdmEntityContainer="accesosEntities">
+    <FunctionImportMapping FunctionImportName="PA_ENCIP_DESENCRIP_DATOS_MVC" FunctionName="accesosModel.Store.PA_ENCIP_DESENCRIP_DATOS_MVC" />
+    <EntitySetMapping Name="INAC_USUARIO">
+      <EntityTypeMapping TypeName="accesosModel.INAC_USUARIO">
+        <MappingFragment StoreEntitySet="INAC_USUARIO">
+          <ScalarProperty Name="USUA_TOKEN" ColumnName="USUA_TOKEN" />
+          <ScalarProperty Name="USUA_COD_CAJERO" ColumnName="USUA_COD_CAJERO" />
+          <ScalarProperty Name="USUA_CCOSTO5" ColumnName="USUA_CCOSTO5" />
+          <ScalarProperty Name="USUA_CCOSTO4" ColumnName="USUA_CCOSTO4" />
+          <ScalarProperty Name="USUA_CCOSTO3" ColumnName="USUA_CCOSTO3" />
+          <ScalarProperty Name="USUA_CCOSTO2" ColumnName="USUA_CCOSTO2" />
+          <ScalarProperty Name="USUA_CCOSTO" ColumnName="USUA_CCOSTO" />
+          <ScalarProperty Name="USUA_PERM_ELIMINAR" ColumnName="USUA_PERM_ELIMINAR" />
+          <ScalarProperty Name="USUA_PERM_GRABAR" ColumnName="USUA_PERM_GRABAR" />
+          <ScalarProperty Name="USUA_ESTA" ColumnName="USUA_ESTA" />
+          <ScalarProperty Name="USUA_UBICACION" ColumnName="USUA_UBICACION" />
+          <ScalarProperty Name="USUA_FECHA_PASSW" ColumnName="USUA_FECHA_PASSW" />
+          <ScalarProperty Name="USUA_VIGENCIA" ColumnName="USUA_VIGENCIA" />
+          <ScalarProperty Name="USUA_FECHA_FIN" ColumnName="USUA_FECHA_FIN" />
+          <ScalarProperty Name="USUA_FECHA_INI" ColumnName="USUA_FECHA_INI" />
+          <ScalarProperty Name="USUA_COD_PERFIL" ColumnName="USUA_COD_PERFIL" />
+          <ScalarProperty Name="USUA_CARGO" ColumnName="USUA_CARGO" />
+          <ScalarProperty Name="USUA_DV" ColumnName="USUA_DV" />
+          <ScalarProperty Name="USUA_NOMBRE" ColumnName="USUA_NOMBRE" />
+          <ScalarProperty Name="USUA_RUT" ColumnName="USUA_RUT" />
+          <ScalarProperty Name="USUA_PASSWORD" ColumnName="USUA_PASSWORD" />
+          <ScalarProperty Name="USUA_CODIGO" ColumnName="USUA_CODIGO" />
+          <ScalarProperty Name="USUA_CODIGO_SIST" ColumnName="USUA_CODIGO_SIST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PA_VALIDA_USUARIO_WEB" FunctionName="accesosModel.Store.PA_VALIDA_USUARIO_WEB">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="accesosModel.PA_VALIDA_USUARIO_WEB_Result">
+          <ScalarProperty Name="USUA_CODIGO_SIST" ColumnName="USUA_CODIGO_SIST" />
+          <ScalarProperty Name="USUA_CODIGO" ColumnName="USUA_CODIGO" />
+          <ScalarProperty Name="USUA_PASSWORD" ColumnName="USUA_PASSWORD" />
+          <ScalarProperty Name="USUA_RUT" ColumnName="USUA_RUT" />
+          <ScalarProperty Name="USUA_NOMBRE" ColumnName="USUA_NOMBRE" />
+          <ScalarProperty Name="USUA_DV" ColumnName="USUA_DV" />
+          <ScalarProperty Name="USUA_CARGO" ColumnName="USUA_CARGO" />
+          <ScalarProperty Name="USUA_COD_PERFIL" ColumnName="USUA_COD_PERFIL" />
+          <ScalarProperty Name="USUA_FECHA_INI" ColumnName="USUA_FECHA_INI" />
+          <ScalarProperty Name="USUA_FECHA_FIN" ColumnName="USUA_FECHA_FIN" />
+          <ScalarProperty Name="USUA_VIGENCIA" ColumnName="USUA_VIGENCIA" />
+          <ScalarProperty Name="USUA_FECHA_PASSW" ColumnName="USUA_FECHA_PASSW" />
+          <ScalarProperty Name="USUA_UBICACION" ColumnName="USUA_UBICACION" />
+          <ScalarProperty Name="USUA_ESTA" ColumnName="USUA_ESTA" />
+          <ScalarProperty Name="USUA_PERM_GRABAR" ColumnName="USUA_PERM_GRABAR" />
+          <ScalarProperty Name="USUA_PERM_ELIMINAR" ColumnName="USUA_PERM_ELIMINAR" />
+          <ScalarProperty Name="USUA_CCOSTO" ColumnName="USUA_CCOSTO" />
+          <ScalarProperty Name="USUA_CCOSTO2" ColumnName="USUA_CCOSTO2" />
+          <ScalarProperty Name="USUA_CCOSTO3" ColumnName="USUA_CCOSTO3" />
+          <ScalarProperty Name="USUA_CCOSTO4" ColumnName="USUA_CCOSTO4" />
+          <ScalarProperty Name="USUA_CCOSTO5" ColumnName="USUA_CCOSTO5" />
+          <ScalarProperty Name="USUA_COD_CAJERO" ColumnName="USUA_COD_CAJERO" />
+          <ScalarProperty Name="USUA_TOKEN" ColumnName="USUA_TOKEN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

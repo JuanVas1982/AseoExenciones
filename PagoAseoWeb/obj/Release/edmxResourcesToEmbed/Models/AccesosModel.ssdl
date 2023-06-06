@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="accesosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'accesos.dbo.INAC_USUARIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="INAC_USUARIO">
+    <Key>
+      <PropertyRef Name="USUA_CODIGO_SIST" />
+      <PropertyRef Name="USUA_CODIGO" />
+      <PropertyRef Name="USUA_PASSWORD" />
+      <PropertyRef Name="USUA_RUT" />
+      <PropertyRef Name="USUA_NOMBRE" />
+      <PropertyRef Name="USUA_DV" />
+      <PropertyRef Name="USUA_COD_PERFIL" />
+      <PropertyRef Name="USUA_VIGENCIA" />
+    </Key>
+    <Property Name="USUA_CODIGO_SIST" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="USUA_CODIGO" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="USUA_PASSWORD" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="USUA_RUT" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="USUA_NOMBRE" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="USUA_DV" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="USUA_CARGO" Type="varchar" MaxLength="40" />
+    <Property Name="USUA_COD_PERFIL" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="USUA_FECHA_INI" Type="datetime" />
+    <Property Name="USUA_FECHA_FIN" Type="datetime" />
+    <Property Name="USUA_VIGENCIA" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="USUA_FECHA_PASSW" Type="datetime" />
+    <Property Name="USUA_UBICACION" Type="varchar" MaxLength="40" />
+    <Property Name="USUA_ESTA" Type="numeric" Precision="4" Scale="0" />
+    <Property Name="USUA_PERM_GRABAR" Type="varchar" MaxLength="1" />
+    <Property Name="USUA_PERM_ELIMINAR" Type="varchar" MaxLength="1" />
+    <Property Name="USUA_CCOSTO" Type="varchar" MaxLength="9" />
+    <Property Name="USUA_CCOSTO2" Type="varchar" MaxLength="9" />
+    <Property Name="USUA_CCOSTO3" Type="varchar" MaxLength="9" />
+    <Property Name="USUA_CCOSTO4" Type="varchar" MaxLength="9" />
+    <Property Name="USUA_CCOSTO5" Type="varchar" MaxLength="9" />
+    <Property Name="USUA_COD_CAJERO" Type="varchar" MaxLength="4" />
+    <Property Name="USUA_TOKEN" Type="varchar(max)" />
+  </EntityType>
+  <Function Name="PA_ENCIP_DESENCRIP_DATOS_MVC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DATO" Type="nvarchar" Mode="In" />
+    <Parameter Name="OPCION" Type="char" Mode="In" />
+  </Function>
+  <Function Name="PA_VALIDA_USUARIO_WEB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USUA_CODIGO_SIST" Type="numeric" Mode="In" />
+    <Parameter Name="usuario" Type="varchar" Mode="In" />
+    <Parameter Name="llave" Type="varchar" Mode="In" />
+    <Parameter Name="opcion" Type="numeric" Mode="In" />
+  </Function>
+  <EntityContainer Name="accesosModelStoreContainer">
+    <EntitySet Name="INAC_USUARIO" EntityType="Self.INAC_USUARIO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[INAC_USUARIO].[USUA_CODIGO_SIST] AS [USUA_CODIGO_SIST], 
+[INAC_USUARIO].[USUA_CODIGO] AS [USUA_CODIGO], 
+[INAC_USUARIO].[USUA_PASSWORD] AS [USUA_PASSWORD], 
+[INAC_USUARIO].[USUA_RUT] AS [USUA_RUT], 
+[INAC_USUARIO].[USUA_NOMBRE] AS [USUA_NOMBRE], 
+[INAC_USUARIO].[USUA_DV] AS [USUA_DV], 
+[INAC_USUARIO].[USUA_CARGO] AS [USUA_CARGO], 
+[INAC_USUARIO].[USUA_COD_PERFIL] AS [USUA_COD_PERFIL], 
+[INAC_USUARIO].[USUA_FECHA_INI] AS [USUA_FECHA_INI], 
+[INAC_USUARIO].[USUA_FECHA_FIN] AS [USUA_FECHA_FIN], 
+[INAC_USUARIO].[USUA_VIGENCIA] AS [USUA_VIGENCIA], 
+[INAC_USUARIO].[USUA_FECHA_PASSW] AS [USUA_FECHA_PASSW], 
+[INAC_USUARIO].[USUA_UBICACION] AS [USUA_UBICACION], 
+[INAC_USUARIO].[USUA_ESTA] AS [USUA_ESTA], 
+[INAC_USUARIO].[USUA_PERM_GRABAR] AS [USUA_PERM_GRABAR], 
+[INAC_USUARIO].[USUA_PERM_ELIMINAR] AS [USUA_PERM_ELIMINAR], 
+[INAC_USUARIO].[USUA_CCOSTO] AS [USUA_CCOSTO], 
+[INAC_USUARIO].[USUA_CCOSTO2] AS [USUA_CCOSTO2], 
+[INAC_USUARIO].[USUA_CCOSTO3] AS [USUA_CCOSTO3], 
+[INAC_USUARIO].[USUA_CCOSTO4] AS [USUA_CCOSTO4], 
+[INAC_USUARIO].[USUA_CCOSTO5] AS [USUA_CCOSTO5], 
+[INAC_USUARIO].[USUA_COD_CAJERO] AS [USUA_COD_CAJERO], 
+[INAC_USUARIO].[USUA_TOKEN] AS [USUA_TOKEN]
+FROM [dbo].[INAC_USUARIO] AS [INAC_USUARIO]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

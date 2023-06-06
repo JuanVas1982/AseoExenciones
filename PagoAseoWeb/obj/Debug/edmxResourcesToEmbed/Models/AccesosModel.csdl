@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="accesosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="accesosEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="PA_ENCIP_DESENCRIP_DATOS_MVC" ReturnType="Collection(String)">
+      <Parameter Name="DATO" Mode="In" Type="String" />
+      <Parameter Name="OPCION" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="INAC_USUARIO" EntityType="accesosModel.INAC_USUARIO" />
+    <FunctionImport Name="PA_VALIDA_USUARIO_WEB" ReturnType="Collection(accesosModel.PA_VALIDA_USUARIO_WEB_Result)">
+      <Parameter Name="USUA_CODIGO_SIST" Mode="In" Type="Decimal" />
+      <Parameter Name="usuario" Mode="In" Type="String" />
+      <Parameter Name="llave" Mode="In" Type="String" />
+      <Parameter Name="opcion" Mode="In" Type="Decimal" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="INAC_USUARIO">
+    <Key>
+      <PropertyRef Name="USUA_CODIGO_SIST" />
+      <PropertyRef Name="USUA_CODIGO" />
+      <PropertyRef Name="USUA_PASSWORD" />
+      <PropertyRef Name="USUA_RUT" />
+      <PropertyRef Name="USUA_NOMBRE" />
+      <PropertyRef Name="USUA_DV" />
+      <PropertyRef Name="USUA_COD_PERFIL" />
+      <PropertyRef Name="USUA_VIGENCIA" />
+    </Key>
+    <Property Name="USUA_CODIGO_SIST" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+    <Property Name="USUA_CODIGO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_PASSWORD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_RUT" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+    <Property Name="USUA_NOMBRE" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_DV" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_CARGO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_COD_PERFIL" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+    <Property Name="USUA_FECHA_INI" Type="DateTime" Precision="3" />
+    <Property Name="USUA_FECHA_FIN" Type="DateTime" Precision="3" />
+    <Property Name="USUA_VIGENCIA" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="USUA_FECHA_PASSW" Type="DateTime" Precision="3" />
+    <Property Name="USUA_UBICACION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_ESTA" Type="Decimal" Precision="4" Scale="0" />
+    <Property Name="USUA_PERM_GRABAR" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_PERM_ELIMINAR" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_CCOSTO" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_CCOSTO2" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_CCOSTO3" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_CCOSTO4" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_CCOSTO5" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_COD_CAJERO" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="USUA_TOKEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="PA_VALIDA_USUARIO_WEB_Result">
+    <Property Type="Decimal" Name="USUA_CODIGO_SIST" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="USUA_CODIGO" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="USUA_PASSWORD" Nullable="false" MaxLength="10" />
+    <Property Type="Decimal" Name="USUA_RUT" Nullable="false" Precision="10" Scale="0" />
+    <Property Type="String" Name="USUA_NOMBRE" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="USUA_DV" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="USUA_CARGO" Nullable="true" MaxLength="40" />
+    <Property Type="Decimal" Name="USUA_COD_PERFIL" Nullable="false" Precision="4" Scale="0" />
+    <Property Type="DateTime" Name="USUA_FECHA_INI" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="USUA_FECHA_FIN" Nullable="true" Precision="23" />
+    <Property Type="String" Name="USUA_VIGENCIA" Nullable="false" MaxLength="1" />
+    <Property Type="DateTime" Name="USUA_FECHA_PASSW" Nullable="true" Precision="23" />
+    <Property Type="String" Name="USUA_UBICACION" Nullable="true" MaxLength="40" />
+    <Property Type="Decimal" Name="USUA_ESTA" Nullable="true" Precision="4" Scale="0" />
+    <Property Type="String" Name="USUA_PERM_GRABAR" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="USUA_PERM_ELIMINAR" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="USUA_CCOSTO" Nullable="true" MaxLength="9" />
+    <Property Type="String" Name="USUA_CCOSTO2" Nullable="true" MaxLength="9" />
+    <Property Type="String" Name="USUA_CCOSTO3" Nullable="true" MaxLength="9" />
+    <Property Type="String" Name="USUA_CCOSTO4" Nullable="true" MaxLength="9" />
+    <Property Type="String" Name="USUA_CCOSTO5" Nullable="true" MaxLength="9" />
+    <Property Type="String" Name="USUA_COD_CAJERO" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="USUA_TOKEN" Nullable="true" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,365 @@
+﻿@model List<SocialAseoWeb.Models.AS_PAGOS>
+@using SocialAseoWeb.Comun
+@using System.Globalization
+
+
+@if (Model.Count > 0)
+{
+    using (Html.BeginForm("ConfirmarDeuda", "Pago", FormMethod.Post, new { id = "formListaDeuda" }))
+    { 
+         <div class="panel panel-default">
+            <div class="panel-heading"><h4 style="color: #E5006C; text-align:center;font-weight:600;">Datos del Contribuyente</h4></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span style="font: bold 14px Arial;" class="input-group-addon">E-MAIL:</span>
+                            <input class="form-control" name='email' id='email' type='text' placeholder="XX@XX.CL"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span style="font: bold 14px Arial;" class="input-group-addon">TELÉFONO:</span>
+                            <input class="form-control" name='telefono' id='telefono' type='text' placeholder="000000000"/>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <input style='display: none;' type='button' value='Pagar' onclick="javascript:formListaDeudaEnviar()" name='btnPagar' id='btnPagar' class='btn btn-danger btn-block' />
+                    </div>
+                    <div class="col-md-6">
+                        <input name='rolNum' id='rolNum' type='hidden' value="@Html.Raw(Model[0].PAG_ROL_NUM.ToString())" />
+                        <input name='rolDv' id='rolDv' type='hidden' value="@Html.Raw(Model[0].PAG_ROL_DV.ToString())" />
+                        <span style="font: bold 18px Arial;">TOTAL A PAGAR: <span style="font: bold 18px Arial; color:green;" id='aPagar'></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-sm table-hover table-bordered">
+                    <thead>
+                        <tr class="danger">
+                            <th>
+                                <input name="chk_todos" id="chk_todos" onclick="javascript:chkTodos()" type="checkbox">
+                            </th>
+                            <th>
+                                AÑO
+                            </th>
+                            <th>
+                                CUOTA
+                            </th>
+                            <th>
+                                FEC. VENCI.
+                            </th>
+                            <th>
+                                VALOR
+                            </th>
+                            <th>
+                                IPC
+                            </th>
+                            <th>
+                                INTERESES
+                            </th>
+                            <th>
+                                TOTAL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int row = 0; row < Model.Count; row++)
+                        {
+
+                            <tr>
+                                <td>
+                                    @*Definicion del id del chk *@
+                                    @{
+                            int largo = Model.Count - 1;
+                            string chk_anterior = "";
+                            string chk_actual = "";
+                            string chk_posterior = "";
+
+                            if (row == 0)
+                            {
+                                chk_anterior = "";
+                                chk_actual = "chk_" + Model[row].PAG_ANO_CON + "_" + Model[row].PAG_CUOTA.ToString() + "_" + Model[row].TOTAL.ToString();
+                                if (largo != 0)
+                                {
+                                    chk_posterior = "chk_" + Model[row + 1].PAG_ANO_CON + "_" + Model[row + 1].PAG_CUOTA.ToString() + "_" + Model[row + 1].TOTAL.ToString();
+                                }
+                            }
+                            else if (row == largo)
+                            {
+                                chk_anterior = "chk_" + Model[row - 1].PAG_ANO_CON + "_" + Model[row - 1].PAG_CUOTA.ToString() + "_" + Model[row - 1].TOTAL.ToString();
+                                chk_actual = "chk_" + Model[row].PAG_ANO_CON + "_" + Model[row].PAG_CUOTA.ToString() + "_" + Model[row].TOTAL.ToString();
+                                chk_posterior = "";
+                            }
+                            else
+                            {
+                                chk_anterior = "chk_" + Model[row - 1].PAG_ANO_CON + "_" + Model[row - 1].PAG_CUOTA.ToString() + "_" + Model[row - 1].TOTAL.ToString();
+                                chk_actual = "chk_" + Model[row].PAG_ANO_CON + "_" + Model[row].PAG_CUOTA.ToString() + "_" + Model[row].TOTAL.ToString();
+                                chk_posterior = "chk_" + Model[row + 1].PAG_ANO_CON + "_" + Model[row + 1].PAG_CUOTA.ToString() + "_" + Model[row + 1].TOTAL.ToString();
+                            }
+                                    }
+                                    @if (row == 0)
+                                    {
+                                        <input type="checkbox" onclick="javascript:checkboxClick('@Html.Raw(chk_actual)','@Html.Raw(chk_anterior)','@Html.Raw(chk_posterior)','@Html.Raw(largo)','@Html.Raw(row)')" id="@Html.Raw(chk_actual)" name="@Html.Raw(chk_actual)">
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" style="display: none;" onclick="javascript:checkboxClick('@Html.Raw(chk_actual)','@Html.Raw(chk_anterior)','@Html.Raw(chk_posterior)','@Html.Raw(largo)','@Html.Raw(row)')" id="@Html.Raw(chk_actual)" name="@Html.Raw(chk_actual)">
+                                    }
+                                </td>
+                                <td>
+                                    @Html.Raw(Model[row].PAG_ANO_CON)
+                                </td>
+                                <td>
+                                    @Html.Raw(Model[row].PAG_CUOTA)
+                                </td>
+                                <td>
+                                    @Html.Raw(Model[row].PAG_FEC_V)
+                                </td>
+                                <td>
+                                    @Html.Raw("$" + String.Format(CultureInfo.InvariantCulture, "{0:0,0}", Model[row].PAG_VALOR))
+                                </td>
+                                <td>
+                                    @Html.Raw("$" + String.Format(CultureInfo.InvariantCulture, "{0:0,0}", Model[row].INTERES))
+                                </td>
+                                <td>
+                                    @Html.Raw("$" + String.Format(CultureInfo.InvariantCulture, "{0:0,0}", Model[row].MULTA))
+                                </td>
+                                <td>
+                                    @Html.Raw("$" + String.Format(CultureInfo.InvariantCulture, "{0:0,0}", Model[row].TOTAL))
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>          
+        </div>
+    </div>
+    }
+}
+else
+{
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">Listado de Deuda</div>
+                <div class="panel-body">
+                    <div>No se han encontrado deudas relacionadas con este rol.</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+}
+
+
+<script type="text/javascript">
+    function checkboxClick(idCheActual, idCheAnterior, idChePosterior, largo, row) {
+        var suma = 0;
+        var cuenta = 0;
+        $('input:checkbox').each(function () {
+            cuenta = cuenta + 1;
+            var chk = $(this);
+            if (cuenta == 1) {
+
+            } else {
+                if (chk.context.checked == true){
+                    var pos = chk.context.id.lastIndexOf("_");
+                    var lar = chk.context.id.length;
+                    var valor = chk.context.id.substring(pos + 1, lar);
+                    suma = suma + parseInt(valor);
+                }
+            }
+        });
+        if (row == 0) {
+            if ($('input:checkbox[id^="' + idCheActual + '"]').prop('checked')) {
+                if (largo != 0) {
+                    $('input:checkbox[id^="' + idChePosterior + '"]').css('display', 'block');
+                }
+                $("#aPagar").html(currency(suma, 0) + '.-');
+                $('#btnPagar').css('display', 'block');
+            } else {
+                if (largo != 0) {
+                    $('input:checkbox[id^="' + idChePosterior + '"]').css('display', 'none');
+                }
+                $("#aPagar").html(currency(suma, 0) + '.-');
+                $('#btnPagar').css('display', 'none');
+            }
+        } else if (row == largo) {
+            if ($('input:checkbox[id^="' + idCheActual + '"]').prop('checked')) {
+                $('input:checkbox[id^="' + idChePosterior + '"]').css('display', 'block');
+                $('input:checkbox[id^="' + idCheAnterior + '"]').prop("disabled", true);
+            } else {
+                $('input:checkbox[id^="' + idCheAnterior + '"]').prop("disabled", false);
+            }
+            $("#aPagar").html(currency(suma, 0) + '.- ');
+            $('#btnPagar').css('display', 'block');
+        } else {
+            if ($('input:checkbox[id^="' + idCheActual + '"]').prop('checked')) {
+                if (row == '@Html.Raw(decimal.Parse(Utils.maxRegiPdf))') {
+                    $("#modTitulo").html("Validación");
+                    $("#modBody").html("Se pueden elegir solo " + @Html.Raw(decimal.Parse(Utils.maxRegiPdf)) + " registros.");
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                } else {
+                    $('input:checkbox[id^="' + idCheAnterior + '"]').prop("disabled", true);
+                    $('input:checkbox[id^="' + idChePosterior + '"]').css('display', 'block');
+                }
+            } else {
+                 $('input:checkbox[id^="' + idCheAnterior + '"]').prop("disabled", false);
+                $('input:checkbox[id^="' + idChePosterior + '"]').css('display', 'none');
+            }
+            $("#aPagar").html(currency(suma, 0) + '.- ');
+            $('#btnPagar').css('display', 'block');
+        }
+    }
+
+    function currency(value, decimals, separators) {
+        decimals = decimals >= 0 ? parseInt(decimals, 0) : 2;
+        separators = separators || ['.', ".", ','];
+        var number = (parseFloat(value) || 0).toFixed(decimals);
+        if (number.length <= (3 + decimals))
+            return number.replace('.', separators[separators.length - 1]);
+        var parts = number.split(/[-.]/);
+        value = parts[parts.length > 1 ? parts.length - 2 : 0];
+        var result = value.substr(value.length - 3, 3) + (parts.length > 1 ?
+            separators[separators.length - 1] + parts[parts.length - 1] : '');
+        var start = value.length - 6;
+        var idx = 0;
+        while (start > -3) {
+            result = (start > 0 ? value.substr(start, 3) : value.substr(0, 3 + start))
+                + separators[idx] + result;
+            idx = (++idx) % 2;
+            start -= 3;
+        }
+        return '$' + (parts.length == 3 ? '-' : '') + result;
+    }
+
+    function chkTodos(){
+
+        if ($("#chk_todos").is(':checked')) {
+            var cuenta = 0;
+            $("input[type=checkbox]").css('display', 'block');
+            $("input[type=checkbox]").prop('checked', true);
+            $("input[type=checkbox]").prop("disabled", true);
+            var largo = $('input:checkbox').length;
+            var suma = 0;
+            $('input:checkbox').each(function () {
+                cuenta = cuenta + 1;
+                var chk = $(this);
+                if (cuenta == 1) {
+                    chk.prop("disabled", false)
+                } else if (largo == cuenta) {
+                    var pos = chk.context.id.lastIndexOf("_");
+                    var lar = chk.context.id.length;
+                    var valor = chk.context.id.substring(pos + 1, lar);
+                    suma = suma + parseInt(valor);
+                    chk.prop("disabled", false);
+                } else {
+                    var pos = chk.context.id.lastIndexOf("_");
+                    var lar = chk.context.id.length;
+                    var valor = chk.context.id.substring(pos + 1, lar);
+                    suma = suma + parseInt(valor);
+                }
+            });
+            $("#aPagar").html(currency(suma, 0) + '.-');
+            $('#btnPagar').css('display', 'block');
+        } else {
+            var cuenta = 0;
+            $("input[type=checkbox]").css('display', 'none');
+            $("input[type=checkbox]").prop('checked', false);
+            $("input[type=checkbox]").prop("disabled", false);
+            $('input:checkbox').each(function () {
+                var este = $(this);
+                cuenta = cuenta + 1;
+                if (cuenta == 2) {
+                    este.css('display', 'block');
+                }
+
+            });
+
+            $('input:checkbox[id^="chk_todos"]').css('display', 'block');
+            $("#aPagar").html(currency(0, 0) + '.-');
+            $('#btnPagar').css('display', 'none');
+        }
+    }
+
+    function formListaDeudaEnviar(){
+        v0 = validacion('telefono');
+        v1 = validacion('email');
+        if (v0 && v1) {
+            $("input[type=checkbox]").prop("disabled", false);
+            $("#formListaDeuda").submit();
+
+            return;
+        } else {
+            return false;
+        }
+    }
+
+    function validacion(campo) {
+        if (campo === 'telefono') {
+            codigo = document.getElementById(campo).value;
+            if (codigo == null || codigo.length == 0 || /^\s+$/.test(codigo)) {
+                $("#modTitulo").html("Validación");
+                $("#modBody").html("Debe ingresar un número telefónico");
+                $("#modColHeader").removeClass();
+                $("#modColHeader").addClass("modal-header-danger");
+                $("#myModal").modal();
+                $("#" + campo).focus();
+                return false;
+            }
+            else {
+                if (isNaN(codigo)) {
+                    $("#modTitulo").html("Validación");
+                    $("#modBody").html("Solo se aceptan números");
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                    $("#" + campo).focus();
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        } else if (campo === 'email') {
+            email = document.getElementById(campo).value;
+            if (email == null || email.length == 0 || /^\s+$/.test(email)) {
+                $("#modTitulo").html("Validación");
+                $("#modBody").html("Debe ingresar E-Mail");
+                $("#modColHeader").removeClass();
+                $("#modColHeader").addClass("modal-header-danger");
+                $("#myModal").modal();
+                $("#" + campo).focus();
+                return false;
+            }
+            else{
+                if (!(/\S+@@\S+\.\S+/.test(email))) {
+                    $("#modTitulo").html("Validación");
+                    $("#modBody").html("Debe ingresar E-Mail valido");
+                    $("#modColHeader").removeClass();
+                    $("#modColHeader").addClass("modal-header-danger");
+                    $("#myModal").modal();
+                    $("#" + campo).focus();
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        }
+    }
+
+</script>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d8a25ebed1f14e988019ee049448bb89" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="aseoModel.AS_CONTRIBUYENTE" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aseoModel.AS_PAGOS" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aseoModel.AS_RUT" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aseoModel.AS_CONVENIO" Width="1.5" PointX="6.5" PointY="0.75" />
+        <EntityTypeShape EntityType="aseoModel.DetalleOrdenIngresoAseo" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="aseoModel.OrdenIngresoAseo" Width="1.5" PointX="10.125" PointY="0.75" />
+        <EntityTypeShape EntityType="aseoModel.TABLE_PARTICULAR_ARCHIVOS_DETALLE" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="aseoModel.TABLE_PARTICULAR_ARCHIVOS_ENCABEZADO" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="aseoModel.AS_EXCLUSION" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="aseoModel.Social_OrdenIngresoAseo" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="aseoModel.Social_DetalleOrdenIngresoAseo" Width="1.5" PointX="9.375" PointY="7.75" />
+        <EntityTypeShape EntityType="aseoModel.AS_SOLICITUD" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="aseoModel.Social_DetalleArchivo" Width="1.5" PointX="5.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

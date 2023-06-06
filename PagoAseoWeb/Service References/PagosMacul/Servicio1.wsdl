@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://200.54.162.185/BotonTGR/Servicio/Service.asmx" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://200.54.162.185/BotonTGR/Servicio/Service.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://200.54.162.185/BotonTGR/Servicio/Service.asmx">
+      <s:element name="EnviaGiro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="motivoCobro" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="monto" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="vencimiento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="movimiento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="folioTGR" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rutCont" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviaGiroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnviaGiroResult" type="tns:Respuesta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Respuesta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PaginaRedireccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdExt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Org" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Folio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RecibePago">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="M2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecibePagoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecibePagoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviaCuadratura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fecInforma" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviaCuadraturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnviaCuadraturaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecibeCuadratura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MR" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecibeCuadraturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecibeCuadraturaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloMyFriend">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloMyFriendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloMyFriendResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EnviaGiroSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviaGiro" />
+  </wsdl:message>
+  <wsdl:message name="EnviaGiroSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviaGiroResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecibePagoSoapIn">
+    <wsdl:part name="parameters" element="tns:RecibePago" />
+  </wsdl:message>
+  <wsdl:message name="RecibePagoSoapOut">
+    <wsdl:part name="parameters" element="tns:RecibePagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviaCuadraturaSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviaCuadratura" />
+  </wsdl:message>
+  <wsdl:message name="EnviaCuadraturaSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviaCuadraturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecibeCuadraturaSoapIn">
+    <wsdl:part name="parameters" element="tns:RecibeCuadratura" />
+  </wsdl:message>
+  <wsdl:message name="RecibeCuadraturaSoapOut">
+    <wsdl:part name="parameters" element="tns:RecibeCuadraturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloMyFriendSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloMyFriend" />
+  </wsdl:message>
+  <wsdl:message name="HelloMyFriendSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloMyFriendResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioSoap">
+    <wsdl:operation name="EnviaGiro">
+      <wsdl:input message="tns:EnviaGiroSoapIn" />
+      <wsdl:output message="tns:EnviaGiroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecibePago">
+      <wsdl:input message="tns:RecibePagoSoapIn" />
+      <wsdl:output message="tns:RecibePagoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviaCuadratura">
+      <wsdl:input message="tns:EnviaCuadraturaSoapIn" />
+      <wsdl:output message="tns:EnviaCuadraturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecibeCuadratura">
+      <wsdl:input message="tns:RecibeCuadraturaSoapIn" />
+      <wsdl:output message="tns:RecibeCuadraturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloMyFriend">
+      <wsdl:input message="tns:HelloMyFriendSoapIn" />
+      <wsdl:output message="tns:HelloMyFriendSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioSoap" type="tns:ServicioSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EnviaGiro">
+      <soap:operation soapAction="https://200.54.162.185/BotonTGR/Servicio/Service.asmx/EnviaGiro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecibePago">
+      <soap:operation soapAction="https://200.54.162.185/BotonTGR/Servicio/Service.asmx/RecibePago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviaCuadratura">
+      <soap:operation soapAction="https://200.54.162.185/BotonTGR/Servicio/Service.asmx/EnviaCuadratura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecibeCuadratura">
+      <soap:operation soapAction="https://200.54.162.185/BotonTGR/Servicio/Service.asmx/RecibeCuadratura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloMyFriend">
+      <soap:operation soapAction="https://200.54.162.185/BotonTGR/Servicio/Service.asmx/HelloMyFriend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioSoap12" type="tns:ServicioSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EnviaGiro">
+      <soap12:operation soapAction="https://200.54.162.185/BotonTGR/Servicio/Service.asmx/EnviaGiro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecibePago">
+      <soap12:operation soapAction="https://200.54.162.185/BotonTGR/Servicio/Service.asmx/RecibePago" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviaCuadratura">
+      <soap12:operation soapAction="https://200.54.162.185/BotonTGR/Servicio/Service.asmx/EnviaCuadratura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecibeCuadratura">
+      <soap12:operation soapAction="https://200.54.162.185/BotonTGR/Servicio/Service.asmx/RecibeCuadratura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloMyFriend">
+      <soap12:operation soapAction="https://200.54.162.185/BotonTGR/Servicio/Service.asmx/HelloMyFriend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Servicio">
+    <wsdl:port name="ServicioSoap" binding="tns:ServicioSoap">
+      <soap:address location="http://172.16.0.13/BotonTGR/Servicio/Servicio.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioSoap12" binding="tns:ServicioSoap12">
+      <soap12:address location="http://172.16.0.13/BotonTGR/Servicio/Servicio.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

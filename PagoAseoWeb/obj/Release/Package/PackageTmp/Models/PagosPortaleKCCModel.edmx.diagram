@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="470132a94f594c8087fc0b76220308c4" Name="Diagram1">
+        <EntityTypeShape EntityType="PagosPortaleKCCModel.PPKCC_FOLIOS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PagosPortaleKCCModel.TGR_ENVIA_GIRO" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PagosPortaleKCCModel.TGR_RECIBE_PAGO" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PagosPortaleKCCModel.WEBPAY" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PagosPortaleKCCModel.PPKCC_FOLIOS_ASIGNADOS" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PagosPortaleKCCModel.PPKCC_TRANSAC_ASEO" Width="1.5" PointX="2.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

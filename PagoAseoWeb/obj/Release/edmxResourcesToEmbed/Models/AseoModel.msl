@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="aseoModelStoreContainer" CdmEntityContainer="aseoEntities">
+    <EntitySetMapping Name="AS_CONTRIBUYENTE">
+      <EntityTypeMapping TypeName="aseoModel.AS_CONTRIBUYENTE">
+        <MappingFragment StoreEntitySet="AS_CONTRIBUYENTE">
+          <ScalarProperty Name="CON_ANO_CON" ColumnName="CON_ANO_CON" />
+          <ScalarProperty Name="CON_ROL_NUM" ColumnName="CON_ROL_NUM" />
+          <ScalarProperty Name="CON_ROL_DV" ColumnName="CON_ROL_DV" />
+          <ScalarProperty Name="CON_FEC_ING" ColumnName="CON_FEC_ING" />
+          <ScalarProperty Name="CON_NUM_FOLIO" ColumnName="CON_NUM_FOLIO" />
+          <ScalarProperty Name="CON_RUT" ColumnName="CON_RUT" />
+          <ScalarProperty Name="CON_DV" ColumnName="CON_DV" />
+          <ScalarProperty Name="CON_CALLE" ColumnName="CON_CALLE" />
+          <ScalarProperty Name="CON_NUMERO" ColumnName="CON_NUMERO" />
+          <ScalarProperty Name="CON_MANZANA" ColumnName="CON_MANZANA" />
+          <ScalarProperty Name="CON_PREDIO" ColumnName="CON_PREDIO" />
+          <ScalarProperty Name="CON_VILLA" ColumnName="CON_VILLA" />
+          <ScalarProperty Name="CON_AVALUO" ColumnName="CON_AVALUO" />
+          <ScalarProperty Name="CON_DESTINO" ColumnName="CON_DESTINO" />
+          <ScalarProperty Name="CON_UBICACION" ColumnName="CON_UBICACION" />
+          <ScalarProperty Name="CON_TIPO_CONT" ColumnName="CON_TIPO_CONT" />
+          <ScalarProperty Name="CON_SITUACION" ColumnName="CON_SITUACION" />
+          <ScalarProperty Name="CON_POR_REB" ColumnName="CON_POR_REB" />
+          <ScalarProperty Name="CON_ESTADO" ColumnName="CON_ESTADO" />
+          <ScalarProperty Name="CON_OBSERV" ColumnName="CON_OBSERV" />
+          <ScalarProperty Name="CON_CODCALLE" ColumnName="CON_CODCALLE" />
+          <ScalarProperty Name="CON_UNVECINAL" ColumnName="CON_UNVECINAL" />
+          <ScalarProperty Name="CON_CODCAPRO" ColumnName="CON_CODCAPRO" />
+          <ScalarProperty Name="CON_UNVECPRO" ColumnName="CON_UNVECPRO" />
+          <ScalarProperty Name="CON_CALLEP" ColumnName="CON_CALLEP" />
+          <ScalarProperty Name="CON_NUMEROP" ColumnName="CON_NUMEROP" />
+          <ScalarProperty Name="CON_TIPO_ENV" ColumnName="CON_TIPO_ENV" />
+          <ScalarProperty Name="CON_VILLA_R" ColumnName="CON_VILLA_R" />
+          <ScalarProperty Name="CON_VILLA_P" ColumnName="CON_VILLA_P" />
+          <ScalarProperty Name="CON_REGISTRO" ColumnName="CON_REGISTRO" />
+          <ScalarProperty Name="CON_ELIMINA" ColumnName="CON_ELIMINA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AS_PAGOS">
+      <EntityTypeMapping TypeName="aseoModel.AS_PAGOS">
+        <MappingFragment StoreEntitySet="AS_PAGOS">
+          <ScalarProperty Name="PAG_ANO_CON" ColumnName="PAG_ANO_CON" />
+          <ScalarProperty Name="PAG_ROL_NUM" ColumnName="PAG_ROL_NUM" />
+          <ScalarProperty Name="PAG_ROL_DV" ColumnName="PAG_ROL_DV" />
+          <ScalarProperty Name="PAG_CUOTA" ColumnName="PAG_CUOTA" />
+          <ScalarProperty Name="PAG_ESTADO" ColumnName="PAG_ESTADO" />
+          <ScalarProperty Name="PAG_TIPO" ColumnName="PAG_TIPO" />
+          <ScalarProperty Name="PAG_FEC_V" ColumnName="PAG_FEC_V" />
+          <ScalarProperty Name="PAG_FEC_P" ColumnName="PAG_FEC_P" />
+          <ScalarProperty Name="PAG_FEC_PRO" ColumnName="PAG_FEC_PRO" />
+          <ScalarProperty Name="PAG_VALOR" ColumnName="PAG_VALOR" />
+          <ScalarProperty Name="PAG_IPC" ColumnName="PAG_IPC" />
+          <ScalarProperty Name="PAG_MULTA" ColumnName="PAG_MULTA" />
+          <ScalarProperty Name="PAG_TOTAL" ColumnName="PAG_TOTAL" />
+          <ScalarProperty Name="PAG_TOTAL_RESP" ColumnName="PAG_TOTAL_RESP" />
+          <ScalarProperty Name="PAG_FOLIO" ColumnName="PAG_FOLIO" />
+          <ScalarProperty Name="PAG_MARCA" ColumnName="PAG_MARCA" />
+          <ScalarProperty Name="PAG_CONVE" ColumnName="PAG_CONVE" />
+          <ScalarProperty Name="PAG_ABONO" ColumnName="PAG_ABONO" />
+          <ScalarProperty Name="PAG_TIPEX" ColumnName="PAG_TIPEX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AS_RUT">
+      <EntityTypeMapping TypeName="aseoModel.AS_RUT">
+        <MappingFragment StoreEntitySet="AS_RUT">
+          <ScalarProperty Name="RUT_RUT" ColumnName="RUT_RUT" />
+          <ScalarProperty Name="RUT_DV" ColumnName="RUT_DV" />
+          <ScalarProperty Name="RUT_NOMBRE" ColumnName="RUT_NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PA_TRASPASA_CONTRIBUYENTE" FunctionName="aseoModel.Store.PA_TRASPASA_CONTRIBUYENTE" />
+    <FunctionImportMapping FunctionImportName="PA_VER_EXENTO" FunctionName="aseoModel.Store.PA_VER_EXENTO" />
+    <EntitySetMapping Name="AS_CONVENIO">
+      <EntityTypeMapping TypeName="aseoModel.AS_CONVENIO">
+        <MappingFragment StoreEntitySet="AS_CONVENIO">
+          <ScalarProperty Name="CON_FOLIO" ColumnName="CON_FOLIO" />
+          <ScalarProperty Name="CON_CODEX" ColumnName="CON_CODEX" />
+          <ScalarProperty Name="CON_FEC_DECRE" ColumnName="CON_FEC_DECRE" />
+          <ScalarProperty Name="CON_NUM_DECRE" ColumnName="CON_NUM_DECRE" />
+          <ScalarProperty Name="CON_PORCEN" ColumnName="CON_PORCEN" />
+          <ScalarProperty Name="CON_GLOSA" ColumnName="CON_GLOSA" />
+          <ScalarProperty Name="CON_MARCA" ColumnName="CON_MARCA" />
+          <ScalarProperty Name="CON_ESTADO" ColumnName="CON_ESTADO" />
+          <ScalarProperty Name="CON_FEC_PRES" ColumnName="CON_FEC_PRES" />
+          <ScalarProperty Name="CON_CUOTA" ColumnName="CON_CUOTA" />
+          <ScalarProperty Name="CON_ROL_DV" ColumnName="CON_ROL_DV" />
+          <ScalarProperty Name="CON_ROL_NUM" ColumnName="CON_ROL_NUM" />
+          <ScalarProperty Name="CON_ANO_CON" ColumnName="CON_ANO_CON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleOrdenIngresoAseo">
+      <EntityTypeMapping TypeName="aseoModel.DetalleOrdenIngresoAseo">
+        <MappingFragment StoreEntitySet="DetalleOrdenIngresoAseo">
+          <ScalarProperty Name="folio" ColumnName="folio" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="ipc" ColumnName="ipc" />
+          <ScalarProperty Name="multa" ColumnName="multa" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="fecVence" ColumnName="fecVence" />
+          <ScalarProperty Name="cuota" ColumnName="cuota" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="denominacion" ColumnName="denominacion" />
+          <ScalarProperty Name="nOrden" ColumnName="nOrden" />
+          <ScalarProperty Name="rolDv" ColumnName="rolDv" />
+          <ScalarProperty Name="rolNum" ColumnName="rolNum" />
+          <ScalarProperty Name="idSesion" ColumnName="idSesion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenIngresoAseo">
+      <EntityTypeMapping TypeName="aseoModel.OrdenIngresoAseo">
+        <MappingFragment StoreEntitySet="OrdenIngresoAseo">
+          <ScalarProperty Name="aPagar" ColumnName="aPagar" />
+          <ScalarProperty Name="multa" ColumnName="multa" />
+          <ScalarProperty Name="ipc" ColumnName="ipc" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="codAutoriza" ColumnName="codAutoriza" />
+          <ScalarProperty Name="digTarjeta" ColumnName="digTarjeta" />
+          <ScalarProperty Name="tipoTransaccion" ColumnName="tipoTransaccion" />
+          <ScalarProperty Name="nCuotas" ColumnName="nCuotas" />
+          <ScalarProperty Name="tipoCuota" ColumnName="tipoCuota" />
+          <ScalarProperty Name="tipoPago" ColumnName="tipoPago" />
+          <ScalarProperty Name="unidadGiradora" ColumnName="unidadGiradora" />
+          <ScalarProperty Name="tipoTributo" ColumnName="tipoTributo" />
+          <ScalarProperty Name="nOrden" ColumnName="nOrden" />
+          <ScalarProperty Name="cuidad" ColumnName="cuidad" />
+          <ScalarProperty Name="fecPago" ColumnName="fecPago" />
+          <ScalarProperty Name="eMail" ColumnName="eMail" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="rolDv" ColumnName="rolDv" />
+          <ScalarProperty Name="rolNum" ColumnName="rolNum" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="dv" ColumnName="dv" />
+          <ScalarProperty Name="rut" ColumnName="rut" />
+          <ScalarProperty Name="idSesion" ColumnName="idSesion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PA_PAGO_ASEO_WS" FunctionName="aseoModel.Store.PA_PAGO_ASEO_WS" />
+    <EntitySetMapping Name="TABLE_PARTICULAR_ARCHIVOS_DETALLE">
+      <EntityTypeMapping TypeName="aseoModel.TABLE_PARTICULAR_ARCHIVOS_DETALLE">
+        <MappingFragment StoreEntitySet="TABLE_PARTICULAR_ARCHIVOS_DETALLE">
+          <ScalarProperty Name="TPAD_CLASIFICACION" ColumnName="TPAD_CLASIFICACION" />
+          <ScalarProperty Name="TPAD_ESTADO_DESCRIPCION" ColumnName="TPAD_ESTADO_DESCRIPCION" />
+          <ScalarProperty Name="TPAD_ESTADO" ColumnName="TPAD_ESTADO" />
+          <ScalarProperty Name="TPAD_HORA_INGRESO" ColumnName="TPAD_HORA_INGRESO" />
+          <ScalarProperty Name="TPAD_FECHA_INGRESO" ColumnName="TPAD_FECHA_INGRESO" />
+          <ScalarProperty Name="TPAD_NOMBRE_ARCHIVO" ColumnName="TPAD_NOMBRE_ARCHIVO" />
+          <ScalarProperty Name="TPAD_FONO" ColumnName="TPAD_FONO" />
+          <ScalarProperty Name="TPAD_CORREO" ColumnName="TPAD_CORREO" />
+          <ScalarProperty Name="TPAD_CUOTA" ColumnName="TPAD_CUOTA" />
+          <ScalarProperty Name="TPAD_PREDIO" ColumnName="TPAD_PREDIO" />
+          <ScalarProperty Name="TPAD_MANZANA" ColumnName="TPAD_MANZANA" />
+          <ScalarProperty Name="TPAD_ANO" ColumnName="TPAD_ANO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TABLE_PARTICULAR_ARCHIVOS_ENCABEZADO">
+      <EntityTypeMapping TypeName="aseoModel.TABLE_PARTICULAR_ARCHIVOS_ENCABEZADO">
+        <MappingFragment StoreEntitySet="TABLE_PARTICULAR_ARCHIVOS_ENCABEZADO">
+          <ScalarProperty Name="TPAE_FECHA_PAGO" ColumnName="TPAE_FECHA_PAGO" />
+          <ScalarProperty Name="TPAE_ESTADO_PAGO" ColumnName="TPAE_ESTADO_PAGO" />
+          <ScalarProperty Name="TPAE_USUARIO" ColumnName="TPAE_USUARIO" />
+          <ScalarProperty Name="TPAE_ESTADO" ColumnName="TPAE_ESTADO" />
+          <ScalarProperty Name="TPAE_HORA_INGRESO" ColumnName="TPAE_HORA_INGRESO" />
+          <ScalarProperty Name="TPAE_FECHA_INGRESO" ColumnName="TPAE_FECHA_INGRESO" />
+          <ScalarProperty Name="TPAE_FONO" ColumnName="TPAE_FONO" />
+          <ScalarProperty Name="TPAE_CORREO" ColumnName="TPAE_CORREO" />
+          <ScalarProperty Name="TPAE_CUOTA" ColumnName="TPAE_CUOTA" />
+          <ScalarProperty Name="TPAE_PREDIO" ColumnName="TPAE_PREDIO" />
+          <ScalarProperty Name="TPAE_MANZANA" ColumnName="TPAE_MANZANA" />
+          <ScalarProperty Name="TPAE_ANO" ColumnName="TPAE_ANO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AS_EXCLUSION">
+      <EntityTypeMapping TypeName="aseoModel.AS_EXCLUSION">
+        <MappingFragment StoreEntitySet="AS_EXCLUSION">
+          <ScalarProperty Name="EXC_PORCENTAJE" ColumnName="EXC_PORCENTAJE" />
+          <ScalarProperty Name="EXC_DESCRIPCION" ColumnName="EXC_DESCRIPCION" />
+          <ScalarProperty Name="EXC_SITUACION" ColumnName="EXC_SITUACION" />
+          <ScalarProperty Name="EXC_CODIGO" ColumnName="EXC_CODIGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Social_OrdenIngresoAseo">
+      <EntityTypeMapping TypeName="aseoModel.Social_OrdenIngresoAseo">
+        <MappingFragment StoreEntitySet="Social_OrdenIngresoAseo">
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="numero2" ColumnName="numero2" />
+          <ScalarProperty Name="numeroD" ColumnName="numeroD" />
+          <ScalarProperty Name="Tramo" ColumnName="Tramo" />
+          <ScalarProperty Name="fecha_RSH" ColumnName="fecha_RSH" />
+          <ScalarProperty Name="folioRSH" ColumnName="folioRSH" />
+          <ScalarProperty Name="respo" ColumnName="respo" />
+          <ScalarProperty Name="cuotas" ColumnName="cuotas" />
+          <ScalarProperty Name="periodo" ColumnName="periodo" />
+          <ScalarProperty Name="uv" ColumnName="uv" />
+          <ScalarProperty Name="ch" ColumnName="ch" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nOrden" ColumnName="nOrden" />
+          <ScalarProperty Name="fecRecepcion" ColumnName="fecRecepcion" />
+          <ScalarProperty Name="eMail" ColumnName="eMail" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="rolDv" ColumnName="rolDv" />
+          <ScalarProperty Name="rolNum" ColumnName="rolNum" />
+          <ScalarProperty Name="block2" ColumnName="block2" />
+          <ScalarProperty Name="depto2" ColumnName="depto2" />
+          <ScalarProperty Name="direccion2" ColumnName="direccion2" />
+          <ScalarProperty Name="block" ColumnName="block" />
+          <ScalarProperty Name="depto" ColumnName="depto" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="dv" ColumnName="dv" />
+          <ScalarProperty Name="rut" ColumnName="rut" />
+          <ScalarProperty Name="idSesion" ColumnName="idSesion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Social_DetalleOrdenIngresoAseo">
+      <EntityTypeMapping TypeName="aseoModel.Social_DetalleOrdenIngresoAseo">
+        <MappingFragment StoreEntitySet="Social_DetalleOrdenIngresoAseo">
+          <ScalarProperty Name="folio" ColumnName="folio" />
+          <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="fecMov" ColumnName="fecMov" />
+          <ScalarProperty Name="cuota" ColumnName="cuota" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="denominacion" ColumnName="denominacion" />
+          <ScalarProperty Name="nOrden" ColumnName="nOrden" />
+          <ScalarProperty Name="rolDv" ColumnName="rolDv" />
+          <ScalarProperty Name="rolNum" ColumnName="rolNum" />
+          <ScalarProperty Name="idSesion" ColumnName="idSesion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AS_SOLICITUD">
+      <EntityTypeMapping TypeName="aseoModel.AS_SOLICITUD">
+        <MappingFragment StoreEntitySet="AS_SOLICITUD">
+          <ScalarProperty Name="SOL_NUM_SOL" ColumnName="SOL_NUM_SOL" />
+          <ScalarProperty Name="SOL_TIPO" ColumnName="SOL_TIPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Buscar_beneficiario" FunctionName="aseoModel.Store.Buscar_beneficiario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="aseoModel.Buscar_beneficiario_Result">
+          <ScalarProperty Name="rut_p" ColumnName="rut_p" />
+          <ScalarProperty Name="dig_p" ColumnName="dig_p" />
+          <ScalarProperty Name="p_nombre" ColumnName="p_nombre" />
+          <ScalarProperty Name="s_nombre" ColumnName="s_nombre" />
+          <ScalarProperty Name="paterno" ColumnName="paterno" />
+          <ScalarProperty Name="materno" ColumnName="materno" />
+          <ScalarProperty Name="cod_activ" ColumnName="cod_activ" />
+          <ScalarProperty Name="cod_calle" ColumnName="cod_calle" />
+          <ScalarProperty Name="cod_uv" ColumnName="cod_uv" />
+          <ScalarProperty Name="casa_block" ColumnName="casa_block" />
+          <ScalarProperty Name="depto_sitio" ColumnName="depto_sitio" />
+          <ScalarProperty Name="cod_vpob" ColumnName="cod_vpob" />
+          <ScalarProperty Name="num_viv" ColumnName="num_viv" />
+          <ScalarProperty Name="fono_casa" ColumnName="fono_casa" />
+          <ScalarProperty Name="fono_celu" ColumnName="fono_celu" />
+          <ScalarProperty Name="f_nac" ColumnName="f_nac" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="est_civil" ColumnName="est_civil" />
+          <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
+          <ScalarProperty Name="prevision" ColumnName="prevision" />
+          <ScalarProperty Name="nacionalidad" ColumnName="nacionalidad" />
+          <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+          <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
+          <ScalarProperty Name="ingresos" ColumnName="ingresos" />
+          <ScalarProperty Name="cod_fun_per" ColumnName="cod_fun_per" />
+          <ScalarProperty Name="pencion" ColumnName="pencion" />
+          <ScalarProperty Name="reg_antiguo" ColumnName="reg_antiguo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Buscar_beneficiario2" FunctionName="aseoModel.Store.Buscar_beneficiario2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="aseoModel.Buscar_beneficiario2_Result">
+          <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO PATERNO" />
+          <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO MATERNO" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Social_DetalleArchivo">
+      <EntityTypeMapping TypeName="aseoModel.Social_DetalleArchivo">
+        <MappingFragment StoreEntitySet="Social_DetalleArchivo">
+          <ScalarProperty Name="SD_Estado" ColumnName="SD_Estado" />
+          <ScalarProperty Name="SD_Arch_2" ColumnName="SD_Arch_2" />
+          <ScalarProperty Name="SD_Arch_1" ColumnName="SD_Arch_1" />
+          <ScalarProperty Name="SD_Cuota" ColumnName="SD_Cuota" />
+          <ScalarProperty Name="SD_RolB" ColumnName="SD_RolB" />
+          <ScalarProperty Name="SD_RolA" ColumnName="SD_RolA" />
+          <ScalarProperty Name="SD_anio" ColumnName="SD_anio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
